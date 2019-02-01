@@ -1,0 +1,1032 @@
+\documentclass[12pt,authoryear]{elsarticle}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{makecell}
+\usepackage[table]{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\linespread{1.75} %line spacing
+
+% Font size for subcaption
+\DeclareCaptionFont{mysize}{\fontsize{9}{9.6}\selectfont}
+\captionsetup[sub]{font=mysize}
+
+%\captionsetup{compatibility=false}
+%\journal{Journal of Fluids and Structures}
+
+\newcommand{\hl}[1]{\textcolor{red}{#1}}
+\newcommand{\hb}[1]{\textcolor{blue}{#1}}
+\newcommand{\incfig}{\centering\includegraphics}
+\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Numerical Study of Static and Vortex-Induced Vibrations of Normal and Yawed Cylinder with Detached Eddy Simulations}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \address[label1]{}
+%% \address[label2]{}
+
+\author[1]{Xingeng Wu}
+\author[1]{Mohammad Jafari} 
+\author[2]{Partha Sarkar}
+\author[3]{Anupam Sharma\corref{a}}
+\ead{sharma@iastate.edu}
+\cortext[a]{Corresponding author}
+\fntext[1]{Graduate Student}
+\fntext[2]{Professor, Iowa State University}
+\fntext[3]{Associate Professor, Iowa State University}
+
+\address{Department of Aerospace Engineering, Iowa State University, Ames, Iowa, 50011}
+
+\begin{abstract}
+A computational approach based on a $k-\omega$ delayed detached eddy simulation
+(DDES) model for predicting aerodynamic loads on a smooth circular cylinder is
+verified against experiments. Comparisons with data are performed for a
+stationary cylinder and for a cylinder oscillating in the transverse direction
+due to flow-induced forces (vortex induced vibration or VIV). For the static
+cases, measurement data from the literature is used to validate the predictions
+for normally-incident flow. New experiments are conducted as a part of this
+study for yawed flow, where the cylinder axis is inclined with respect to the
+inflow velocity at the desired yaw angle, $\beta=30^\circ$. Good agreement is
+observed between the predictions and measurements for mean and rms surface
+pressure and wake velocity deficit. However the lift spectrum prediction shows
+a slight offset in frequency from the measurements.  Three yawed flow cases
+($\beta=15^\circ, 30^\circ, \,\&\, 45^\circ$) are simulated and the results are
+found to be independent of $\beta$ (dynamic scaling) when the flow speed normal
+to the cylinder axis is selected as the reference velocity scale.  
+
+The VIV simulations are performed by coupling the flow solver with a solid
+dynamics solver where the cylinder motion in the transverse direction is
+modeled as a spring-mass-damper system. The properties of the spring, mass, and
+damper are set to match the material properties of the cylinder model used in a
+VIV experiment available in the literature.
+
+The numerical study for the normal flow of vortex-induced vibration (VIV) for
+various reduced velocities shows reasonable agreement with experiments. The
+predicted mean amplitude and force coefficients for normal flow and yawed flow
+($\beta=45^\circ$) in VIV simulations are very similar in most regime except
+for the upper branch.
+\end{abstract}
+
+\begin{keyword}
+  Vortex-Induced Vibrations \sep Detached Eddy Simulations \sep Yawed Cylinder \sep Independence Principle
+\end{keyword}
+\end{frontmatter}
+
+%\modulolinenumbers[2]
+%\linenumbers
+
+%\begin{linenumbers}
+%% main text
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Inclined and horizontally- or vertically-spanned cylinder are used in various
+engineering applications: cable-stayed, suspension, and tied-arch bridges,
+power transmission lines, offshore risers, sub-sea pipelines etc. These
+cylinders are prone to large-amplitude flow-induced vibration, which can
+lead to catastrophic failure of the cylinders and the structures supported by
+them. The vibration mechanisms involve complex aeroelastic (motion-induced)
+interactions that depend on the spatial orientation, geometry,
+surface-characteristics, and dynamic properties of cylinders.~\cite{davenport1995dynamics} 
+shows that large amplitude vibrations can lead to
+either catastrophic- or fatigue failure of the cylinders and/or the adjoining
+structures, which poses a significant threat to the safety and serviceability of
+these systems.
+
+Vortex-induced vibration(VIV) is an oscillating motion due to the interaction
+between structures and periodical vortexes. VIV is a very common vibration
+phenomenon happened in many engineering areas, such as offshore structures,
+transmission lines, stacks, and bridges. Due to its practical significance in
+many engineering structures, VIV has raised many interests and been extensively
+investigated in past decades.
+\cite{bearman1984vortex},~\cite{sarpkaya2004critical} and
+~\cite{williamson2004vortex} have done some detailed reviews of the these work.
+One of the most important observations of VIV is called "lock-in" or
+"synchronization". "Lock-in" is a regime where shedding vortexes induce large
+response amplitude of the structures because the oscillating frequency along
+with vortex shedding frequency lock onto the natural frequency of the
+structures. ~\cite{feng1968measurement} observed two amplitude branches in the
+``lock-in'' regime in experiment. Because this experiment was carried in wind
+tunnels, the system has a very large mass ratio. The jump between two branches
+was suspected due to the change of vortex shedding mode.    However, in recent
+years, other different amplitude branches have been found in water tunnel tests
+which have much small mass ratio. Four branches have been identified and
+labeled as ``initial excitation'', ``upper branch'', ``lower branch'' and
+``desynchronization''.(\cite{khalak1997fluid}). 
+
+Past investigations of VIV were based primarily on experiments and a limited
+number of computational fluid dynamics (CFD). These studies, spanning over the
+past several decades, have resulted in an improved understanding of the
+phenomenon of the VIV, particularly when the flow is perpendicular to the
+cylinder in wind tunnel.  However, most of these work investigated relatively
+large mass and damping system.  In recent years, due to increasing applications
+of marine engineering, VIV of low mass and damping system has raised many
+interests and been widely studied in experiments. Though a lot of experimental
+studies have been done in this decade, only a very few studies were related to
+the VIV of a yawed cylinder with low mass and damping.  These experiments
+(~\cite{jain2013vortex}, ~\cite{franzini2013one}) were performed to validate
+the independence principle on the oscillating frequency, amplitude and force
+coefficients of an elastically-mounted cylinder with various yawed angles. The
+experiments are conducted in water tunnels with a partially submerged yawed
+cylinder. Due to the effects of the end conditions, these experiments observed
+different results between the cylinder slanted towards upstream and downstream.
+Ideally, the independence principle should be investigated without any end
+effect because the vortex shedding of a yawed stationary cylinder and the
+response of an elastically-mounted cylinder are both very sensitive to the end
+conditions. Compared with experiments, simulations are much easier to achieve
+the end-effect-free result.  ~\cite{zhao2015validity} studied the independence
+principle of an elastically-mounted cylinder for two Reynolds numbers (Re=150
+and Re=1,000) by using direct numerical simulation (DNS) and periodic boundary
+conditions.  Independence principle for the response amplitude and frequency is
+observed on this numerical study, but the Reynolds numbers of this study are
+very small.
+	
+This paper presents the results of our progress towards the goal of developing
+an aeroelastic load model for cylinder vibration. The objective is to be able
+to accurately predict aerodynamic loading on a single, smooth circular cylinder
+operating in smooth inflow (normal and yawed flow) for static and dynamic
+conditions. This paper focuses on verifying the computational methodology
+against experimental data for normally-incident flow and yawed flow.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Computational Methodology}
+\label{sec:methodology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+The flow is approximated to be incompressible since the flow Mach number is
+less than $0.2$. Various degrees of approximations can be utilized to model
+flow turbulence: from resolving only time-averaged quantities in Reynolds
+Averaged Navier-Stokes or RANS, to resolving the tiniest of turbulent eddies in
+Direct Numerical Simulations or DNS. Large eddy simulations (LES) resolve
+energy containing eddies but model the net effect of smaller
+(unresolved/universal) eddies on larger (resolved) eddies. The detached eddy
+simulation (DES) technique~\citep{spalart1997comments} is a hybrid approach
+that uses RANS equations to simulate attached flow near solid surfaces and LES
+for separated (detached) flow away from the surfaces. DES allows computation of
+high Reynolds number flows relatively inexpensively by removing the constraint
+in LES to have very fine grids near solid boundaries.
+
+Flow over slender structures with circular cross-section has been studied using
+unsteady RANS~\citep{pontaza2009three},
+DES~\citep{travin2000detached,yeo2012aerodynamic},
+LES~\citep{breuer1998large,kravchenko2000numerical,catalano2003numerical}, and
+DNS~\citep{dong2005dns,zhao2009direct} approaches. Latest numerical efforts in
+simulating aerodynamics of cable vibration have utilized
+DES~\citep{yeo2007characteristics,yeo2008investigation,yeo2012aerodynamic,yeo2011computational}
+as the primary numerical approach. Detailed flow simulations have been
+performed with a single, stationary, yawed cylinder in uniform
+inflow~\citep{yeo2007characteristics,yeo2008investigation} and oscillating
+inflow~\citep{yeo2012aerodynamic}. It has been concluded
+by~\cite{yeo2012aerodynamic} that oblique wind-induced aerodynamic forces play
+an important role in initiating and increasing the vibration at low
+frequencies. DES has also been used to investigate the use of strakes in cables
+for aerodynamic mitigation of wind-induced oscillations
+by~\cite{yeo2011computational}. In essence, high-fidelity simulations have been
+instrumental in gaining insights into the problem of flow-induced cylinder
+vibration.
+
+In LES and DES, the equations are spatially filtered (low-pass) and the
+numerical procedure solves for the filtered quantities that can be resolved by
+the grid. The sub-filter (or sub-grid) quantities exert a ``stress'' on the
+filtered flow-field, which is modeled using a sub-grid scale (SGS) stress
+model. Denoting spatially filtered quantities by overhead tilde ($^\sim$), the
+incompressible flow equations with an eddy-viscosity turbulence model are
+%
+\begin{gather*}
+  \frac{\partial{\tilde{U_i}}}{\partial{x_i}}=0,~{\rm and} \\
+   \frac{\partial{\tilde{U_i}}}{\partial{t}}+
+   \frac{\partial{(\tilde{U_j}\tilde{U_i})}}{\partial{x_j}}
+   =-\frac{1}{\rho}\frac{\partial{\tilde{p}}}{\partial{x_i}}+\nu\frac{\partial{^2\tilde{U_i}}}{\partial{x_j^2}}-\frac{\partial{\tau_{ij}}}{\partial{x_j}}, \\
+ \label{eq:geqs}
+\end{gather*}
+%
+where $\tau_{ij} = \widetilde{U_i U_j}-\tilde{U_i}\tilde{U_j} = -2 \, \nu_{SGS}
+\, \tilde{S}$ and $\tilde{S} = (\partial{\tilde{U_i}}/\partial{x_j} +
+\partial{\tilde{U_j}}/\partial{x_i})/2$.  In the above, SGS denotes a sub-grid
+scale quantity, $\tau_{ij}^{SGS}$ denotes the sub-grid scale stress tensor
+which is modeled as the product of eddy viscosity, $\nu_{SGS}$ and the strain
+rate tensor $S_{ij}$; turbulence models of such type are referred to as
+eddy-viscosity models. DES is a non-zonal hybrid RANS-LES method, where a RANS
+turbulence model is used to compute the eddy viscosity for the SGS stress
+tensor in the corresponding LES. In the original DES formulation
+(\cite{spalart1997comments}), the Spalart-Allmaras (SA) LES and SA-RANS models
+were used. We use the method developed by~\cite{yin2015dynamic}, which
+introduces a dynamic procedure to improve the DES capability by correcting for
+modeled stress depletion and log-layer mismatch. This model has been
+implemented in the open source CFD software OpenFOAM. All the simulations in
+this paper are obtained using OpenFOAM. The numerical scheme uses second order
+backward difference for time integration and linear interpolation with central
+differencing for spatial discretization of the governing equations.
+
+Simulations of VIV are using pimpleDyMFoam solver with sixDoFRigidBodyMotion
+feature on OpenFOAM. The incompressible Navier-Stokes equations are solved by
+pimpleDyMFoam solver. For VIV cases, the incompressible Navier-Stokes equations
+includes an addition body force term due to interaction between the moving
+cylinder and fluid. 
+
+\[
+  m\ddot{Y}+c\dot{Y}+kY=F_{fluid},
+\]
+where $m$ is the mass of the rigid body, $\ddot{Y}$, $\dot{Y}$, and $Y$ are the
+instantaneous acceleration, velocity and displacement of the cylinder,
+respectively, $c$ is spring damping, $k$ is the spring stiffness and
+$F_{fluid}$ is the fluid forces applying on the cylinder solved by
+Navier-Stokes equations. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Detached Eddy Simulation Model}
+\label{sec:DDES}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+A summary of the DES model used in this study is provided here; details are
+available in~\cite{yin2015dynamic}. It uses a $k-\omega$ turbulence closure
+model in the RANS zones, and the same model is used to calculate $\nu_T$ in the
+LES zones. The eddy viscosity in the $k-\omega$ DDES can be defined as
+$\nu_T=l_{DDES}^2\, \omega$, where $l_{DDES}$ is the DDES length scale. The
+different length scales in the $k-\omega$ DDES model are defined as
+%
+\begin{align*}  
+  l_{DDES} &=l_{RANS}-f_d\, \max( 0,~l_{RANS}-l_{LES}), \\
+  l_{RANS} &=\sqrt{k}/\omega,\\
+  l_{LES} &=C_{DES}\bigtriangleup.
+\end{align*}
+%
+In the above, $l_{RANS}$ and $l_{LES}$ are the length scales of the RANS and LES
+branches respectively and $\bigtriangleup = f_d \,V^{1/3}+(1-f_d ) \,h_{max}$,
+where $h_{max} = \max(dx,dy,dz)$ is the maximum grid size, and $f_d$ is a
+shielding function of the DDES model, defined as $f_d = 1 -
+\tanh\{(8\,r_d)^3\}$, with
+\[
+  r_d=\frac{k/\omega+\nu}{\kappa^2 \, d_w^2 \, \sqrt{U_{i,j} U_{i,j} }},
+\]
+$\nu$ is the molecular viscosity, $\kappa$ is the von Karman constant, $d_w$ is
+the distance between the cell and the nearest wall, and $U_{i,j}=\partial_j
+U_i$ is the velocity gradient.  In the RANS branch, the transport equation for
+k and $\omega$ are written as
+%
+\begin{align*}  
+  \frac{Dk}{Dt} & = 2\nu_T |S|^2-C_\mu k\omega+\partial{_j [(\nu+\sigma_k \nu_T ) \partial{_j k}]},\\
+  \frac{D\omega}{Dt} & = 2C_{\omega1} |S|^2-C_{\omega2} \omega^2 
+                    +\partial{_j [(\nu+\sigma_\omega \nu_T )\partial{_j \omega}]},\\
+    &~~~~~~~\rm{where}~\nu_T=k^2/\omega.   
+\end{align*}  
+%
+In the LES region ($f_d=1,l_{DDES}=C_{DES} \, \bigtriangleup$), the eddy viscosity
+switches to $\nu_T=l_{DDES}^2\,\omega=(C_{DES}\bigtriangleup)^2\omega$, which is
+similar to the eddy viscosity in the Smagorinsky model, $\nu_s=(C_s
+\bigtriangleup)^2 |S|$.
+
+The LES branch of this $k-\omega$ DDES model uses a dynamic procedure which
+defines the value of $C_{DES}$ as
+%
+\begin{align*}  
+  C_{DES}   & =  \max( C_{lm},~C_{dyn} ), \\
+  C_{dyn}^2 & = \max \left( 0,\; 0.5 \frac{L_{i,j} M_{i,j}}{M_{i,j} M_{i,j}}\right),\\
+  C_{lim}   &=C_{DES}^0 \left[1-\tanh \left(\alpha \exp \left(\frac{-\beta \, h_{max}}{L_k}\right)\right)\right],\\
+  C_{DES}^0 &=0.12, \quad   L_k=\left(\frac{\nu^3}{\epsilon}\right)^{\frac{1}{4}},  \quad  \alpha=25,  \quad  \beta=0.05,\\
+  \epsilon  &= 2 \left(C_{DES}^0 h_{max} \right)^2 \omega\,|S|^2+C_\mu k\,\omega.
+\end{align*}  
+%
+For further details about the DES model, the reader is referred to~\cite{yin2015dynamic}.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Computational Grids}
+\label{sec:grids}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+The outer boundary of the computational domain is circular with a radius of
+$25\times D$, where $D$ is the diameter of the cylinder. The cylinder is placed
+in the center of the domain and the span dimension is $10\times D$ for
+all simulations. Periodic boundary
+conditions are used in the span direction, while freestream condition is used
+on the outer radial boundary. The domain is discretized using a multi-block
+grid that has three blocks: (1) an O-grid is used to resolve the flow around
+the cylinder, (2) an H-grid to resolve the wake, and (3) a C-grid for the far
+field. In order to accurately capture the aerodynamic forces on the cylinder,
+the flow around the cylinder and in the near-wake region has to be resolved
+with high precision. A fine mesh is therefore applied in these regions.
+Figure~\ref{fig:Mesh} shows a cross-sectional view of the full computational
+domain as well as a zoom-view to highlight the grid topology. Results of a mesh
+sensitivity study are presented in Section~\ref{sec:mesh_sensitivity}.
+%
+\begin{figure}[htb!]
+  \centering
+  \subcaptionbox{Overall CFD domain}%
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Mesh1.png}}
+  \hspace*{\fill}
+  \subcaptionbox{Zoom view of near-cylinder mesh}%
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Mesh2.png}}
+  \caption{Cross-sectional views of the computational grid}
+  \label{fig:Mesh}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimental Setup and Measurements}
+\label{sec:experiments}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Static wind tunnel experiments were conducted on a smooth cylinder of circular
+cross section representing a stay cable to measure the aerodynamic forces and
+the velocity distribution in its wake. These experiments were performed in the
+Aerodynamic/Atmospheric Boundary Layer (AABL) Wind and Gust Tunnel located in
+the Department of Aerospace Engineering at Iowa State University. This wind
+tunnel has an aerodynamic test section of $2.44$ m ($8.0$ ft) width $\times$
+$1.83$ m ($6.0$ ft) height and a design maximum wind speed of $53$ m/s ($173.9$
+ft/s). A polished aluminum tube with diameter, $D=0.127$ m and length, $L=1.52$
+m was selected as the smooth cylinder model. Although the aspect ratio
+($L/D=12$) is sufficiently large to minimize edge effects at the mid-span of
+the circular cylinder, two circular plates of diameter $4\,D$ were attached to
+the ends of the cylinder. These plates were adjusted for each cylinder yaw
+angle to be parallel to the incoming airflow so that nearly 2D flow could be
+achieved over the cylinder.  The blockage ratio in the tunnel with the model
+was approximately 5\% for all measurements.  Figure~\ref{fig:ExpSetup} displays
+the model setup in the AABL tunnel with the cylinder in normal-flow and
+yawed-flow configurations. An innovative multi-functional static setup was
+designed to measure the pressure distributions and velocity profiles for
+different yaw angles. As shown in Fig.~\ref{fig:ExpSetup}, this setup properly
+secures the model for different yaw angles.
+%
+\begin{figure}[htb!]
+  \centering
+  \subcaptionbox{setup for normal-flow measurements}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Experiment_NormalFlow.png}}
+  \hspace*{\fill}
+  \subcaptionbox{setup for yawed flow measurements}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Experiment_YawedFlow.png}}
+  \caption{Pictures showing the model setup used to allow measurements at
+    arbitrary inflow angles. The Cobra probe used to measure the wake is shown in
+    (a).}
+  \label{fig:ExpSetup}
+\end{figure}
+
+The model has 128 pressure taps distributed on its surface to measure local
+instantaneous pressure (see Fig.~\ref{fig:experimentTaps}). These pressure
+values are used to compute aerodynamic lift and drag (viscous part ignored) on
+the cylinder as well as pressure correlations along the span. There are 36
+pressure taps at equal angular spacing of 10 degrees along each of the three
+rings located on the cylinder. The three rings are labeled Right (R), Middle
+(M), and Left (L) as seen in Fig.~\ref{fig:experimentTaps} (a) and are spaced
+$4D$ and $5D$ apart from each other along the span. Another set of pressure
+taps are located at a fixed angular location at equal spacing of $1D$ along the
+span between the rings (see Fig.~\ref{fig:experimentTaps} (a,b)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Data Acquisition System}
+\label{sec:data_acquisition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+For wake measurement, one Cobra Probe (4-hole velocity probe) mounted on a
+traverse system was used to measure the velocity field behind the model (see
+Fig.~\ref{fig:ExpSetup} (a)). In order to minimize the blockage effect of the
+traverse system, its cross section was streamlined by using an airfoil section.
+For velocity measurements, the sampling rate was $1250$ Hz and the sampling
+time was $60$ s. Wake measurements were made $2.5 D$ downstream of the model
+(measured from the cylinder axis), where the turbulence intensity was lower
+than the maximum allowable value (overall 30\%) for the Cobra Probe.  
+
+Two 64-channel pressure modules (Scanivalve ZOC 33/64 Px) were utilized to
+capture the local pressure. In addition, an Ethernet remote A/D system (ERAD)
+was used as a collection system to read information from the ZOC. The sampling
+rate and sampling time for all pressure measurements were $250$ Hz and $60$ s
+respectively. The Scantel program from Scanivalve was used for pressure data
+acquisition. In order to minimize the error of measurement due to the tube
+length, both ZOCs were placed inside the wind tunnel near the model
+(Fig.~\ref{fig:ExpSetup} (b)). The wake measurement traverse system was removed
+when surface pressure measurements were made.
+%
+\begin{figure}[htb!]
+  \centering
+  \subcaptionbox{Pressure taps on the cylinder model}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/experiment_PressureTap.png}}
+  \hspace*{\fill}
+  \subcaptionbox{Distribution of pressure taps in a ring}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/experiment_PressureTapCrossSection.png}}
+  \caption{Schematics illustrating the locations of surface pressure taps on
+    the cylinder model.}
+  \label{fig:experimentTaps}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Numerical Results and Verification with Measured Data}
+\label{sec:comp_results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The objective of this paper is to demonstrate the capability of detached eddy
+simulations to predict aerodynamic loads on a static cylinder and an elastically-mounted cylinder.
+Verification with existing experimental data in the literature, and data from
+new experiments conducted as a part of this study, are presented for both the static
+cylinder and the elastically-mounted cylinder. Smooth inflow is used -- zero
+turbulence in the numerical simulations and the minimum possible inflow
+turbulence intensity ($\sim$0.2\%) in the tunnel. Cylinder surface is very
+smooth and hence surface roughness is not modeled in the simulations.
+
+Static testing is performed for (1) flow normal to the cylinder axis, and (2)
+flow at an angle to the cylinder axis (inclined cylinder); three inclination
+angles are analyzed in this study. These cases are simulated at Reynolds
+number $Re_D=20,000$ which is corresponding to laminar separation (LS), where 
+flows are laminar before separation and transition to
+turbulence occurs in the shear layer.
+
+Dynamic testing is performed for an elastically-mounted cylinder in eight different 
+inflow reduce velocities with 
+(1) flow normal to the cylinder axis, and (2) flow at an angle to the 
+cylinder axis (inclined cylinder). However, due to high computational cost of simulations,
+only one inclination angle is analyzed in the dynamic study($45^\circ$). The cylinder
+is limited to vibrate along the direction which is perpendicular to both 
+the flow direction and the cylinder axis. All
+dynamic cases are simulated at the same Reynolds number, $Re_{D,n}=20,000$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mesh Sensitivity Study}
+\label{sec:mesh_sensitivity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+A mesh sensitivity study is performed for the normally-incident flow category
+for $Re_D=20,000$. Table~\ref{tab:meshSize}
+presents a summary of the different cases simulated for this study.  Three
+different meshes, labeled `Mesh 1', `Mesh 2', and `Mesh 3' are shown in the table.
+The computational domain is
+$25\times D$ in the radial direction and $10\times D$ in the span direction.
+%
+\begin{table}[htb!]
+  \caption{Summary of the test cases simulated to investigate sensitivity of results to mesh size} 
+  \label{tab:meshSize} 
+  \begin{center}
+  \begin{tabular}{c|c|c|c}
+    $\boldsymbol{Re_D}$ & \textbf{Mesh name} &  \textbf{Cell count}$\boldsymbol{(\theta,r,z)}$ \\ \hline
+    \hline
+    20,000  & Mesh 1 & 157, 233, 65\\ \hline
+    20,000  & Mesh 2 & 236, 343, 100\\ \hline
+    20,000  & Mesh 3 & 354, 507, 150\\ \hline \hline
+    \hline
+  \end{tabular}
+  \end{center}
+\end {table}
+%
+
+Figure~\ref{fig:Cp_compare_LS_Mesh} compares the mean aerodynamic pressure
+coefficient, $\overline{C}_p=2 (\overline{p}-p_\infty)/(\rho V_\infty^2)$
+obtained using simulations with different grids, and experimental data.
+Experiment I refers to data from~\cite{norberg2013pressure} and Exp-ISU is from
+our measurements. Simulations are simulated at `cylinder diameter based'
+Reynolds number, $Re_D=20,000$, which is the same as Experiment I, but the
+$Re_D$ in Exp-ISU is higher ($Re_D=51,500$) due to the limitation of the wind
+tunnel and measurement equipment.
+
+Consistent with the results of~\cite{travin2000detached}
+and~\cite{breuer2000challenging}, the simulation results are found to be
+sensitive to mesh size even with the highest mesh resolution attempted. Mesh 2
+and Mesh 3 capture the flow separation location correctly (same as in the
+experiment), but separation is delayed with Mesh 1. Results of Mesh 2 are in
+closer agreement with Experiment I, however they differ from the results of
+Mesh 3 in the separated flow region. Interestingly, the Exp-ISU data agrees
+well with Mesh 3 results in the same region. Based on this study, Mesh 2 
+is chosen for the subsequent simulations because it can predict aerodynamic
+loading and resolve wake turbulence reasonably accurately within a reasonable 
+computational cost.
+%
+\begin{figure}[htb!]
+  \centering
+  \incfig[width=.5\textwidth]{Figures/Cp_Compared_Mesh_Re20k.png} 
+  \caption{$\overline{C}_p$ comparisons between simulation results using
+  different meshes.}
+  \label{fig:Cp_compare_LS_Mesh}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Static Cylinder with Normally-Incident Flow}
+\label{sec:normally_incident}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Table~\ref{tab:comparisonRe20k} summarizes the simulation results for the
+static case and compares them with two sets of experimental
+data. The peak shedding Strouhal number ($St_p$), the mean drag coefficient,
+$\overline{C}_d$ and the mean back pressure coefficient, $\overline{C}_{pb}$
+are compared in the table. Strouhal number is a non-dimensional frequency,
+defined here as $St = f\,D/V_\infty$, and $St_p$ corresponds to the peak vortex
+shedding frequency of the cylinder.
+
+Figure~\ref{fig:Cp_compared_Re20k} compares the predicted mean aerodynamic
+pressure coefficient, $\overline{C}_p$ and the root mean square of perturbation
+pressure coefficient, $C_{p'rms} = \left(\,\overline{C^2_p -
+\overline{C}^2_p}\,\right)^{1/2}$ with the data from the two experiments. The
+predicted $\overline{C}_p$ agrees very well with the data from Experiment I;
+Exp-ISU data shows slightly lower $\overline{C}_p$ than observed in
+Experiment I and the simulation, especially after $100^\circ$, and the mean
+back pressure, $\overline{C}_{pb}$ is lower as well. The prediction
+$C_{p'rms}$ distribution lies in between the two measurements. Both
+measurements as well as the simulation show the peak to be around $80^\circ$,
+which indicates the location of flow separation. The
+predicted distribution over the cylinder surface agrees well with the
+measurements.
+%
+\begin{table}[htb!]
+  \caption{Summary of results for normally-incident flow simulations} 
+  \label{tab:comparisonRe20k} 
+  \begin{center}
+  \begin{tabular}{c|c|c|c|c|c}
+      $\boldsymbol{Re_D}$ & \textbf{Method} & $\boldsymbol{St_p}$ & $\boldsymbol{\overline{C}_d}$ & $\boldsymbol{\overline{C}_{pb}}$ \\ \hline
+      \hline
+      20,000 & $k-\omega$ DDES & 0.21 & 1.13 & -1.16 \\ \hline
+      20,000 & Experiment I    & 0.19 & 1.22 & -1.1  \\ \hline
+      51,500 & Exp-ISU   & 0.21 & 1.14 & -1.3  \\ \hline
+      \hline
+  \end{tabular}
+  \end{center}
+\end {table}
+
+\begin{figure}[htb!]
+  \centering
+  \subcaptionbox{Mean aerodynamic pressure coeff., $\overline{C}_p$}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cp_Compared.png}}
+  \hspace*{\fill}
+  \subcaptionbox{r.m.s. of pressure coeff., $C_{p'rms}$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/CpRMS_Compared.png}}
+  \caption{Comparisons of mean and rms of aerodynamic pressure coefficient
+  between the simulation and experimental measurements.}
+  \label{fig:Cp_compared_Re20k}
+\end{figure}
+
+Figure~\ref{fig:velocity_Normal_Re20k} plots the predicted and measured wake
+velocity profiles at the axial station, $x/D=2$; the cylinder axis is located
+at $x/D=0$. The peak wake deficit and the wake profile are predicted
+accurately. The measured data shows a slight asymmetry in the data, which is
+perhaps due to asymmetry in the experimental setup (e.g., distance from the
+tunnel wall between the top and bottom surfaces of the cylinder). The simulation data is
+averaged over 120 wake shedding cycles and experimental data is averaged over
+540 cycles.
+%
+\begin{figure}[htb!]
+  \incfig[width=.5\textwidth]{Figures/velocity_Normal_Re20k.png}
+  \caption{Comparison of predicted and measured velocity profiles in the
+    cylinder wake $2D$ downstream of the cylinder axis.}
+  \label{fig:velocity_Normal_Re20k}
+\end{figure}
+
+Figure~\ref{fig:force_20k} presents predicted temporal variation of sectional
+lift and drag coefficients ($C_l$ and $C_d$). As expected for a circular
+cylinder, the mean lift coefficient ($\overline{C}_l$) is zero but the mean
+drag coefficient ($\overline{C}_d$) is finite. The high-frequency oscillations,
+more apparent in $C_l$ time history are due to Karman vortex shedding, which
+occurs at $St=fd/U \sim 0.2$ for bluff bodies in the range of $Re_D$ considered
+here. In addition to the oscillations at the Karman vortex shedding frequency, the
+entire signal appears to modulate at a frequency which is an order of magnitude
+lower than that corresponding to $St=0.2$. This modulation has a certain
+randomness to it and is not perfectly periodic. This modulation phenomenon has
+been reported elsewhere, see e.g.,~\cite{travin2000detached}. 
+%
+\begin{figure}[htb!]
+  \incfig[width=0.9\textwidth]{Figures/force_20k.png}
+  \caption{Predicted temporal variations of lift and drag coefficients}
+  \label{fig:force_20k}
+\end{figure}
+
+Figure~\ref{fig:St_Compared_Re20k} (a) compares the power spectral densities of
+lift coefficient ($C_l$) between data from Exp-ISU and the simulation. 
+The lift in the measurements is obtained by integrating the surface
+pressure measured using the pressure taps. Figure~\ref{fig:St_Compared_Re20k} (b)
+presents the DES computed spectra of $C_d$.  Because vortex shedding alternates
+between the top and bottom sides of the cylinder, one vortex shedding period contains two cycles
+of drag but only one cycle of lift. This can be seen in
+Figure~\ref{fig:St_Compared_Re20k}, where the spectral peak for $C_l$ occurs at
+$f_p$ while the spectral peak for drag is at $2\times f_p$, where $f_p$ is determined
+by the peak shedding Strouhal number, $St_p = f_p\,D/V_\infty$. Based on existing
+literature (see~\cite{travin2000detached} and~\cite{norberg2013pressure}),
+$St_p \sim 0.2$. Both measurement and prediction agree very well with each
+other and show the peak for lift to be around $f_p$ corresponding to $St_p$.
+%
+\begin{figure}[htb!]
+  \centering
+  \subcaptionbox{PSD of $C_l$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/St_Compared_Cl_Re20k.png}}
+  \hspace*{\fill}
+  \subcaptionbox{PSD of $C_d$}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/St_Compared_Cd_Re20k.png}}
+    \caption{Comparison of predicted and measured power spectral densities
+      (PSDs) of $C_l$ and $C_d$. The
+      measured data here is from our experiments (Exp-ISU).}
+\label{fig:St_Compared_Re20k}
+\end{figure}
+
+The peak frequency and its first three harmonics that occur at $St = 0.4, 0.6,
+\& \,0.8$, are identified in the figure using vertical grid lines and labeled
+as $2f_p,\,3f_p,\,\&\,4f_p$. The prediction and experiment both show a second,
+smaller peak in the lift spectrum at the third harmonic ($St=0.6$).  Since the
+lift vector alternates with the side the vortex sheds from, only odd harmonics
+of $f_p$ (i.e., $3f_p,~5f_p,\ldots$) are expected in the spectra. Therefore, no
+peak is observed in the lift spectra at the second harmonic ($St=0.4$) or
+higher {\em even} harmonics in either the measured or the simulated data. The
+spectral shape of the PSD of $C_l$ is correctly predicted, even though the
+magnitude is slightly higher than the measured data.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Static Cylinder with Yawed Flow (Inclined Cylinder)}
+\label{sec:inclined_cylinder}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Figure~\ref{fig:yawedModel} is a schematic that illustrates the setup for the
+inclined-cylinder simulations. The relative inclination of the cylinder axis
+with respect to the flow is obtained by yawing the flow rather than inclining
+the cylinder; these simulations are therefore also referred to as yawed flow
+simulations. Other than yawing the inflow, the setup is exactly the same as for
+the normally-incident flow cases.
+
+The yaw angle, $\beta$ is defined as the angle between the inflow velocity
+vector $\boldsymbol{V_\infty}$ and the $x$ axis; the cylinder is aligned with
+the $z$ axis. The normal component of the flow velocity, $V_n$ and the spanwise
+component, $V_z$ are defined as $V_n=V_\infty \cos\,\beta$ and $V_z = V_\infty
+\,\sin\,\beta$, where $V_\infty=\abs{\boldsymbol{V_\infty}}$. The computational
+domain is $10\times D$ in the spanwise direction to resolve and investigate 
+spanwise variation of aerodynamic forces.
+Three different yaw angles $\beta=15,\,30,\,\&\,45$ degrees are investigated
+in these simulations.
+%
+\begin{figure}[htb!]
+  \incfig[width=0.6\textwidth]{Figures/yawedModel.png}
+  \caption{A schematic of the computational setup for static inclined cylinder
+    simulations. The right figure is a cross-sectional view.  The inflow is set
+    to an angle with respect to the cylinder axis, which stays aligned with the $z$
+    axis of the coordinate system.}
+  \label{fig:yawedModel}
+\end{figure}
+
+
+Table~\ref{tab:comparisonYawedRe20k} summarizes the peak Strouhal number
+($St_p$) and the back pressure coefficient ($C_{pb}$) for four different flow
+yaw angles, $\beta=0,15,30,\,\&\,45$ degrees. 
+The component of the freestream velocity normal to the cylinder axis is used as the reference
+velocity scale to define a new set of non-dimensional quantities, such as
+Reynolds number, $Re_{D,n} = \rho V_n D / \mu$, Strouhal number, $St_{p,n}=f\,D
+/V_n$, and aerodynamic pressure coefficient, $\overline{C}_{p,n}=2
+(\overline{p}-p_\infty)/(\rho V_n^2)$. The peak shedding Strouhal number and
+the mean back pressure coefficient normalized in this manner are labeled
+respectively as $St_{p,n}$ and $\overline{C}_{pb,n}$. The measured value of
+$\overline{C}_{pb,n}$ is lower than predicted by the simulations (see
+Table~\ref{tab:comparisonYawedRe20k}), suggesting that the measured mean
+velocity at the back of the cylinder is slightly higher than predicted.
+%
+%%%%%%%%%%%%%%%%
+\begin{table}[htb!]
+  \caption{Summary of simulation results for four different flow yaw angles
+  ($\beta=0, 15, 30,~\&~45$ deg). Experimental data is only shown for
+  $\beta=30^\circ$.} 
+  \label{tab:comparisonYawedRe20k} 
+  \begin{center}
+  \begin{tabular}{c|c|c|c|c|c}
+      \textbf{Method} & \textbf{flow angle,} $\boldsymbol{\beta}$ & $\boldsymbol{Re_D}$ & $\boldsymbol{Re_{D,n}}$  & $\boldsymbol{St_{p,n}}$ & $\boldsymbol{\overline{C}_{pb,n}}$  \\ \hline
+      \hline
+      Simulation  & $0^\circ$  & 20,000 & 20,000 & 0.21 & -1.15 \\ \hline
+      Simulation  & $15^\circ$ & 20,000 & 19,318 & 0.21 & -1.11 \\ \hline
+      Simulation  & $30^\circ$ & 20,000 & 17,320 & 0.20 & -1.11  \\ \hline
+      \rowcolor[gray]{.9}
+      Exp-ISU     & $30^\circ$ & 51,500 & 44,600 & 0.19 & -1.27  \\ \hline
+      Simulation  & $45^\circ$ & 20,000 & 14,142 & 0.21 & -1.16  \\ \hline
+      \hline
+  \end{tabular}
+  \end{center}
+\end{table}
+
+Figure~\ref{fig:Cp_Compared_Yawed_Exp-ISU} compares with measured data the
+predicted mean aerodynamic pressure coefficient ($\overline{C}_{p,n}$) and root
+mean square of perturbation pressure coefficient, $C_{p'rms,n}$ normalized
+using $V_n$, for $\beta=30^\circ$ case. The predicted distribution of
+$\overline{C}_{p,n}$ and mean back pressure, $\overline{C}_{pb,n}$ are found to be
+slightly higher than Exp-ISU data, which is consisted with the observation for
+the normally-incident flow cases. The predicted $C_{p'rms,n}$ distribution
+agrees very well with measurement, especially before $120^\circ$. The peak of
+$C_{p'rms,n}$ is observed around $80^\circ$ in both experiment and simulation,
+which is indicative of the location of separation of the shear layer. Beyond
+$\theta=120^\circ$, the measured data shows higher $C_{p'rms,n}$ than
+predicted by the simulations. A similar underprediction is observed in the
+normally-incident flow case.
+%
+\begin{figure}[htb!]
+  \centering
+  \subcaptionbox{Mean pressure distribution,$\overline{C}_{p,n}$}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cp_Compared_Yawed_Exp-ISU.png}}
+  \hspace*{\fill}
+  \subcaptionbox{rms of perturbation pressure, $C_{p'rms,n}$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/CpRMS_Compared_Yawed_Exp-ISU.png}}
+  \caption{Comparisons between simulation and experimental measurements for
+    $\beta=30^\circ$ yawed-flow case.}
+\label{fig:Cp_Compared_Yawed_Exp-ISU}
+\end{figure}
+%
+
+%%%%%%%%%%%%%%%%
+Figure~\ref{fig:velocity_Yawed30_Re20k.png} presents predicted and measured
+wake velocity profiles for $\beta=30^\circ$ case at $x/D=2$. The predicted peak
+wake deficit matches remarkably well with Exp-ISU data. However, the
+experimental data shows higher overshoots in streamwise velocity in the shear
+layer region than predicted by the simulations. The experimental data is also
+very slightly asymmetric, which is likely due to the fact that the cylinder is
+located closer to one side of the tunnel wall. It should be noted that the
+asymmetry is very small and the wall effects are minimal.
+%
+\begin{figure}[htb!]
+  \incfig[width=.5\textwidth]{Figures/velocity_Yawed30_Re20k.png}
+  \caption{Comparison of predicted and measured velocity profiles for
+    $\beta=30^\circ$ yawed flow in the cylinder wake $2D$ downstream of the cylinder axis}
+  \label{fig:velocity_Yawed30_Re20k.png}
+\end{figure}
+%
+
+%%%%%%%%%%%%%%%%
+Figure~\ref{fig:St_Compared_Yawed30_Exp-ISU} compares the power spectral
+densities of the transverse force coefficient (along the $y$ axis), $C_{y,n}$
+for $\beta=30^\circ$ case between Exp-ISU data and predictions, where $C_{y,n}
+= 2\, F_y/ \left( \rho V^2_n (D \times L) \right)$, $F_y$ is the net force over
+the entire cylinder; longitudinal force coefficient, $C_{x,n}$ is similarly
+defined. In the simulation, the first peak is observed around $St_{p,n}\sim
+0.2$, which is the same as for the normally-incidence flow case (see
+Figure~\ref{fig:St_Compared_Re20k} (a)). The spectral shape is correctly
+predicted by the simulation although the measured curve appears to be shifted
+along the $x$ axis; this is likely due to a scaling factor in frequency (log
+scale is used for frequency in Fig.~\ref{fig:St_Compared_Yawed30_Exp-ISU}),
+arising perhaps from a slight mismatch in the measurement of the inflow
+velocity in the experiment.
+%
+\begin{figure}[htb!]
+  \incfig[width=.6\textwidth]{Figures/St_Compared_Yawed30_Exp-ISU.png}
+  \caption{Comparison of predicted and experimental power spectral densities
+    (PSDs) of force coefficient $C_{y,n}$ for $\beta=30^\circ$ yawed-flow
+    cases.}
+  \label{fig:St_Compared_Yawed30_Exp-ISU}
+\end{figure}
+%
+%%%%%%%%%%%%%%%%%%%%%%
+Figure~\ref{fig:Compared_Yawed_Re20k} compares the predicted mean aerodynamic
+pressure coefficient ($\overline{C}_{p,n}$) normalized using $V_n$, for four
+different values of inflow yaw angle, $\beta$. The distribution of
+$\overline{C}_{p,n}$ is found to be very similar irrespective of
+$\beta$;~\cite{zdravkovich2003flow} refers to this as `independence principle'.
+The independence principle is also observed in the power spectral densities of
+the transverse force coefficient, $C_{y,n}$ for the same set of values of $\beta$
+analyzed. Figure~\ref{fig:Compared_Yawed_Re20k} (b) shows that the spectra
+collapse when $V_n$ is used to normalize the force coefficients and the frequency;
+the abscissa in Fig.~\ref{fig:Compared_Yawed_Re20k} (b) is $St_n$.  
+%
+%
+\begin{figure}[htb!]
+  \subcaptionbox{Mean pressure coeff., $\overline{C}_{p,n}$}[0.48\linewidth]
+    {\incfig[width=.48\textwidth]{Figures/Cp_Compared_Yawed_Re20k.png}}
+  \hspace*{\fill}
+  \subcaptionbox{PSDs of $C_{y,n}$}[0.48\linewidth]
+    {\incfig[width=.48\textwidth]{Figures/St_Compared_Yawed_Cl_Re20k.png}}
+  \caption{Independence principle: comparisons of (a) $\overline{C}_{p,n}$, and
+    (b) power spectral densities (PSDs) of $C_{y,n}$ between predictions for various $\beta$ values.}
+\label{fig:Compared_Yawed_Re20k}
+\end{figure}
+
+Figure~\ref{fig:Spatial_temporal_CxCyRe20k} shows spatio-temporal plots of the
+the force coefficients $C_{x,n}$ and $C_{y,n}$. Here, $C_{x,n}$ and $C_{y,n}$
+are functions of spanwise location and are computed by normalizing the
+sectional forces in $x$ and $y$ directions respectively ($C_{x,n} = 2\, f_x/
+(\rho V^2_n)$, where $f_x$ is force per unit area in the $x$
+direction). The coefficients are plotted as functions of span ($z$) and time to
+obtain the contours shown in the figure. The contours clearly show that the
+force coefficients vary along the span, indicating that vortex shedding does
+not occur simultaneously along the entire span. In fact, a spatial drift from
+left to right with increasing time can be seen in the contours (more visible in
+the $C_{x,n}$ spatio-temporal plot) which is indicative of spanwise flow over
+the cylinder.
+
+%
+\begin{figure}[htb!]
+  \subcaptionbox {$C_{x,n}$}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Spatial_temporal_Cx_Re20k_Yawed30.png}}
+  \hspace*{\fill}
+  \subcaptionbox{$C_{y,n}$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Spatial_temporal_Cy_Re20k_Yawed30.png}}
+  \caption{Spatio-temporal distribution of force coefficients at
+  $\beta=30^\circ$}
+  \label{fig:Spatial_temporal_CxCyRe20k}
+\end{figure}
+
+Figure~\ref{fig:Coherence_Yawed30_Re20k} presents coherence of force
+coefficients for $\beta=30^\circ$ case. Magnitude squared coherence,
+$\gamma^2(\Delta z)$ is defined as
+%
+\begin{align}
+  \gamma^2(\Delta z) &= \frac{\langle \abs{S_{xy}}^2 \rangle}{\langle
+    S_{xx}\rangle \langle S_{yy} \rangle},
+  \label{eq:coherence}
+\end{align}
+%
+where $S_{xy}$ denotes cross-spectral density of the quantity ($C_{x,n}$ or
+$C_{y,n}$) at two points separated by a distance $\Delta z$, and
+$S_{xx},~S_{yy}$ are auto-spectral densities; angular brackets denote ensemble
+averaging, however ergodicity assumption is used to relate that to time
+averaging. The coherence plot of $C_{y,n}$ indicates that spanwise correlation
+is very high (over nearly the entire cylinder span) at the vortex shedding
+frequency, but is small at other frequencies, which is expected based on
+literature. $C_{x,n}$ however is not that highly correlated along the span even
+at the peak vortex shedding frequency.
+%
+\begin{figure}[htb!]
+  \subcaptionbox {$C_{x,n}$}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cd_coherence_Yawed30_Re20k.png}}
+  \hspace*{\fill}
+  \subcaptionbox{$C_{y,n}$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cl_coherence_Yawed30_Re20k.png}}
+    \caption{Magnitude squared coherence, $\gamma^2(\Delta z)$ of transverse
+      and longitudinal force coefficients, $C_{x,n}$ and $C_{y,n}$ for
+      $\beta=30^\circ$ case.}
+  \label{fig:Coherence_Yawed30_Re20k}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Vortex-Induced Vibration (VIV)}
+\label{sec:VIV}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+A schematic of the setup for the vortex-induced vibration(VIV) simulations 
+is presented in Figure ~\ref{fig:VIVmodel}. It is very similar for the static cylinder 
+simulations, except for its additional mass-spring-damper system. In VIV simulations, 
+mass ratio $m^*$ is chosen as 2.6, where $m^*=m_s/(\rho \pi D^2/4)$, with $m_s$ 
+being the mass per unit length of the cylinder and $\rho$ being the fluid density. 
+The mechanical damping ratio of the system $\zeta$ is $0.001$. 
+The predicted results will be compared with Exp. II and Exp. III which 
+refer to data from ~\cite{franzini2013one} and ~\cite{khalak1997fluid}, respectively. 
+The same mass ratio and damping ratio are chosen in simulations and
+Exp. II, while $m_s=2.4$ and $\zeta=0.0045$ are used in Exp. III.  
+Because the simulations apply periodic boundary conditions at the span directions, 
+the end effects are negligible for simulations, while they can not be neglect on both experiments.
+
+
+\begin{figure}[htb!]
+  \incfig[width=.6\textwidth]{Figures/VIV_setup.jpg}
+  \caption{A schematic of the computational setup for oscillating cylinder
+    simulations. The right figure is a cross-sectional view.  The inflow is set
+    to an angle with respect to the cylinder axis, which stays aligned with the $z$
+    axis of the coordinate system.}
+  \label{fig:VIVmodel}
+\end{figure}
+
+
+Figure ~\ref{fig:Amplitude_VIV} compares predicted non-dimensional mean 
+amplitude $\bar{A}/D$ with the experimental data for various reduced velocities $V_{R,n}$. 
+The reduce velocity $V_{R,n}$ is defined as $V_{R,n}=V_n f_N/D$, with $f_N$ being the natural 
+frequency of the system. Two difference yawed angle inflows, $\beta=0^\circ$ and $45^\circ$ with 
+$Re_{D,n}=20,000$ have been investigated in the simulation. Fig. ~\ref{fig:Amplitude_VIV} shows
+four distinct branches for Exp. III, namely the initial excitation branch, the upper branch, 
+the lower branch and the desynchronization branch (~\cite{khalak1997fluid}). In the initial excitation
+branch, the mean amplitude rapidly grows quickly as reduce velocity $V_{R,n}$ increases, which 
+can be seen in simulations and both experiments. All simulations and experiments observe 
+a peak in the upper branch. The predicted amplitude for $\beta=0^\circ$ case agrees very well with Exp. III,
+but is slightly smaller than Exp. II.  Even though both yawed angle inflow simulations 
+have a similar peak in the upper branch, the predicted non-dimensional mean amplitude 
+$\bar{A}/D$ quickly drops to around 0.6 at $V_{R,n}=5.9$ for $\beta=45^\circ$ case. Exp II presents very different results 
+for $0^\circ$ and $45^\circ$ in the upper branch. Because the end effect plays an important role in the experiment,
+that might be the reason to cause this difference.
+A lower branch region where the mean amplitude $\bar{A}/D$ is almost constant
+can be observed on simulations and Exp. III. Though similar lower branch is not 
+being found on Exp. II, it is widely known and observed on other experiments by
+~\cite{govardhan2000modes}. Overall, the predicted mean amplitude agrees very well 
+with Exp. III, but presents some difference from Exp. II. Other than the upper branch, both yawed flow simulations 
+have observed very similar amplitude for various reduced velocities. 
+
+\begin{figure}[htb!]
+  \incfig[width=.6\textwidth]{Figures/Amplitude_VIV_3_2.png}
+  \caption{Comparison of predicted and experimental non-dimensional 
+    mean amplitude $A/D$ for various reduced velocities $V_{R,n}$}
+  \label{fig:Amplitude_VIV}
+\end{figure}
+
+Figure~\ref{fig:f_VIV} presents non-dimensional frequency $f/f_N$ for various reduced velocities $V_{R,n}$, with $f$
+being the vortex shedding frequency in the simulation while being the oscillating frequency in Exp.~III because 
+vortex shedding frequency data is not available in Exp.~III. The blue dash line indicates vortex 
+shedding frequency for the static cylinder ($St_p=0.21$), while the red dash line presents the natural frequency. 
+As the figure shown, the predicted non-dimensional frequencies for both yawed flows are very similar and agree very well with Exp.~III. 
+In the initial excitation branch, non-dimensional frequency $f/f_N$ increases 
+as reduced velocity $V_{R,n}$ increases, which follows the blue dash line. It suggests 
+that the oscillating motion is independent of the natural frequency of the system in the initial excitation branch. After that, 
+the vortex shedding frequency locks onto the natural frequency $f_N$ in the upper branch and lower branch, which is 
+known as "lock-in". Because this is a low mass-damping system, the ``lock-in'' frequency  is higher than the natural frequency, while
+it is significantly smaller than the vortex shedding frequency of the static cylinder. The similar phenomenon can also be observed on Exp.~III.
+In the desynchronization branch, the vortex shedding frequency desynchronizes from the natural frequency indicating the ending of ``lock-in''.
+
+
+\begin{figure}[htb!]
+  \incfig[width=.6\textwidth]{Figures/f_v_VIV.png}
+  \caption{Non-dimensional frequency $f/f_N$ for various reduced velocities $V_{R,n}$}
+  \label{fig:f_VIV}
+\end{figure}
+
+
+As Fig.~\ref{fig:Amplitude_VIV} shown, there is a jump between the upper branch and the initial excitation branch 
+and another jump between the upper branch and the lower branch. This is because there
+are two different vortex shedding patterns happened in this reduced velocity region. Figure~\ref{fig:Q_VIV} displaces the 
+Q-criterion for two reduced velocities $V_{R,n}=4$ and  $V_{R,n}=8$ for $\beta=45^\circ$ case, which represent the 
+typical vortex shedding modes of the initial excitation branch and the lower branch, respectively. As the figure 
+shown, when $V_{R,n}=4$, one vortex shedding period includes two singular vortexes (2S mode) shed alternately
+from either side of the cylinder. On the contrary, when $V_{R,n}=8$ and ``lock-in'' happens, periodic vortex shedding 
+pattern switches to two pairs of vortexes (2P mode). Vortex shedding frequency lock onto the natural frequency as a 
+result of 2P mode. The vortex shedding mode of the upper branch would shift between these two modes.
+
+\begin{figure}[htb!]
+  \subcaptionbox {Q-criterion for $V_{R,n}=4$}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Q_45_RV4_1.png}}
+  \hspace*{\fill}
+  \subcaptionbox{Q-criterion for $V_{R,n}=8$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Q_45_RV8_1.png}}
+  \vskip\baselineskip
+   \subcaptionbox {A schematic of 2S mode for $V_{R,n}=4$}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/2S_RV4.png}}
+  \hspace*{\fill}
+  \subcaptionbox{A schematic of 2P mode $V_{R,n}=8$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/2P_RV8.png}}
+    \caption{Q-criterion and vortex shedding modes for $\beta=45^\circ$ yawed flow simulation} 
+  \label{fig:Q_VIV}
+\end{figure}
+
+The force coefficients are shown in Fig.~\ref{fig:force_VIV}. It is well known that the vibration motion 
+can significantly increase the fluctuation of forces. Mean transverse 
+force coefficient $\bar{C}_{x,n}$ for reduce velocities  $V_{R,N} < 5.9$ have a very similar curve as mean
+amplitude $\bar{A}/D$ in Fig.~\ref{fig:Amplitude_VIV}. However, mean
+amplitude $\bar{A}/D$ is almost constant in the lower branch while $\bar{C}_{x,n}$
+continuously declines. The predicted rms of longitudinal force coefficients $C_{y,n,rms}$ has 
+very sharp peak at $V_{R,n}=4$, which is slightly different from Exp. II. Similar to $\bar{A}/D$
+at $V_{R,n}=4$, $C_{y,n,rms}$ for $\beta=45^\circ$ is much larger than $\beta=0^\circ$. Overall,
+two yawed angle flow simulations have very similar results for small amplitude vibrations. Independent principle
+can be applied to forces coefficients except for the upper branch ($4 \leqslant V_{R,n}\leqslant 5.9$).
+
+
+\begin{figure}[htb!]
+  \subcaptionbox {$C_{x,n}$}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cd_VIV.png}}
+  \hspace*{\fill}
+  \subcaptionbox{$C_{y,n,rms}$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cl_VIV.png}}
+    \caption{Mean transverse and rms of longitudinal force coefficients, $\bar{C}_{x,n}$ and $C_{y,n,rms}$ for
+      $\beta=0^\circ$ and $45^\circ$ cases.}
+  \label{fig:force_VIV}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\label{sec:conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A computational methodology based on a $k-\omega$ delayed detached eddy
+simulation (DDES) model and in-house experiments are used to investigate
+aerodynamic loading on a smooth circular cylinder. Simulations are performed
+for the cylinder in normally-incident flow (static and dynamic) and yawed flow
+(3 cases). The computational methodology for predicting aerodynamic loading on
+the cylinder is verified against experimental data in normally-incident flow
+($\beta=0^\circ$) and yawed flow ($\beta=30^\circ$). The agreement between the
+simulations and the experiments for normally-incident flow is very good, and
+the results of the yawed flow simulation with $\beta=30^\circ$ in reasonable
+agreement with the experiment. Overall, these comparisons show that the
+computational methodology is able to accurately predict aerodynamic loading on
+a static, smooth circular cylinder in smooth inflow.
+
+Comparisons of simulation results for different flow angles ($\beta$) show that
+the aerodynamic loads do not vary with yaw angle when the loads and frequency
+are non-dimensionalized using the component of the flow velocity normal to the
+cylinder axis. This indifference to yaw angle, referred to as the independence
+principle, is observed for yawed flow up to $45^\circ$.
+
+The numerical study of VIV of an elastically-mounted cylinder in
+normally-incident flow agrees well with Exp III, but show some differences with
+Exp II. The difference might be caused by the end effects of the experiment.
+Other than the upper branch, the numerical results for two different yawed flow
+($\beta=0^\circ$ and $45^\circ$) show reasonable agreement, which indicates
+independence principle is applicable for the most regime of VIV, except for the
+upper branch.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Acknowledgments}
+\label{sec:acknowledgement}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Funding for this research is provided by the National Science Foundation (Grant
+\#NSF/ CMMI-1537917). Computational resources are provided by NSF XSEDE (Grant
+\#TG-CTS130004) and the Argonne Leadership Computing Facility, which is a DOE
+Office of Science User Facility supported under Contract DE-AC02-06CH11357.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{References}
+%\label{sec:references}
+\bibliographystyle{elsarticle-harv} 
+\bibliography{references}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

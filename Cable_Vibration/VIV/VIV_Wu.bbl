@@ -1,0 +1,136 @@
+\begin{thebibliography}{26}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Bearman(1984)}]{bearman1984vortex}
+Bearman, P.~W., 1984. Vortex shedding from oscillating bluff bodies. Annual
+  review of fluid mechanics 16~(1), 195--222.
+
+\bibitem[{Breuer(1998)}]{breuer1998large}
+Breuer, M., 1998. Large eddy simulation of the subcritical flow past a circular
+  cylinder: numerical and modeling aspects. International Journal for Numerical
+  Methods in Fluids 28~(9), 1281--1302.
+
+\bibitem[{Breuer(2000)}]{breuer2000challenging}
+Breuer, M., 2000. A challenging test case for large eddy simulation: high
+  reynolds number circular cylinder flow. International Journal of Heat and
+  Fluid Flow 21~(5), 648--654.
+
+\bibitem[{Catalano et~al.(2003)Catalano, Wang, Iaccarino, and
+  Moin}]{catalano2003numerical}
+Catalano, P., Wang, M., Iaccarino, G., Moin, P., 2003. Numerical simulation of
+  the flow around a circular cylinder at high reynolds numbers. International
+  Journal of Heat and Fluid Flow 24~(4), 463--469.
+
+\bibitem[{Davenport(1995)}]{davenport1995dynamics}
+Davenport, A., 1995. The dynamics of cables in wind. In: Proceedings of
+  Symposium on Cable Dynamics.
+
+\bibitem[{Dong and Karniadakis(2005)}]{dong2005dns}
+Dong, S., Karniadakis, G.~E., 2005. {DNS} of flow past a stationary and
+  oscillating cylinder at. Journal of Fluids and Structures 20~(4), 519--531.
+
+\bibitem[{Feng(1968)}]{feng1968measurement}
+Feng, C., 1968. The measurement of vortex induced effects in flow past
+  stationary and oscillating circular and d-section cylinders. Ph.D. thesis,
+  University of British Columbia.
+
+\bibitem[{Franzini et~al.(2013)Franzini, Gon{\c{c}}alves, Meneghini, and
+  Fujarra}]{franzini2013one}
+Franzini, G.~R., Gon{\c{c}}alves, R.~T., Meneghini, J.~R., Fujarra, A. L.~C.,
+  2013. One and two degrees-of-freedom vortex-induced vibration experiments
+  with yawed cylinders. Journal of fluids and structures 42, 401--420.
+
+\bibitem[{Govardhan and Williamson(2000)}]{govardhan2000modes}
+Govardhan, R., Williamson, C., 2000. Modes of vortex formation and frequency
+  response of a freely vibrating cylinder. Journal of Fluid Mechanics 420,
+  85--130.
+
+\bibitem[{Jain and Modarres-Sadeghi(2013)}]{jain2013vortex}
+Jain, A., Modarres-Sadeghi, Y., 2013. Vortex-induced vibrations of a
+  flexibly-mounted inclined cylinder. Journal of Fluids and Structures 43,
+  28--40.
+
+\bibitem[{Khalak and Williamson(1997)}]{khalak1997fluid}
+Khalak, A., Williamson, C., 1997. Fluid forces and dynamics of a hydroelastic
+  structure with very low mass and damping. Journal of Fluids and Structures
+  11~(8), 973--982.
+
+\bibitem[{Kravchenko and Moin(2000)}]{kravchenko2000numerical}
+Kravchenko, A.~G., Moin, P., 2000. Numerical studies of flow over a circular
+  cylinder at re d= 3900. Physics of fluids 12~(2), 403--417.
+
+\bibitem[{Norberg(2013)}]{norberg2013pressure}
+Norberg, C., 2013. Pressure forces on a circular cylinder in cross flow. In:
+  IUTAM Symposium on Bluff Body Wakes, Dynamics and Instabilities, eds H
+  Eckelmann, JMR Graham, P Hierre, PA Monkewitz. pp. 275--278.
+
+\bibitem[{Pontaza et~al.(2009)Pontaza, Menon, and Chen}]{pontaza2009three}
+Pontaza, J.~P., Menon, R.~G., Chen, H.-C., 2009. Three-dimensional numerical
+  simulations of flows past smooth and rough/bare and helically straked
+  circular cylinders allowed to undergo two degree-of-freedom motions. Journal
+  of Offshore Mechanics and Arctic Engineering 131~(2), 021301.
+
+\bibitem[{Sarpkaya(2004)}]{sarpkaya2004critical}
+Sarpkaya, T., 2004. A critical review of the intrinsic nature of vortex-induced
+  vibrations. Journal of fluids and structures 19~(4), 389--447.
+
+\bibitem[{Spalart et~al.(1997)Spalart, Jou, Strelets, Allmaras,
+  et~al.}]{spalart1997comments}
+Spalart, P., Jou, W., Strelets, M., Allmaras, S., et~al., 1997. Comments on the
+  feasibility of {LES} for wings, and on a hybrid {RANS/LES} approach. Advances
+  in DNS/LES 1, 4--8.
+
+\bibitem[{Travin et~al.(2000)Travin, Shur, Strelets, and
+  Spalart}]{travin2000detached}
+Travin, A., Shur, M., Strelets, M., Spalart, P., 2000. Detached-eddy
+  simulations past a circular cylinder. Flow, Turbulence and Combustion
+  63~(1-4), 293--313.
+
+\bibitem[{Williamson and Govardhan(2004)}]{williamson2004vortex}
+Williamson, C., Govardhan, R., 2004. Vortex-induced vibrations. Annu. Rev.
+  Fluid Mech. 36, 413--455.
+
+\bibitem[{Yeo et~al.(2007)Yeo, Jones, and Meneveau}]{yeo2007characteristics}
+Yeo, D., Jones, N., Meneveau, C., 2007. Characteristics of aerodynamic forces
+  on a cylinder at different yaw and inclination angles under flow at high
+  reynolds number. In: Proceedings of the 12th International Conference of Wind
+  Engineering, Cairns, Australia. pp. 879--886.
+
+\bibitem[{Yeo and Jones(2008)}]{yeo2008investigation}
+Yeo, D., Jones, N.~P., 2008. Investigation on 3-d characteristics of flow
+  around a yawed and inclined circular cylinder. Journal of Wind Engineering
+  and Industrial Aerodynamics 96~(10), 1947--1960.
+
+\bibitem[{Yeo and Jones(2011)}]{yeo2011computational}
+Yeo, D., Jones, N.~P., 2011. Computational study on aerodynamic mitigation of
+  wind-induced, large-amplitude vibrations of stay cables with strakes. Journal
+  of Wind Engineering and Industrial Aerodynamics 99~(4), 389--399.
+
+\bibitem[{Yeo and Jones(2012)}]{yeo2012aerodynamic}
+Yeo, D., Jones, N.~P., 2012. Aerodynamic forces induced by vertically
+  oscillating incoming flow on a yawed horizontal circular cylinder. Journal of
+  Wind Engineering and Industrial Aerodynamics 104, 188--195.
+
+\bibitem[{Yin et~al.(2015)Yin, Reddy, and Durbin}]{yin2015dynamic}
+Yin, Z., Reddy, K., Durbin, P.~A., 2015. On the dynamic computation of the
+  model constant in delayed detached eddy simulation. Physics of Fluids 27~(2),
+  025105.
+
+\bibitem[{Zdravkovich(2003)}]{zdravkovich2003flow}
+Zdravkovich, M.~M., 2003. Flow around Circular Cylinders: Volume 2:
+  Applications. Vol.~2. Oxford university press.
+
+\bibitem[{Zhao(2015)}]{zhao2015validity}
+Zhao, M., 2015. The validity of the independence principle applied to the
+  vortex-induced vibration of an inclined cylinder in steady flow. Applied
+  Ocean Research 53, 155--160.
+
+\bibitem[{Zhao et~al.(2009)Zhao, Cheng, and Zhou}]{zhao2009direct}
+Zhao, M., Cheng, L., Zhou, T., 2009. Direct numerical simulation of
+  three-dimensional flow past a yawed circular cylinder of infinite length.
+  Journal of Fluids and Structures 25~(5), 831--847.
+
+\end{thebibliography}
