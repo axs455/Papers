@@ -46,32 +46,31 @@
 
 \begin{abstract}
 A computational approach based on a $k-\omega$ delayed detached eddy simulation
-(DDES) model for predicting aerodynamic loads on a smooth circular cylinder is
-verified against experiments. Comparisons with data are performed for a
-stationary cylinder and for a cylinder oscillating in the transverse direction
-due to flow-induced forces (vortex induced vibration or VIV). For the static
-cases, measurement data from the literature is used to validate the predictions
-for normally-incident flow. New experiments are conducted as a part of this
-study for yawed flow, where the cylinder axis is inclined with respect to the
-inflow velocity at the desired yaw angle, $\beta=30^\circ$. Good agreement is
-observed between the predictions and measurements for mean and rms surface
-pressure and wake velocity deficit. However the lift spectrum prediction shows
-a slight offset in frequency from the measurements.  Three yawed flow cases
-($\beta=15^\circ, 30^\circ, \,\&\, 45^\circ$) are simulated and the results are
-found to be independent of $\beta$ (dynamic scaling) when the flow speed normal
-to the cylinder axis is selected as the reference velocity scale.  
+model for predicting aerodynamic loads on a smooth circular cylinder is
+verified against experiments. Comparisons with experiments are performed for
+flow over a stationary cylinder and for a cylinder oscillating in the
+transverse direction due to flow-induced forces (vortex-induced vibration or
+VIV). For the static cases, measurement data from the literature is used to
+validate the predictions for normally-incident flow. New experiments are
+conducted as a part of this study for yawed flow, where the cylinder axis is
+inclined with respect to the inflow velocity at the desired yaw angle,
+$\beta=30^\circ$. Good agreement is observed between the predictions and
+measurements for mean and rms surface pressure and wake velocity deficit.
+However the lift spectrum prediction shows a slight offset in frequency from
+the measurements. Three yawed flow cases ($\beta=15^\circ, 30^\circ, \,\&\,
+45^\circ$) are simulated and the results are found to be independent of $\beta$
+(dynamic scaling) when the flow speed normal to the cylinder axis is selected
+as the reference velocity scale.  
 
-The VIV simulations are performed by coupling the flow solver with a solid
-dynamics solver where the cylinder motion in the transverse direction is
-modeled as a spring-mass-damper system. The properties of the spring, mass, and
-damper are set to match the material properties of the cylinder model used in a
-VIV experiment available in the literature.
-
-The numerical study for the normal flow of vortex-induced vibration (VIV) for
-various reduced velocities shows reasonable agreement with experiments. The
-predicted mean amplitude and force coefficients for normal flow and yawed flow
-($\beta=45^\circ$) in VIV simulations are very similar in most regime except
-for the upper branch.
+Dynamic (VIV) simulations are performed by coupling the flow solver with a
+solid dynamics solver where the cylinder motion in the transverse direction is
+modeled as a spring-mass-damper system. The simulations accurately predict the
+displacement amplitude and unsteady loading over a wide range of reduced
+velocity, including the region where lock-in occurs. VIV simulations are
+performed at two yaw angles, $\beta=0^\circ$ and $45^\circ$ and the
+appropriately-scaled results are found to be similar over the range of reduced
+velocities tested with slightly higher discrepancy around the reduced velocity
+corresponding to the natural frequency of the system.
 \end{abstract}
 
 \begin{keyword}
@@ -79,8 +78,7 @@ for the upper branch.
 \end{keyword}
 \end{frontmatter}
 
-%\modulolinenumbers[2]
-%\linenumbers
+%\modulolinenumbers[2] %\linenumbers
 
 %\begin{linenumbers}
 %% main text
@@ -103,7 +101,7 @@ structures, which poses a significant threat to the safety and serviceability of
 these systems.
 
 Vortex-induced vibration(VIV) is an oscillating motion due to the interaction
-between structures and periodical vortexes. VIV is a very common vibration
+between structures and periodical vortices. VIV is a very common vibration
 phenomenon happened in many engineering areas, such as offshore structures,
 transmission lines, stacks, and bridges. Due to its practical significance in
 many engineering structures, VIV has raised many interests and been extensively
@@ -111,7 +109,7 @@ investigated in past decades.
 \cite{bearman1984vortex},~\cite{sarpkaya2004critical} and
 ~\cite{williamson2004vortex} have done some detailed reviews of the these work.
 One of the most important observations of VIV is called "lock-in" or
-"synchronization". "Lock-in" is a regime where shedding vortexes induce large
+"synchronization". "Lock-in" is a regime where shedding vortices induce large
 response amplitude of the structures because the oscillating frequency along
 with vortex shedding frequency lock onto the natural frequency of the
 structures. ~\cite{feng1968measurement} observed two amplitude branches in the
@@ -858,19 +856,19 @@ at the peak vortex shedding frequency.
 \label{sec:VIV}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-
-A schematic of the setup for the vortex-induced vibration(VIV) simulations 
-is presented in Figure ~\ref{fig:VIVmodel}. It is very similar for the static cylinder 
-simulations, except for its additional mass-spring-damper system. In VIV simulations, 
-mass ratio $m^*$ is chosen as 2.6, where $m^*=m_s/(\rho \pi D^2/4)$, with $m_s$ 
-being the mass per unit length of the cylinder and $\rho$ being the fluid density. 
-The mechanical damping ratio of the system $\zeta$ is $0.001$. 
-The predicted results will be compared with Exp. II and Exp. III which 
-refer to data from ~\cite{franzini2013one} and ~\cite{khalak1997fluid}, respectively. 
-The same mass ratio and damping ratio are chosen in simulations and
-Exp. II, while $m_s=2.4$ and $\zeta=0.0045$ are used in Exp. III.  
-Because the simulations apply periodic boundary conditions at the span directions, 
-the end effects are negligible for simulations, while they can not be neglect on both experiments.
+A schematic of the setup for the vortex-induced vibration(VIV) simulations is
+presented in Figure~\ref{fig:VIVmodel}. The setup is the same as for the static
+simulations except for an additional mass-spring-damper system.  In VIV
+simulations, mass ratio $m^*$ is chosen as 2.6, where $m^*=m_s/(\rho \pi
+D^2/4)$, with $m_s$ being the mass per unit length of the cylinder and $\rho$
+being the fluid density.  The mechanical damping ratio of the system $\zeta$ is
+$0.001$.  The predicted results will be compared with Exp. II and Exp. III
+which refer to data from ~\cite{franzini2013one} and ~\cite{khalak1997fluid},
+respectively.  The same mass ratio and damping ratio are chosen in simulations
+and Exp. II, while $m_s=2.4$ and $\zeta=0.0045$ are used in Exp. III.  Because
+the simulations apply periodic boundary conditions at the span directions, the
+end effects are negligible for simulations, while they can not be neglect on
+both experiments.
 
 
 \begin{figure}[htb!]
@@ -938,9 +936,9 @@ and another jump between the upper branch and the lower branch. This is because 
 are two different vortex shedding patterns happened in this reduced velocity region. Figure~\ref{fig:Q_VIV} displaces the 
 Q-criterion for two reduced velocities $V_{R,n}=4$ and  $V_{R,n}=8$ for $\beta=45^\circ$ case, which represent the 
 typical vortex shedding modes of the initial excitation branch and the lower branch, respectively. As the figure 
-shown, when $V_{R,n}=4$, one vortex shedding period includes two singular vortexes (2S mode) shed alternately
+shown, when $V_{R,n}=4$, one vortex shedding period includes two singular vortices (2S mode) shed alternately
 from either side of the cylinder. On the contrary, when $V_{R,n}=8$ and ``lock-in'' happens, periodic vortex shedding 
-pattern switches to two pairs of vortexes (2P mode). Vortex shedding frequency lock onto the natural frequency as a 
+pattern switches to two pairs of vortices (2P mode). Vortex shedding frequency lock onto the natural frequency as a 
 result of 2P mode. The vortex shedding mode of the upper branch would shift between these two modes.
 
 \begin{figure}[htb!]
