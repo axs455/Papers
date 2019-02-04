@@ -1,0 +1,8 @@
+*.swp
+*.log
+*.fdb_latexmk
+*.spl
+*.aux
+*.blg
+*.fls
+*.dvi

@@ -7,25 +7,27 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{bm}
-\linespread{1.75} %line spacing
+\linespread{1.5} %line spacing
 
+\newcommand{\incfig}{\centering\includegraphics}
+\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
 % Font size for subcaption
 \DeclareCaptionFont{mysize}{\fontsize{9}{9.6}\selectfont}
 \captionsetup[sub]{font=mysize}
+% For editing
+\newcommand{\hl}[1]{\textcolor{red}{#1}}
+\newcommand{\hb}[1]{\textcolor{blue}{#1}}
 
 %\captionsetup{compatibility=false}
 %\journal{Journal of Fluids and Structures}
 
-\newcommand{\hl}[1]{\textcolor{red}{#1}}
-\newcommand{\hb}[1]{\textcolor{blue}{#1}}
-\newcommand{\incfig}{\centering\includegraphics}
-\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
 
 \begin{document}
 
 \begin{frontmatter}
 
-\title{Numerical Study of Static and Vortex-Induced Vibrations of Normal and Yawed Cylinder with Detached Eddy Simulations}
+\title{Numerical Study of Static and Vortex-Induced Vibrations of Normal and
+Yawed Cylinder with Detached Eddy Simulations}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{}
@@ -856,20 +858,36 @@ at the peak vortex shedding frequency.
 \label{sec:VIV}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-A schematic of the setup for the vortex-induced vibration(VIV) simulations is
-presented in Figure~\ref{fig:VIVmodel}. The setup is the same as for the static
-simulations except for an additional mass-spring-damper system.  In VIV
-simulations, mass ratio $m^*$ is chosen as 2.6, where $m^*=m_s/(\rho \pi
-D^2/4)$, with $m_s$ being the mass per unit length of the cylinder and $\rho$
-being the fluid density.  The mechanical damping ratio of the system $\zeta$ is
-$0.001$.  The predicted results will be compared with Exp. II and Exp. III
-which refer to data from ~\cite{franzini2013one} and ~\cite{khalak1997fluid},
-respectively.  The same mass ratio and damping ratio are chosen in simulations
-and Exp. II, while $m_s=2.4$ and $\zeta=0.0045$ are used in Exp. III.  Because
-the simulations apply periodic boundary conditions at the span directions, the
-end effects are negligible for simulations, while they can not be neglect on
-both experiments.
+A schematic of the computational setup for the vortex-induced vibration (VIV)
+simulations is presented in Figure~\ref{fig:VIVmodel}. The setup is the same as
+for the static simulations except for an additional forced mass-spring-damper
+system. The cylinder is allowed to move only in the $y$ (cross-stream)
+direction. The $y$ component of the integrated aerodynamic surface force on the
+cylinder (denoted by $F_y$) drives the mass-spring-damper system. 
+%
+\begin{equation}
+  m \frac{{\rm d}^2 x}{{\rm d}t^2} + c \frac{{\rm d} x}{{\rm d}t} + k x = F_y(t)
+  \label{eq:mass-spring-damper}
+\end{equation}
+%
+In the simulations the mass ratio $m^*=ms/(\rho {\cal V})=2.6$, where $ms$ is
+the mass of the cylinder, ${\cal V}=\pi (D^2/4) . S$ is the volume of the
+cylinder, $S$ is the span length, and $\rho$ is the density of the fluid
+flowing over the cylinder. The mechanical damping ratio of the system $\zeta =
+c/c_c$ is $0.001$ where $c_c=2\sqrt{k.m}$ is the critical damping, and
+$k={\color{red}???}$ is the spring stiffness. The values for these parameters
+are selected to match the measurements presented in~\cite{franzini2013one}.
+This measurement dataset is referred as Exp II in this paper. The predictions
+also compared to another dataset reported in~\cite{khalak1997fluid}, which is
+referred as Exp III here. The mass ratio and damping ratio used in Exp III are
+slightly different ($m^*=2.4$ and $\zeta=0.0045$) from Exp II and the
+simulations. 
 
+It should be noted that the measurement results have end effects due to the
+finite length of the cylinder. {\color{red} summarize here} The simulations use
+periodic boundary conditions in the span direction, which theoretically
+simulates an infinite span. However, span-periodicity can induce artificial
+effects if the spanwise coherence is greater than the simulated span.
 
 \begin{figure}[htb!]
   \incfig[width=.6\textwidth]{Figures/VIV_setup.jpg}
@@ -880,28 +898,34 @@ both experiments.
   \label{fig:VIVmodel}
 \end{figure}
 
+Figure~\ref{fig:Amplitude_VIV} compares the predicted non-dimensional mean
+amplitude $\bar{A}/D$ with the measurements of Exp II and III over a wide range
+of reduced velocity $V_{R,n}$, which is defined as $V_{R,n}=V_n/(f_N\,D)$,
+where $f_N$ is the natural frequency of the system. The subscript $n$ refers to
+the component of the vector normal to the cylinder axis to accommmodate for
+yawed flow. Two different yaw angle flows are evaluated -- $\beta=0^\circ$ and
+$45^\circ$ --  both at $Re_{D,n}=20,000$.
 
-Figure ~\ref{fig:Amplitude_VIV} compares predicted non-dimensional mean 
-amplitude $\bar{A}/D$ with the experimental data for various reduced velocities $V_{R,n}$. 
-The reduce velocity $V_{R,n}$ is defined as $V_{R,n}=V_n f_N/D$, with $f_N$ being the natural 
-frequency of the system. Two difference yawed angle inflows, $\beta=0^\circ$ and $45^\circ$ with 
-$Re_{D,n}=20,000$ have been investigated in the simulation. Fig. ~\ref{fig:Amplitude_VIV} shows
-four distinct branches for Exp. III, namely the initial excitation branch, the upper branch, 
-the lower branch and the desynchronization branch (~\cite{khalak1997fluid}). In the initial excitation
-branch, the mean amplitude rapidly grows quickly as reduce velocity $V_{R,n}$ increases, which 
-can be seen in simulations and both experiments. All simulations and experiments observe 
-a peak in the upper branch. The predicted amplitude for $\beta=0^\circ$ case agrees very well with Exp. III,
-but is slightly smaller than Exp. II.  Even though both yawed angle inflow simulations 
-have a similar peak in the upper branch, the predicted non-dimensional mean amplitude 
-$\bar{A}/D$ quickly drops to around 0.6 at $V_{R,n}=5.9$ for $\beta=45^\circ$ case. Exp II presents very different results 
-for $0^\circ$ and $45^\circ$ in the upper branch. Because the end effect plays an important role in the experiment,
-that might be the reason to cause this difference.
-A lower branch region where the mean amplitude $\bar{A}/D$ is almost constant
-can be observed on simulations and Exp. III. Though similar lower branch is not 
-being found on Exp. II, it is widely known and observed on other experiments by
-~\cite{govardhan2000modes}. Overall, the predicted mean amplitude agrees very well 
-with Exp. III, but presents some difference from Exp. II. Other than the upper branch, both yawed flow simulations 
-have observed very similar amplitude for various reduced velocities. 
+Fig. ~\ref{fig:Amplitude_VIV} shows four distinct branches for Exp. III, namely
+the initial excitation branch, the upper branch, the lower branch and the
+desynchronization branch (~\cite{khalak1997fluid}). In the initial excitation
+branch, the mean amplitude rapidly grows quickly as reduce velocity $V_{R,n}$
+increases, which can be seen in simulations and both experiments. All
+simulations and experiments observe a peak in the upper branch. The predicted
+amplitude for $\beta=0^\circ$ case agrees very well with Exp. III, but is
+slightly smaller than Exp. II.  Even though both yawed angle inflow simulations
+have a similar peak in the upper branch, the predicted non-dimensional mean
+amplitude $\bar{A}/D$ quickly drops to around 0.6 at $V_{R,n}=5.9$ for
+$\beta=45^\circ$ case. Exp II presents very different results for $0^\circ$ and
+$45^\circ$ in the upper branch. Because the end effect plays an important role
+in the experiment, that might be the reason to cause this difference.  A lower
+branch region where the mean amplitude $\bar{A}/D$ is almost constant can be
+observed on simulations and Exp. III.  Though similar lower branch is not being
+found on Exp. II, it is widely known and observed on other experiments by
+~\cite{govardhan2000modes}. Overall, the predicted mean amplitude agrees very
+well with Exp. III, but presents some difference from Exp. II. Other than the
+upper branch, both yawed flow simulations have observed very similar amplitude
+for various reduced velocities. 
 
 \begin{figure}[htb!]
   \incfig[width=.6\textwidth]{Figures/Amplitude_VIV_3_2.png}
