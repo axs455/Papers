@@ -19,15 +19,17 @@ In the simulations the mass ratio $m^*=m/(\rho {\cal V})=2.6$, where $m$ is the
 mass of the cylinder, ${\cal V}=\pi (D^2/4) . S$ is the volume of the cylinder,
 $S$ is the cylinder span, and $\rho$ is the density of the fluid flowing over
 the cylinder. The mechanical damping ratio of the system $\zeta = c/c_c$ is
-$0.001$ where, $c_c=2\sqrt{k.m}$ is the critical damping, and
-$k={\color{red}???}$ is the spring stiffness. The values of these parameters
-are selected to match the measurements presented in~\cite{franzini2013one}.
-This measurement dataset is referred as Exp II in this paper. The predictions
-are also compared to another dataset reported in~\cite{khalak1997fluid}, which
-is referred as Exp III here. The mass ratio and damping ratio used in Exp III
-are slightly different ($m^*=2.4$ and $\zeta=0.0045$) from Exp II and the
-simulations. It should be noted that the measurement results have end effects
-due to the finite length of the cylinder. {\color{red} summarize here} The
+$0.001$ where, $c_c=2\sqrt{k.m}$ is the critical damping, and the spring
+stiffness $k$ is obtained from the natural frequency, $f_N$ as
+$k=m(2\pi\,f_N)^2$.  The values of these parameters are selected to match the
+measurements presented in~\cite{franzini2013one}.  This measurement dataset is
+referred as Exp II in this paper. The predictions are also compared to another
+dataset reported in~\cite{khalak1997fluid}, which is referred as Exp III here.
+The mass ratio and damping ratio used in Exp III are slightly different
+($m^*=2.4$ and $\zeta=0.0045$) from Exp II and the simulations. It should be
+noted that the measurement results have end effects due to the finite length of
+the cylinder. {\color{red} The experiments were conducted in water channels
+\ldots check aspect ratio and differences between Exp II and III} The
 simulations use periodic boundary conditions in the span direction, which
 theoretically simulates an infinite span. However, span-periodicity can induce
 artificial effects if the spanwise coherence is greater than the simulated
@@ -48,7 +50,8 @@ range of reduced velocity $V_{R,n}$, which is defined as
 $V_{R,n}=V_n/(f_N\,D)$, where $f_N$ is the natural frequency of the system. The
 subscript $n$ refers to the component of the vector normal to the cylinder axis
 to accommmodate for yawed flow. Two different yaw angle flows are evaluated --
-$\beta=0^\circ$ and $45^\circ$ -- both at $Re_{D,n}=20,000$.
+$\beta=0^\circ$ and $45^\circ$ -- both at $Re_{D,n}=20,000$. Reduced velocity
+is the inverse of Strouhal number, $V_{R,n} = 1/St$.
 
 \citet{khalak1997fluid} identified the following four distinct branches in
 their VIV measurements for the zero-yaw case: the ``initial excitation''
@@ -59,9 +62,11 @@ lines as best curve fits of the measured data in Fig.~\ref{fig:Amplitude_VIV}
 $V_{R,n}$. The scaled displacement oscillation amplitude ($A/D$) reaches a peak
 in the upper branch, drops to 60\% of the peak value in the lower branch, and
 then finally drops to a negligible value at higher $V_{R,n}$ in the
-desynchronization branch. The current DES simulations agree with the data
-(particularly with Exp III) very well in the initial excitation and upper
-branches. The predicted amplitude is slightly lower than the measurements in
+desynchronization branch. The current DES simulations agree very well with the
+data (particularly with Exp III) in the initial excitation and upper branches.
+The peak amplitude is well captured and occurs around $V_{R,n}=5$, which
+corresponds to the peak shedding Strouhal number, $St=0.2$ for a stationary
+cylinder. The predicted amplitude is slightly lower than the measurements in
 the lower and desynchronization branches. Considering the relatively large
 differences in the two sets of measurements (between Exp II and Exp III), the
 prediction accuracy of the simulations is very good.
@@ -81,32 +86,55 @@ prediction accuracy of the simulations is very good.
   \label{fig:Amplitude_VIV}
 \end{figure}
 
-Even though both yawed angle inflow simulations have a similar peak in the
-upper branch, the predicted non-dimensional mean amplitude $\bar{A}/D$ quickly
-drops to around 0.6 at $V_{R,n}=5.9$ for $\beta=45^\circ$ case. Exp II presents
-very different results for $0^\circ$ and $45^\circ$ in the upper branch.
-Because the end effect plays an important role in the experiment, that might be
-the reason to cause this difference.  A lower branch region where the mean
-amplitude $\bar{A}/D$ is almost constant can be observed on simulations and
-Exp. III.  Though similar lower branch is not being found on Exp. II, it is
-widely known and observed on other experiments by ~\cite{govardhan2000modes}.
-Overall, the predicted mean amplitude agrees very well with Exp. III, but
-presents some difference from Exp. II. Other than the upper branch, both yawed
-flow simulations have observed very similar amplitude for various reduced
-velocities. 
+Figure~\ref{fig:Amplitude_VIV} (b) compares the predicted VIV amplitude with
+the measurements from Exp II. The measurements were taken for two different
+configurations of the cylinder, shown in the inset in the figure. Since the top
+and bottom surfaces are not the same, the two configurations are not identical
+and the measured data for the two configurations shows a large difference.
+Based on the fact that end plates were not used in the simulations, end effects
+(finite-span effect) might be the reason for the differences between the two
+configurations.  The predictions agree better with the ``Up'' configuration in
+the initial excitation and upper branches, and with the ``Dn'' configuration in
+the lower branch. Exp II did not collect any data at higher $V_{R,n}$ to test
+the prediction accuracy in the desynchronization branch.
+
+Figure~\ref{fig:VIV_yaw} investigates the effect of yaw angle on the amplitude
+of VIV. The data from Exp II is plotted in Fig.~\ref{fig:VIV_yaw} (a) and the
+DES predictions in the plot on the right.  The DES predictions show little
+difference between $\beta=0^\circ$ and $45^\circ$ except around $V_{R,n}=4$ and
+$6$, where $A/D$ is highly sensitive to changes in $V_{R,n}$. As far as the
+general variation of $A/D$ with $V_{R,n}$ (as shown in the plot with lines) is
+considered, the DES predictions for both yaw angles show the same behavior,
+suggesting that the independence principle also holds for VIV. From the
+measurements however, one can only conclude that yaw-independence holds
+primarily in the Initial Excitation branch. The large difference in the data
+between the Up and Dn configurations for $\beta=45^\circ$ limits the
+verification of yaw-independence in VIV predicted by DES to the initial
+excitation branch.
 %
 \begin{figure}[htb!]
-  \incfig[width=.5\textwidth]{fig/viv_independence.pdf}
-  \caption{Comparisons of $A/D$ predictions for $\beta=0$ and $45$ degrees
-    for a range of $V_{R,n}$. The data from Exp-II for $\beta=0^\circ$ is
-    plotted as a guide.}
-  \label{fig:f_VIV}
+  \centering
+  \begin{subfigure}[b]{.5\linewidth}
+    \incfig[width=0.45\textwidth]{fig/viv_independence_Exp}
+    \caption{Exp II}
+  \end{subfigure}
+  \begin{subfigure}[b]{.5\linewidth}
+    \incfig[width=0.45\textwidth]{fig/viv_independence}
+    \caption{DES}
+  \end{subfigure}
+  \caption{Scaled displacement amplitude ($A/D$) for $\beta=0$ and $45$ degrees
+    for a range of $V_{R,n}$ from a) measurements from Exp II, and b) DES
+    predictions with the data from Exp III for $\beta=0^\circ$ as a guide.}
+  \label{fig:VIV_yaw}
 \end{figure}
 
 Figure~\ref{fig:f_VIV} presents non-dimensional frequency $f/f_N$ for various
 reduced velocities $V_{R,n}$, with $f$ being the vortex shedding frequency in
-the simulation while being the oscillating frequency in Exp.~III because vortex
-shedding frequency data is not available in Exp.~III. The blue dash line
+the simulation while being the oscillating frequency in Exp. III because vortex
+shedding frequency data is not available in Exp. III. 
+
+
+The blue dash line
 indicates vortex shedding frequency for the static cylinder ($St_p=0.21$),
 while the red dash line presents the natural frequency.  As the figure shown,
 the predicted non-dimensional frequencies for both yawed flows are very similar
