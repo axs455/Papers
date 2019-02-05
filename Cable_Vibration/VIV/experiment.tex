@@ -1,0 +1,85 @@
+\section{Experimental Setup and Measurements}
+\label{sec:experiments}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Static wind tunnel experiments were conducted on a smooth cylinder of circular
+cross section representing a stay cable to measure the aerodynamic forces and
+the velocity distribution in its wake. These experiments were performed in the
+Aerodynamic/Atmospheric Boundary Layer (AABL) Wind and Gust Tunnel located in
+the Department of Aerospace Engineering at Iowa State University. This wind
+tunnel has an aerodynamic test section of $2.44$ m ($8.0$ ft) width $\times$
+$1.83$ m ($6.0$ ft) height and a design maximum wind speed of $53$ m/s ($173.9$
+ft/s). A polished aluminum tube with diameter, $D=0.127$ m and length, $L=1.52$
+m was selected as the smooth cylinder model. Although the aspect ratio
+($L/D=12$) is sufficiently large to minimize edge effects at the mid-span of
+the circular cylinder, two circular plates of diameter $4\,D$ were attached to
+the ends of the cylinder. These plates were adjusted for each cylinder yaw
+angle to be parallel to the incoming airflow so that nearly 2D flow could be
+achieved over the cylinder.  The blockage ratio in the tunnel with the model
+was approximately 5\% for all measurements.  Figure~\ref{fig:ExpSetup} displays
+the model setup in the AABL tunnel with the cylinder in normal-flow and
+yawed-flow configurations. An innovative multi-functional static setup was
+designed to measure the pressure distributions and velocity profiles for
+different yaw angles. As shown in Fig.~\ref{fig:ExpSetup}, this setup properly
+secures the model for different yaw angles.
+%
+\begin{figure}[htb!]
+  \centering
+  \subcaptionbox{setup for normal-flow measurements}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Experiment_NormalFlow.png}}
+  \hspace*{\fill}
+  \subcaptionbox{setup for yawed flow measurements}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Experiment_YawedFlow.png}}
+  \caption{Pictures showing the model setup used to allow measurements at
+    arbitrary inflow angles. The Cobra probe used to measure the wake is shown in
+    (a).}
+  \label{fig:ExpSetup}
+\end{figure}
+
+The model has 128 pressure taps distributed on its surface to measure local
+instantaneous pressure (see Fig.~\ref{fig:experimentTaps}). These pressure
+values are used to compute aerodynamic lift and drag (viscous part ignored) on
+the cylinder as well as pressure correlations along the span. There are 36
+pressure taps at equal angular spacing of 10 degrees along each of the three
+rings located on the cylinder. The three rings are labeled Right (R), Middle
+(M), and Left (L) as seen in Fig.~\ref{fig:experimentTaps} (a) and are spaced
+$4D$ and $5D$ apart from each other along the span. Another set of pressure
+taps are located at a fixed angular location at equal spacing of $1D$ along the
+span between the rings (see Fig.~\ref{fig:experimentTaps} (a,b)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Data Acquisition System}
+\label{sec:data_acquisition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+For wake measurement, one Cobra Probe (4-hole velocity probe) mounted on a
+traverse system was used to measure the velocity field behind the model (see
+Fig.~\ref{fig:ExpSetup} (a)). In order to minimize the blockage effect of the
+traverse system, its cross section was streamlined by using an airfoil section.
+For velocity measurements, the sampling rate was $1250$ Hz and the sampling
+time was $60$ s. Wake measurements were made $2.5 D$ downstream of the model
+(measured from the cylinder axis), where the turbulence intensity was lower
+than the maximum allowable value (overall 30\%) for the Cobra Probe.  
+
+Two 64-channel pressure modules (Scanivalve ZOC 33/64 Px) were utilized to
+capture the local pressure. In addition, an Ethernet remote A/D system (ERAD)
+was used as a collection system to read information from the ZOC. The sampling
+rate and sampling time for all pressure measurements were $250$ Hz and $60$ s
+respectively. The Scantel program from Scanivalve was used for pressure data
+acquisition. In order to minimize the error of measurement due to the tube
+length, both ZOCs were placed inside the wind tunnel near the model
+(Fig.~\ref{fig:ExpSetup} (b)). The wake measurement traverse system was removed
+when surface pressure measurements were made.
+%
+\begin{figure}[htb!]
+  \centering
+  \subcaptionbox{Pressure taps on the cylinder model}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/experiment_PressureTap.png}}
+  \hspace*{\fill}
+  \subcaptionbox{Distribution of pressure taps in a ring}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/experiment_PressureTapCrossSection.png}}
+  \caption{Schematics illustrating the locations of surface pressure taps on
+    the cylinder model.}
+  \label{fig:experimentTaps}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

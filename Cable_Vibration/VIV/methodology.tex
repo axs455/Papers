@@ -1,0 +1,172 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Computational Methodology}
+\label{sec:methodology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+The flow is approximated to be incompressible since the flow Mach number is
+less than $0.2$. Various degrees of approximations can be utilized to model
+flow turbulence: from resolving only time-averaged quantities in Reynolds
+Averaged Navier-Stokes or RANS, to resolving the tiniest of turbulent eddies in
+Direct Numerical Simulations or DNS. Large eddy simulations (LES) resolve
+energy containing eddies but model the net effect of smaller
+(unresolved/universal) eddies on larger (resolved) eddies. The detached eddy
+simulation (DES) technique~\citep{spalart1997comments} is a hybrid approach
+that uses RANS equations to simulate attached flow near solid surfaces and LES
+for separated (detached) flow away from the surfaces. DES allows computation of
+high Reynolds number flows relatively inexpensively by removing the constraint
+in LES to have very fine grids near solid boundaries.
+
+Flow over slender structures with circular cross-section has been studied using
+unsteady RANS~\citep{pontaza2009three},
+DES~\citep{travin2000detached,yeo2012aerodynamic},
+LES~\citep{breuer1998large,kravchenko2000numerical,catalano2003numerical}, and
+DNS~\citep{dong2005dns,zhao2009direct} approaches. Latest numerical efforts in
+simulating aerodynamics of cable vibration have utilized
+DES~\citep{yeo2007characteristics,yeo2008investigation,yeo2012aerodynamic,yeo2011computational}
+as the primary numerical approach. Detailed flow simulations have been
+performed with a single, stationary, yawed cylinder in uniform
+inflow~\citep{yeo2007characteristics,yeo2008investigation} and oscillating
+inflow~\citep{yeo2012aerodynamic}. It has been concluded
+by~\cite{yeo2012aerodynamic} that oblique wind-induced aerodynamic forces play
+an important role in initiating and increasing the vibration at low
+frequencies. DES has also been used to investigate the use of strakes in cables
+for aerodynamic mitigation of wind-induced oscillations
+by~\cite{yeo2011computational}. In essence, high-fidelity simulations have been
+instrumental in gaining insights into the problem of flow-induced cylinder
+vibration.
+
+In LES and DES, the equations are spatially filtered (low-pass) and the
+numerical procedure solves for the filtered quantities that can be resolved by
+the grid. The sub-filter (or sub-grid) quantities exert a ``stress'' on the
+filtered flow-field, which is modeled using a sub-grid scale (SGS) stress
+model. Denoting spatially filtered quantities by overhead tilde ($^\sim$), the
+incompressible flow equations with an eddy-viscosity turbulence model are
+%
+\begin{gather*}
+  \frac{\partial{\tilde{U_i}}}{\partial{x_i}}=0,~{\rm and} \\
+   \frac{\partial{\tilde{U_i}}}{\partial{t}}+
+   \frac{\partial{(\tilde{U_j}\tilde{U_i})}}{\partial{x_j}}
+   =-\frac{1}{\rho}\frac{\partial{\tilde{p}}}{\partial{x_i}}+\nu\frac{\partial{^2\tilde{U_i}}}{\partial{x_j^2}}-\frac{\partial{\tau_{ij}}}{\partial{x_j}}, \\
+ \label{eq:geqs}
+\end{gather*}
+%
+where $\tau_{ij} = \widetilde{U_i U_j}-\tilde{U_i}\tilde{U_j} = -2 \, \nu_{SGS}
+\, \tilde{S}$ and $\tilde{S} = (\partial{\tilde{U_i}}/\partial{x_j} +
+\partial{\tilde{U_j}}/\partial{x_i})/2$.  In the above, SGS denotes a sub-grid
+scale quantity, $\tau_{ij}^{SGS}$ denotes the sub-grid scale stress tensor
+which is modeled as the product of eddy viscosity, $\nu_{SGS}$ and the strain
+rate tensor $S_{ij}$; turbulence models of such type are referred to as
+eddy-viscosity models. DES is a non-zonal hybrid RANS-LES method, where a RANS
+turbulence model is used to compute the eddy viscosity for the SGS stress
+tensor in the corresponding LES. In the original DES formulation
+(\cite{spalart1997comments}), the Spalart-Allmaras (SA) LES and SA-RANS models
+were used. We use the method developed by~\cite{yin2015dynamic}, which
+introduces a dynamic procedure to improve the DES capability by correcting for
+modeled stress depletion and log-layer mismatch. This model has been
+implemented in the open source CFD software OpenFOAM. All the simulations in
+this paper are obtained using OpenFOAM. The numerical scheme uses second order
+backward difference for time integration and linear interpolation with central
+differencing for spatial discretization of the governing equations.
+
+Simulations of VIV are using pimpleDyMFoam solver with sixDoFRigidBodyMotion
+feature on OpenFOAM. The incompressible Navier-Stokes equations are solved by
+pimpleDyMFoam solver. For VIV cases, the incompressible Navier-Stokes equations
+includes an addition body force term due to interaction between the moving
+cylinder and fluid. 
+
+\[ m\ddot{Y}+c\dot{Y}+kY=F_{fluid}, \] where $m$ is the mass of the rigid body,
+$\ddot{Y}$, $\dot{Y}$, and $Y$ are the instantaneous acceleration, velocity and
+displacement of the cylinder, respectively, $c$ is spring damping, $k$ is the
+spring stiffness and $F_{fluid}$ is the fluid forces applying on the cylinder
+solved by Navier-Stokes equations. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Detached Eddy Simulation Model}
+\label{sec:DDES}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+A summary of the DES model used in this study is provided here; details are
+available in~\cite{yin2015dynamic}. It uses a $k-\omega$ turbulence closure
+model in the RANS zones, and the same model is used to calculate $\nu_T$ in the
+LES zones. The eddy viscosity in the $k-\omega$ DDES can be defined as
+$\nu_T=l_{DDES}^2\, \omega$, where $l_{DDES}$ is the DDES length scale. The
+different length scales in the $k-\omega$ DDES model are defined as
+%
+\begin{align*}  
+  l_{DDES} &=l_{RANS}-f_d\, \max( 0,~l_{RANS}-l_{LES}), \\
+  l_{RANS} &=\sqrt{k}/\omega,\\
+  l_{LES} &=C_{DES}\bigtriangleup.
+\end{align*}
+%
+In the above, $l_{RANS}$ and $l_{LES}$ are the length scales of the RANS and LES
+branches respectively and $\bigtriangleup = f_d \,V^{1/3}+(1-f_d ) \,h_{max}$,
+where $h_{max} = \max(dx,dy,dz)$ is the maximum grid size, and $f_d$ is a
+shielding function of the DDES model, defined as $f_d = 1 -
+\tanh\{(8\,r_d)^3\}$, with
+\[
+  r_d=\frac{k/\omega+\nu}{\kappa^2 \, d_w^2 \, \sqrt{U_{i,j} U_{i,j} }},
+\]
+$\nu$ is the molecular viscosity, $\kappa$ is the von Karman constant, $d_w$ is
+the distance between the cell and the nearest wall, and $U_{i,j}=\partial_j
+U_i$ is the velocity gradient.  In the RANS branch, the transport equation for
+k and $\omega$ are written as
+%
+\begin{align*}  
+  \frac{Dk}{Dt} & = 2\nu_T |S|^2-C_\mu k\omega+\partial{_j [(\nu+\sigma_k \nu_T ) \partial{_j k}]},\\
+  \frac{D\omega}{Dt} & = 2C_{\omega1} |S|^2-C_{\omega2} \omega^2 
+                    +\partial{_j [(\nu+\sigma_\omega \nu_T )\partial{_j \omega}]},\\
+    &~~~~~~~\rm{where}~\nu_T=k^2/\omega.   
+\end{align*}  
+%
+In the LES region ($f_d=1,l_{DDES}=C_{DES} \, \bigtriangleup$), the eddy viscosity
+switches to $\nu_T=l_{DDES}^2\,\omega=(C_{DES}\bigtriangleup)^2\omega$, which is
+similar to the eddy viscosity in the Smagorinsky model, $\nu_s=(C_s
+\bigtriangleup)^2 |S|$.
+
+The LES branch of this $k-\omega$ DDES model uses a dynamic procedure which
+defines the value of $C_{DES}$ as
+%
+\begin{align*}  
+  C_{DES}   & =  \max( C_{lm},~C_{dyn} ), \\
+  C_{dyn}^2 & = \max \left( 0,\; 0.5 \frac{L_{i,j} M_{i,j}}{M_{i,j} M_{i,j}}\right),\\
+  C_{lim}   &=C_{DES}^0 \left[1-\tanh \left(\alpha \exp \left(\frac{-\beta \, h_{max}}{L_k}\right)\right)\right],\\
+  C_{DES}^0 &=0.12, \quad   L_k=\left(\frac{\nu^3}{\epsilon}\right)^{\frac{1}{4}},  \quad  \alpha=25,  \quad  \beta=0.05,\\
+  \epsilon  &= 2 \left(C_{DES}^0 h_{max} \right)^2 \omega\,|S|^2+C_\mu k\,\omega.
+\end{align*}  
+%
+For further details about the DES model, the reader is referred to~\cite{yin2015dynamic}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Computational Grids}
+\label{sec:grids}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+The outer boundary of the computational domain is circular with a radius of
+$25\times D$, where $D$ is the diameter of the cylinder. The cylinder is placed
+in the center of the domain and the span dimension is $10\times D$ for all
+simulations. Periodic boundary conditions are used in the span direction, while
+freestream condition is used on the outer radial boundary. The domain is
+discretized using a multi-block grid that has three blocks: (1) an O-grid is
+used to resolve the flow around the cylinder, (2) an H-grid to resolve the
+wake, and (3) a C-grid for the far field. In order to accurately capture the
+aerodynamic forces on the cylinder, the flow around the cylinder and in the
+near-wake region has to be resolved with high precision. A fine mesh is
+therefore applied in these regions.  Figure~\ref{fig:Mesh} shows a
+cross-sectional view of the full computational domain as well as a zoom-view to
+highlight the grid topology. Results of a mesh sensitivity study are presented
+in Section~\ref{sec:mesh_sensitivity}.
+%
+\begin{figure}[htb!]
+  \centering
+  \subcaptionbox{Overall CFD domain}%
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Mesh1.png}}
+  \hspace*{\fill}
+  \subcaptionbox{Zoom view of near-cylinder mesh}%
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Mesh2.png}}
+  \caption{Cross-sectional views of the computational grid}
+  \label{fig:Mesh}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,4 +1,4 @@
-PWD /Users/sharma/Box/Box Sync/Working/Git_Tracked_Papers/Papers/Cable_Vibration/VIV
+PWD /Users/sharma/Box/Box Sync/Working/Papers/Cable_Vibration/VIV
 INPUT /usr/local/texlive/2018/texmf.cnf
 INPUT /usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -241,15 +241,12 @@ INPUT ./Figures/Cl_coherence_Yawed30_Re20k.png
 INPUT Figures/VIV_setup.jpg
 INPUT ./Figures/VIV_setup.jpg
 INPUT ./Figures/VIV_setup.jpg
-INPUT fig/viv_amp_noyaw.pdf
-INPUT ./fig/viv_amp_noyaw.pdf
-INPUT ./fig/viv_amp_noyaw.pdf
-INPUT fig/viv_amp_yaw45_wInset.pdf
-INPUT ./fig/viv_amp_yaw45_wInset.pdf
-INPUT ./fig/viv_amp_yaw45_wInset.pdf
-INPUT fig/viv_freq.pdf
-INPUT ./fig/viv_freq.pdf
-INPUT ./fig/viv_freq.pdf
+INPUT Figures/Amplitude_VIV_3_2.png
+INPUT ./Figures/Amplitude_VIV_3_2.png
+INPUT ./Figures/Amplitude_VIV_3_2.png
+INPUT Figures/f_v_VIV.png
+INPUT ./Figures/f_v_VIV.png
+INPUT ./Figures/f_v_VIV.png
 INPUT Figures/Q_45_RV4_1.png
 INPUT ./Figures/Q_45_RV4_1.png
 INPUT ./Figures/Q_45_RV4_1.png

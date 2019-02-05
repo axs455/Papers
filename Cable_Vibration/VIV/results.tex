@@ -1,0 +1,37 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Numerical Results and Verification with Measured Data}
+\label{sec:comp_results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+The objective of this paper is to demonstrate the capability of detached eddy
+simulations to predict aerodynamic loads on a static cylinder and an
+elastically-mounted cylinder.  Verification with existing experimental data in
+the literature, and data from new experiments conducted as a part of this
+study, are presented for both the static cylinder and the elastically-mounted
+cylinder. Smooth inflow is used -- zero turbulence in the numerical simulations
+and the minimum possible inflow turbulence intensity ($\sim$0.2\%) in the
+tunnel. Cylinder surface is very smooth and hence surface roughness is not
+modeled in the simulations.
+
+Static testing is performed for (1) flow normal to the cylinder axis, and (2)
+flow at an angle to the cylinder axis (inclined cylinder); three inclination
+angles are analyzed in this study. These cases are simulated at Reynolds number
+$Re_D=20,000$ which is corresponding to laminar separation (LS), where flows
+are laminar before separation and transition to turbulence occurs in the shear
+layer.
+
+Dynamic testing is performed for an elastically-mounted cylinder in eight
+different inflow reduce velocities with (1) flow normal to the cylinder axis,
+and (2) flow at an angle to the cylinder axis (inclined cylinder). However, due
+to high computational cost of simulations, only one inclination angle is
+analyzed in the dynamic study($45^\circ$). The cylinder is limited to vibrate
+along the direction which is perpendicular to both the flow direction and the
+cylinder axis. All dynamic cases are simulated at the same Reynolds number,
+$Re_{D,n}=20,000$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% input section
+\input{meshSensitivity.tex}
+
+% input section
+\input{viv.tex}

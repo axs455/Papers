@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.6)  4 FEB 2019 11:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.6)  1 FEB 2019 11:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -258,18 +258,18 @@ LaTeX Info: Redefining \bm on input line 207.
 ) (./VIV_Wu.aux)
 \openout1 = `VIV_Wu.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -373,11 +373,11 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 50.
+LaTeX Font Info:    Try loading font information for U+msa on input line 48.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 50.
+LaTeX Font Info:    Try loading font information for U+msb on input line 48.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -386,6 +386,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4] [5]
+[6]
 Overfull \hbox (0.13461pt too wide) in paragraph at lines 282--288
 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C[]\OMS/cmsy/m/n/12 4\OT1/cmr/m/n/12 )[]\OML/
 cmm/m/it/12 !$\OT1/cmr/m/n/12 , which is sim-i-lar to the eddy vis-cos-ity in t
@@ -394,233 +395,227 @@ he Smagorin-sky model, $\OML/cmm/m/it/12 ^^W[] \OT1/cmr/m/n/12 = (\OML/cmm/m/it
 S\OMS/cmsy/m/n/12 j$\OT1/cmr/m/n/12 . 
  []
 
-[6]
-<Figures/Mesh1.png, id=37, 881.2925pt x 863.225pt>
+<Figures/Mesh1.png, id=36, 881.2925pt x 863.225pt>
 File: Figures/Mesh1.png Graphic file (type png)
 <use Figures/Mesh1.png>
 Package pdftex.def Info: Figures/Mesh1.png  used on input line 327.
 (pdftex.def)             Requested size: 225.4804pt x 220.8505pt.
-<Figures/Mesh2.png, id=38, 412.03937pt x 409.53pt>
+<Figures/Mesh2.png, id=37, 412.03937pt x 409.53pt>
 File: Figures/Mesh2.png Graphic file (type png)
 <use Figures/Mesh2.png>
 Package pdftex.def Info: Figures/Mesh2.png  used on input line 330.
 (pdftex.def)             Requested size: 225.4804pt x 224.10489pt.
-<Figures/Experiment_NormalFlow.png, id=39, 313.6518pt x 195.6108pt>
+[7]
+<Figures/Experiment_NormalFlow.png, id=44, 313.6518pt x 195.6108pt>
 File: Figures/Experiment_NormalFlow.png Graphic file (type png)
 <use Figures/Experiment_NormalFlow.png>
 Package pdftex.def Info: Figures/Experiment_NormalFlow.png  used on input line 
 364.
 (pdftex.def)             Requested size: 225.4804pt x 140.62474pt.
-<Figures/Experiment_YawedFlow.png, id=41, 269.3262pt x 176.3388pt>
+<Figures/Experiment_YawedFlow.png, id=46, 269.3262pt x 176.3388pt>
 File: Figures/Experiment_YawedFlow.png Graphic file (type png)
 <use Figures/Experiment_YawedFlow.png>
 Package pdftex.def Info: Figures/Experiment_YawedFlow.png  used on input line 3
 67.
 (pdftex.def)             Requested size: 225.4804pt x 147.63655pt.
- [7] [8 <./Figures/Mesh1.png> <./Figures/Mesh2.png>]
-<Figures/experiment_PressureTap.png, id=51, 224.037pt x 181.6386pt>
+ [8 <./Figures/Mesh1.png> <./Figures/Mesh2.png>] [9 <./Figures/Experiment_Norma
+lFlow.png> <./Figures/Experiment_YawedFlow.png>]
+<Figures/experiment_PressureTap.png, id=56, 224.037pt x 181.6386pt>
 File: Figures/experiment_PressureTap.png Graphic file (type png)
 <use Figures/experiment_PressureTap.png>
 Package pdftex.def Info: Figures/experiment_PressureTap.png  used on input line
  412.
 (pdftex.def)             Requested size: 225.4804pt x 182.8105pt.
-<Figures/experiment_PressureTapCrossSection.png, id=52, 223.38pt x 125.1585pt>
+<Figures/experiment_PressureTapCrossSection.png, id=57, 223.38pt x 125.1585pt>
 File: Figures/experiment_PressureTapCrossSection.png Graphic file (type png)
 <use Figures/experiment_PressureTapCrossSection.png>
 Package pdftex.def Info: Figures/experiment_PressureTapCrossSection.png  used o
 n input line 415.
 (pdftex.def)             Requested size: 225.4804pt x 126.33649pt.
- [9 <./Figures/Experiment_NormalFlow.png> <./Figures/Experiment_YawedFlow.png>]
- [10 <./Figures/experiment_PressureTap.png> <./Figures/experiment_PressureTapCr
-ossSection.png>]
-<Figures/Cp_Compared_Mesh_Re20k.png, id=62, 429.10312pt x 338.76563pt>
+ [10] [11 <./Figures/experiment_PressureTap.png> <./Figures/experiment_Pressure
+TapCrossSection.png>]
+<Figures/Cp_Compared_Mesh_Re20k.png, id=65, 429.10312pt x 338.76563pt>
 File: Figures/Cp_Compared_Mesh_Re20k.png Graphic file (type png)
 <use Figures/Cp_Compared_Mesh_Re20k.png>
 Package pdftex.def Info: Figures/Cp_Compared_Mesh_Re20k.png  used on input line
  503.
 (pdftex.def)             Requested size: 234.8775pt x 185.43257pt.
 
-[11]
-<Figures/Cp_Compared.png, id=68, 559.33969pt x 437.38406pt>
+[12] [13 <./Figures/Cp_Compared_Mesh_Re20k.png (PNG copy)>]
+<Figures/Cp_Compared.png, id=78, 559.33969pt x 437.38406pt>
 File: Figures/Cp_Compared.png Graphic file (type png)
 <use Figures/Cp_Compared.png>
 Package pdftex.def Info: Figures/Cp_Compared.png  used on input line 556.
 (pdftex.def)             Requested size: 225.4804pt x 176.31866pt.
-<Figures/CpRMS_Compared.png, id=69, 560.0925pt x 437.38406pt>
+<Figures/CpRMS_Compared.png, id=79, 560.0925pt x 437.38406pt>
 File: Figures/CpRMS_Compared.png Graphic file (type png)
 <use Figures/CpRMS_Compared.png>
 Package pdftex.def Info: Figures/CpRMS_Compared.png  used on input line 559.
 (pdftex.def)             Requested size: 225.4804pt x 176.07841pt.
-<Figures/velocity_Normal_Re20k.png, id=70, 367.3725pt x 293.59688pt>
+<Figures/velocity_Normal_Re20k.png, id=80, 367.3725pt x 293.59688pt>
 File: Figures/velocity_Normal_Re20k.png Graphic file (type png)
 <use Figures/velocity_Normal_Re20k.png>
 Package pdftex.def Info: Figures/velocity_Normal_Re20k.png  used on input line 
 575.
 (pdftex.def)             Requested size: 234.8775pt x 187.7132pt.
- [12 <./Figures/Cp_Compared_Mesh_Re20k.png (PNG copy)>]
-<Figures/force_20k.png, id=77, 752.0597pt x 322.95656pt>
+ [14 <./Figures/Cp_Compared.png> <./Figures/CpRMS_Compared.png>]
+<Figures/force_20k.png, id=87, 752.0597pt x 322.95656pt>
 File: Figures/force_20k.png Graphic file (type png)
 <use Figures/force_20k.png>
 Package pdftex.def Info: Figures/force_20k.png  used on input line 594.
 (pdftex.def)             Requested size: 422.77664pt x 181.55913pt.
- [13 <./Figures/Cp_Compared.png> <./Figures/CpRMS_Compared.png>]
-<Figures/St_Compared_Cl_Re20k.png, id=85, 369.63094pt x 297.36093pt>
+<Figures/St_Compared_Cl_Re20k.png, id=88, 369.63094pt x 297.36093pt>
 File: Figures/St_Compared_Cl_Re20k.png Graphic file (type png)
 <use Figures/St_Compared_Cl_Re20k.png>
 Package pdftex.def Info: Figures/St_Compared_Cl_Re20k.png  used on input line 6
 16.
 (pdftex.def)             Requested size: 225.4804pt x 181.39444pt.
-<Figures/St_Compared_Cd_Re20k.png, id=86, 375.65344pt x 314.67563pt>
+<Figures/St_Compared_Cd_Re20k.png, id=89, 375.65344pt x 314.67563pt>
 File: Figures/St_Compared_Cd_Re20k.png Graphic file (type png)
 <use Figures/St_Compared_Cd_Re20k.png>
 Package pdftex.def Info: Figures/St_Compared_Cd_Re20k.png  used on input line 6
 19.
 (pdftex.def)             Requested size: 225.4804pt x 188.88365pt.
- [14 <./Figures/velocity_Normal_Re20k.png> <./Figures/force_20k.png>] [15 <./Fi
-gures/St_Compared_Cl_Re20k.png> <./Figures/St_Compared_Cd_Re20k.png>]
-<Figures/yawedModel.png, id=97, 542.77782pt x 395.22656pt>
+ [15 <./Figures/velocity_Normal_Re20k.png>] [16 <./Figures/force_20k.png>]
+<Figures/yawedModel.png, id=98, 542.77782pt x 395.22656pt>
 File: Figures/yawedModel.png Graphic file (type png)
 <use Figures/yawedModel.png>
 Package pdftex.def Info: Figures/yawedModel.png  used on input line 662.
 (pdftex.def)             Requested size: 281.85587pt x 205.24158pt.
-<Figures/Cp_Compared_Yawed_Exp-ISU.png, id=98, 559.33969pt x 437.38406pt>
+ [17 <./Figures/St_Compared_Cl_Re20k.png> <./Figures/St_Compared_Cd_Re20k.png>]
+<Figures/Cp_Compared_Yawed_Exp-ISU.png, id=105, 559.33969pt x 437.38406pt>
 File: Figures/Cp_Compared_Yawed_Exp-ISU.png Graphic file (type png)
 <use Figures/Cp_Compared_Yawed_Exp-ISU.png>
 Package pdftex.def Info: Figures/Cp_Compared_Yawed_Exp-ISU.png  used on input l
 ine 723.
 (pdftex.def)             Requested size: 225.4804pt x 176.31866pt.
-<Figures/CpRMS_Compared_Yawed_Exp-ISU.png, id=99, 560.0925pt x 437.38406pt>
+<Figures/CpRMS_Compared_Yawed_Exp-ISU.png, id=106, 560.0925pt x 437.38406pt>
 File: Figures/CpRMS_Compared_Yawed_Exp-ISU.png Graphic file (type png)
 <use Figures/CpRMS_Compared_Yawed_Exp-ISU.png>
 Package pdftex.def Info: Figures/CpRMS_Compared_Yawed_Exp-ISU.png  used on inpu
 t line 726.
 (pdftex.def)             Requested size: 225.4804pt x 176.07841pt.
- [16 <./Figures/yawedModel.png>]
-<Figures/velocity_Yawed30_Re20k.png, id=104, 367.3725pt x 293.59688pt>
+ [18 <./Figures/yawedModel.png>]
+<Figures/velocity_Yawed30_Re20k.png, id=110, 367.3725pt x 293.59688pt>
 File: Figures/velocity_Yawed30_Re20k.png Graphic file (type png)
 <use Figures/velocity_Yawed30_Re20k.png>
 Package pdftex.def Info: Figures/velocity_Yawed30_Re20k.png  used on input line
  744.
 (pdftex.def)             Requested size: 234.8775pt x 187.7132pt.
-<Figures/St_Compared_Yawed30_Exp-ISU.png, id=105, 369.63094pt x 294.34969pt>
+
+[19 <./Figures/Cp_Compared_Yawed_Exp-ISU.png> <./Figures/CpRMS_Compared_Yawed_E
+xp-ISU.png>]
+<Figures/St_Compared_Yawed30_Exp-ISU.png, id=117, 369.63094pt x 294.34969pt>
 File: Figures/St_Compared_Yawed30_Exp-ISU.png Graphic file (type png)
 <use Figures/St_Compared_Yawed30_Exp-ISU.png>
 Package pdftex.def Info: Figures/St_Compared_Yawed30_Exp-ISU.png  used on input
  line 767.
 (pdftex.def)             Requested size: 281.85587pt x 224.45364pt.
-<Figures/Cp_Compared_Yawed_Re20k.png, id=106, 375.65344pt x 291.33844pt>
+<Figures/Cp_Compared_Yawed_Re20k.png, id=118, 375.65344pt x 291.33844pt>
 File: Figures/Cp_Compared_Yawed_Re20k.png Graphic file (type png)
 <use Figures/Cp_Compared_Yawed_Re20k.png>
 Package pdftex.def Info: Figures/Cp_Compared_Yawed_Re20k.png  used on input lin
 e 789.
 (pdftex.def)             Requested size: 225.4804pt x 174.87553pt.
-<Figures/St_Compared_Yawed_Cl_Re20k.png, id=107, 380.92313pt x 311.66437pt>
+<Figures/St_Compared_Yawed_Cl_Re20k.png, id=119, 380.92313pt x 311.66437pt>
 File: Figures/St_Compared_Yawed_Cl_Re20k.png Graphic file (type png)
 <use Figures/St_Compared_Yawed_Cl_Re20k.png>
 Package pdftex.def Info: Figures/St_Compared_Yawed_Cl_Re20k.png  used on input 
 line 792.
 (pdftex.def)             Requested size: 225.4804pt x 184.47958pt.
- [17]
-[18 <./Figures/Cp_Compared_Yawed_Exp-ISU.png> <./Figures/CpRMS_Compared_Yawed_E
-xp-ISU.png> <./Figures/velocity_Yawed30_Re20k.png>]
-<Figures/Spatial_temporal_Cx_Re20k_Yawed30.png, id=117, 504.2037pt x 397.0032pt
+ [20 <./Figures/velocity_Yawed30_Re20k.png>] [21 <./Figures/St_Compared_Yawed30
+_Exp-ISU.png> <./Figures/Cp_Compared_Yawed_Re20k.png> <./Figures/St_Compared_Ya
+wed_Cl_Re20k.png>]
+<Figures/Spatial_temporal_Cx_Re20k_Yawed30.png, id=128, 504.2037pt x 397.0032pt
 >
 File: Figures/Spatial_temporal_Cx_Re20k_Yawed30.png Graphic file (type png)
 <use Figures/Spatial_temporal_Cx_Re20k_Yawed30.png>
 Package pdftex.def Info: Figures/Spatial_temporal_Cx_Re20k_Yawed30.png  used on
  input line 814.
 (pdftex.def)             Requested size: 225.4804pt x 177.54121pt.
-<Figures/Spatial_temporal_Cy_Re20k_Yawed30.png, id=118, 511.4307pt x 397.0032pt
+<Figures/Spatial_temporal_Cy_Re20k_Yawed30.png, id=129, 511.4307pt x 397.0032pt
 >
 File: Figures/Spatial_temporal_Cy_Re20k_Yawed30.png Graphic file (type png)
 <use Figures/Spatial_temporal_Cy_Re20k_Yawed30.png>
 Package pdftex.def Info: Figures/Spatial_temporal_Cy_Re20k_Yawed30.png  used on
  input line 817.
 (pdftex.def)             Requested size: 225.4804pt x 175.0333pt.
- [19 <./Figures/St_Compared_Yawed30_Exp-ISU.png>]
-<Figures/Cd_coherence_Yawed30_Re20k.png, id=124, 429.10312pt x 338.76563pt>
+<Figures/Cd_coherence_Yawed30_Re20k.png, id=130, 429.10312pt x 338.76563pt>
 File: Figures/Cd_coherence_Yawed30_Re20k.png Graphic file (type png)
 <use Figures/Cd_coherence_Yawed30_Re20k.png>
 Package pdftex.def Info: Figures/Cd_coherence_Yawed30_Re20k.png  used on input 
 line 845.
 (pdftex.def)             Requested size: 225.4804pt x 178.00967pt.
-<Figures/Cl_coherence_Yawed30_Re20k.png, id=125, 429.10312pt x 338.76563pt>
+<Figures/Cl_coherence_Yawed30_Re20k.png, id=131, 429.10312pt x 338.76563pt>
 File: Figures/Cl_coherence_Yawed30_Re20k.png Graphic file (type png)
 <use Figures/Cl_coherence_Yawed30_Re20k.png>
 Package pdftex.def Info: Figures/Cl_coherence_Yawed30_Re20k.png  used on input 
 line 848.
 (pdftex.def)             Requested size: 225.4804pt x 178.00967pt.
- [20 <./Figures/Cp_Compared_Yawed_Re20k.png> <./Figures/St_Compared_Yawed_Cl_Re
-20k.png> <./Figures/Spatial_temporal_Cx_Re20k_Yawed30.png> <./Figures/Spatial_t
-emporal_Cy_Re20k_Yawed30.png>]
-<Figures/VIV_setup.jpg, id=131, 545.78906pt x 395.22656pt>
+ [22 <./Figures/Spatial_temporal_Cx_Re20k_Yawed30.png> <./Figures/Spatial_tempo
+ral_Cy_Re20k_Yawed30.png>]
+<Figures/VIV_setup.jpg, id=137, 545.78906pt x 395.22656pt>
 File: Figures/VIV_setup.jpg Graphic file (type jpg)
 <use Figures/VIV_setup.jpg>
-Package pdftex.def Info: Figures/VIV_setup.jpg  used on input line 892.
+Package pdftex.def Info: Figures/VIV_setup.jpg  used on input line 877.
 (pdftex.def)             Requested size: 281.85587pt x 204.10178pt.
- [21 <./Figures/Cd_coherence_Yawed30_Re20k.png (PNG copy)> <./Figures/Cl_cohere
-nce_Yawed30_Re20k.png (PNG copy)>]
-<fig/viv_amp_noyaw.pdf, id=135, 361.35pt x 340.27126pt>
-File: fig/viv_amp_noyaw.pdf Graphic file (type pdf)
-<use fig/viv_amp_noyaw.pdf>
-Package pdftex.def Info: fig/viv_amp_noyaw.pdf  used on input line 927.
-(pdftex.def)             Requested size: 225.4804pt x 212.32632pt.
-<fig/viv_amp_yaw45_wInset.pdf, id=136, 344.28625pt x 340.27126pt>
-File: fig/viv_amp_yaw45_wInset.pdf Graphic file (type pdf)
-<use fig/viv_amp_yaw45_wInset.pdf>
-Package pdftex.def Info: fig/viv_amp_yaw45_wInset.pdf  used on input line 930.
-(pdftex.def)             Requested size: 211.38832pt x 208.92549pt.
- [22 <./Figures/VIV_setup.jpg>] [23 <./fig/viv_amp_noyaw.pdf> <./fig/viv_amp_ya
-w45_wInset.pdf>]
-<fig/viv_freq.pdf, id=183, 344.28625pt x 340.27126pt>
-File: fig/viv_freq.pdf Graphic file (type pdf)
-<use fig/viv_freq.pdf>
-Package pdftex.def Info: fig/viv_freq.pdf  used on input line 974.
-(pdftex.def)             Requested size: 234.8775pt x 232.13943pt.
- [24 <./fig/viv_freq.pdf>]
-<Figures/Q_45_RV4_1.png, id=207, 403.5075pt x 283.0575pt>
+ [23 <./Figures/Cd_coherence_Yawed30_Re20k.png (PNG copy)> <./Figures/Cl_cohere
+nce_Yawed30_Re20k.png (PNG copy)>] [24 <./Figures/VIV_setup.jpg>]
+<Figures/Amplitude_VIV_3_2.png, id=144, 421.575pt x 316.18124pt>
+File: Figures/Amplitude_VIV_3_2.png Graphic file (type png)
+<use Figures/Amplitude_VIV_3_2.png>
+Package pdftex.def Info: Figures/Amplitude_VIV_3_2.png  used on input line 909.
+
+(pdftex.def)             Requested size: 281.85587pt x 211.39647pt.
+ [25 <./Figures/Amplitude_VIV_3_2.png (PNG copy)>]
+<Figures/f_v_VIV.png, id=149, 429.10312pt x 338.76563pt>
+File: Figures/f_v_VIV.png Graphic file (type png)
+<use Figures/f_v_VIV.png>
+Package pdftex.def Info: Figures/f_v_VIV.png  used on input line 930.
+(pdftex.def)             Requested size: 281.85587pt x 222.52115pt.
+ [26 <./Figures/f_v_VIV.png (PNG copy)>]
+<Figures/Q_45_RV4_1.png, id=153, 403.5075pt x 283.0575pt>
 File: Figures/Q_45_RV4_1.png Graphic file (type png)
 <use Figures/Q_45_RV4_1.png>
-Package pdftex.def Info: Figures/Q_45_RV4_1.png  used on input line 997.
+Package pdftex.def Info: Figures/Q_45_RV4_1.png  used on input line 948.
 (pdftex.def)             Requested size: 225.4804pt x 158.17421pt.
-<Figures/Q_45_RV8_1.png, id=208, 528.97626pt x 372.39125pt>
+<Figures/Q_45_RV8_1.png, id=154, 528.97626pt x 372.39125pt>
 File: Figures/Q_45_RV8_1.png Graphic file (type png)
 <use Figures/Q_45_RV8_1.png>
-Package pdftex.def Info: Figures/Q_45_RV8_1.png  used on input line 1000.
+Package pdftex.def Info: Figures/Q_45_RV8_1.png  used on input line 951.
 (pdftex.def)             Requested size: 225.4804pt x 158.73297pt.
-<Figures/2S_RV4.png, id=209, 1284.8pt x 421.575pt>
+<Figures/2S_RV4.png, id=155, 1284.8pt x 421.575pt>
 File: Figures/2S_RV4.png Graphic file (type png)
 <use Figures/2S_RV4.png>
-Package pdftex.def Info: Figures/2S_RV4.png  used on input line 1003.
+Package pdftex.def Info: Figures/2S_RV4.png  used on input line 954.
 (pdftex.def)             Requested size: 225.4804pt x 73.98257pt.
-<Figures/2P_RV8.png, id=210, 1397.22pt x 562.1pt>
+<Figures/2P_RV8.png, id=156, 1397.22pt x 562.1pt>
 File: Figures/2P_RV8.png Graphic file (type png)
 <use Figures/2P_RV8.png>
-Package pdftex.def Info: Figures/2P_RV8.png  used on input line 1006.
+Package pdftex.def Info: Figures/2P_RV8.png  used on input line 957.
 (pdftex.def)             Requested size: 225.4804pt x 90.70976pt.
- [25 <./Figures/Q_45_RV4_1.png> <./Figures/Q_45_RV8_1.png> <./Figures/2S_RV4.pn
-g> <./Figures/2P_RV8.png>]
-<Figures/Cd_VIV.png, id=215, 421.575pt x 316.18124pt>
+<Figures/Cd_VIV.png, id=157, 421.575pt x 316.18124pt>
 File: Figures/Cd_VIV.png Graphic file (type png)
 <use Figures/Cd_VIV.png>
-Package pdftex.def Info: Figures/Cd_VIV.png  used on input line 1027.
+Package pdftex.def Info: Figures/Cd_VIV.png  used on input line 976.
 (pdftex.def)             Requested size: 225.4804pt x 169.11427pt.
-<Figures/Cl_VIV.png, id=216, 421.575pt x 316.18124pt>
+<Figures/Cl_VIV.png, id=158, 421.575pt x 316.18124pt>
 File: Figures/Cl_VIV.png Graphic file (type png)
 <use Figures/Cl_VIV.png>
-Package pdftex.def Info: Figures/Cl_VIV.png  used on input line 1030.
+Package pdftex.def Info: Figures/Cl_VIV.png  used on input line 979.
 (pdftex.def)             Requested size: 225.4804pt x 169.11427pt.
-
-[26 <./Figures/Cd_VIV.png (PNG copy)> <./Figures/Cl_VIV.png (PNG copy)>]
-(./VIV_Wu.bbl [27] [28] [29]) [30] (./VIV_Wu.aux) ) 
+ [27 <./Figures/Q_45_RV4_1.png> <./Figures/Q_45_RV8_1.png> <./Figures/2S_RV4.pn
+g> <./Figures/2P_RV8.png>] [28 <./Figures/Cd_VIV.png (PNG copy)> <./Figures/Cl_
+VIV.png (PNG copy)>]
+(./VIV_Wu.bbl [29] [30] [31]) [32] (./VIV_Wu.aux) ) 
 Here is how much of TeX's memory you used:
- 5469 strings out of 492646
- 79542 string characters out of 6129564
- 163325 words of memory out of 5000000
- 9199 multiletter control sequences out of 15000+600000
+ 5462 strings out of 492646
+ 79335 string characters out of 6129564
+ 160318 words of memory out of 5000000
+ 9194 multiletter control sequences out of 15000+600000
  19826 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,17n,46p,407b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,17n,46p,372b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/tex
 mf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb></usr/local/texlive/2018
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/
@@ -650,10 +645,10 @@ nts/cm/cmti12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
 s/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb>
-Output written on VIV_Wu.pdf (30 pages, 3813924 bytes).
+Output written on VIV_Wu.pdf (32 pages, 3816865 bytes).
 PDF statistics:
- 321 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
+ 267 PDF objects out of 1000 (max. 8388607)
+ 157 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 171 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
