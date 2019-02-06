@@ -11,7 +11,7 @@ direction. The $y$ component of the integrated aerodynamic surface force on the
 cylinder (denoted by $F_y$) drives the mass-spring-damper system given by
 %
 \begin{equation}
-  m \frac{{\rm d}^2 x}{{\rm d}t^2} + c \frac{{\rm d} x}{{\rm d}t} + k x = F_y(t).
+  m \frac{{\rm d}^2 y}{{\rm d}t^2} + c \frac{{\rm d} y}{{\rm d}t} + k y = F_y(t).
   \label{eq:mass-spring-damper}
 \end{equation}
  
@@ -44,7 +44,7 @@ span.
   \label{fig:VIVmodel}
 \end{figure}
 
-Figure~\ref{fig:Amplitude_VIV} compares the predicted non-dimensional
+Figure~\ref{fig:VIV_amp} compares the predicted non-dimensional
 mean amplitude $\bar{A}/D$ with the measurements of Exp II and III over a wide
 range of reduced velocity $V_{R,n}$, which is defined as
 $V_{R,n}=V_n/(f_N\,D)$, where $f_N$ is the natural frequency of the system. The
@@ -57,7 +57,7 @@ is the inverse of Strouhal number, $V_{R,n} = 1/St$.
 their VIV measurements for the zero-yaw case: the ``initial excitation''
 branch, the ``upper'' branch, the ``lower'' branch, and the
 ``desynchronization'' branch. These are labeled and identified with solid black
-lines as best curve fits of the measured data in Fig.~\ref{fig:Amplitude_VIV}
+lines as best curve fits of the measured data in Fig.~\ref{fig:VIV_amp}
 (a). In the initial excitation branch, the mean amplitude grows rapidly with
 $V_{R,n}$. The scaled displacement oscillation amplitude ($A/D$) reaches a peak
 in the upper branch, drops to 60\% of the peak value in the lower branch, and
@@ -73,20 +73,18 @@ prediction accuracy of the simulations is very good.
 %
 \begin{figure}[htb!]
   \centering
-  \subcaptionbox{$\beta=0^\circ$}%
-    [.48\linewidth]{\incfig[width=.48\textwidth]{fig/viv_amp_noyaw.pdf}}
-  \hspace*{\fill}
-  \subcaptionbox{$\beta=45^\circ$}%
-    [.45\linewidth]{\incfig[width=.45\textwidth]{fig/viv_amp_yaw45_wInset.pdf}}
+  \subcaptionbox{$\beta=0^\circ$} {\incfig[width=.47\textwidth]{fig/viv_amp_noyaw.pdf}}
+  \qquad
+  \subcaptionbox{$\beta=45^\circ$}{\incfig[width=.45\textwidth]{fig/viv_amp_yaw45_wInset.pdf}} \\
     \caption{Comparison of predicted and experimental non-dimensional mean
       amplitude $A/D$ over a range of reduced velocities $V_{R,n}$ for a)
       $\beta=0^\circ$, and b) $\beta=45^\circ$. The inset in the plot on the right
       shows the two setups (UP and DN) used in Exp II for yawed-flow
       measurements.} 
-  \label{fig:Amplitude_VIV}
+  \label{fig:VIV_amp}
 \end{figure}
 
-Figure~\ref{fig:Amplitude_VIV} (b) compares the predicted VIV amplitude with
+Figure~\ref{fig:VIV_amp} (b) compares the predicted VIV amplitude with
 the measurements from Exp II. The measurements were taken for two different
 configurations of the cylinder, shown in the inset in the figure. Since the top
 and bottom surfaces are not the same, the two configurations are not identical
@@ -113,96 +111,89 @@ verification of yaw-independence in VIV predicted by DES to the initial
 excitation branch.
 %
 \begin{figure}[htb!]
-  \centering
-  \begin{subfigure}[b]{.5\linewidth}
-    \incfig[width=0.45\textwidth]{fig/viv_independence_Exp}
-    \caption{Exp II}
-  \end{subfigure}
-  \begin{subfigure}[b]{.5\linewidth}
-    \incfig[width=0.45\textwidth]{fig/viv_independence}
-    \caption{DES}
-  \end{subfigure}
-  \caption{Scaled displacement amplitude ($A/D$) for $\beta=0$ and $45$ degrees
-    for a range of $V_{R,n}$ from a) measurements from Exp II, and b) DES
-    predictions with the data from Exp III for $\beta=0^\circ$ as a guide.}
+  \subcaptionbox{Exp II}{\incfig[width=0.45\textwidth]{fig/viv_independence_Exp}}
+  \qquad
+  \subcaptionbox{DES}   {\incfig[width=0.47\textwidth]{fig/viv_independence}} \\
+  \caption{Scaled displacement amplitude ($A/D$) for $\beta=0^\circ$ and
+    $45^\circ$ degrees for a range of $V_{R,n}$ obtained from a) measurements
+    from Exp II, and b) DES predictions with the data from Exp III for
+    $\beta=0^\circ$ as a guide.}
   \label{fig:VIV_yaw}
 \end{figure}
 
-Figure~\ref{fig:f_VIV} presents non-dimensional frequency $f/f_N$ for various
-reduced velocities $V_{R,n}$, with $f$ being the vortex shedding frequency in
-the simulation while being the oscillating frequency in Exp. III because vortex
-shedding frequency data is not available in Exp. III. 
+Figure~\ref{fig:VIV_freq} compares the normalized frequency ($f/f_N$) between
+DES predictions and measurements from Exp III over a range of $V_{R,n}$. The
+natural frequency, $f_N$ is determined from the mechanical properties (spring
+and mass) of the cylinder system. The frequency $f$ is determined using the
+peak transverse unsteady loading on the cylinder ($F_y$) in the si, but in the
+experiments, it is determined using the peak displacement amplitude. The
+dynamical system of the cylinder is driven by $F_y$ and the peak frequency
+corresponding to $F_y$ is selected to be $f_N$ for DES. This information is not
+available for the measurements, and hence the peak frequency of the
+displacement amplitude is selected as $f_N$. The purple dashed line corresponds
+to the vortex shedding frequency for a static cylinder ($St_p=0.21$), and the
+horizontal black dashed line presents the natural frequency ($f=f_N$). The
+simulations capture the peak frequency well in all the branches. 
 
-
-The blue dash line
-indicates vortex shedding frequency for the static cylinder ($St_p=0.21$),
-while the red dash line presents the natural frequency.  As the figure shown,
-the predicted non-dimensional frequencies for both yawed flows are very similar
-and agree very well with Exp.~III.  In the initial excitation branch,
-non-dimensional frequency $f/f_N$ increases as reduced velocity $V_{R,n}$
-increases, which follows the blue dash line. It suggests that the oscillating
-motion is independent of the natural frequency of the system in the initial
-excitation branch. After that, the vortex shedding frequency locks onto the
-natural frequency $f_N$ in the upper branch and lower branch, which is known as
-"lock-in". Because this is a low mass-damping system, the ``lock-in'' frequency
-is higher than the natural frequency, while it is significantly smaller than
-the vortex shedding frequency of the static cylinder. The similar phenomenon
-can also be observed on Exp.~III.  In the desynchronization branch, the vortex
-shedding frequency desynchronizes from the natural frequency indicating the
-ending of ``lock-in''.
+In the initial excitation branch, the cylinder oscillates at the driving
+frequency ($f$) and $f/f_N$ increases linearly with the reduced velocity
+$V_{R,n}$. Beyond resonance, which occurs at $f=f_N$, the oscillating frequency
+gets ``locked-in'' with the natural frequency of the system. This occurs in the
+``upper'' and ``lower'' branches identified in Fig.~\ref{fig:VIV_amp}. A strict
+``lock-in'' would imply $f/f_N=1$ for the range of $V_{R,n}$ during which the
+system is locked in. However, for low mass-damping systems, such as the one
+considered here, the ``lock-in'' frequency is higher than the natural
+frequency, i.e., $f/f_N>1$. As $V_{R,n}$ increases beyond ``lock-in'', the
+system again starts oscillating at the driving frequency and $f/f_N$ follows
+the purple line in the figure. Figure~\ref{fig:VIV_freq} also plots the
+simulation results for $\beta=45^\circ$, which are consistent with the results
+for $\beta=0^\circ$, further confirming yaw-independence in the predictions.
 %
 \begin{figure}[htb!]
   \incfig[width=.5\textwidth]{fig/viv_freq.pdf}
   \caption{Non-dimensional frequency $f/f_N$ for various reduced velocities
     $V_{R,n}$}
-  \label{fig:f_VIV}
+  \label{fig:VIV_freq}
 \end{figure}
 
-As Fig.~\ref{fig:Amplitude_VIV} shown, there is a jump between the upper branch
-and the initial excitation branch and another jump between the upper branch and
-the lower branch. This is because there are two different vortex shedding
-patterns happened in this reduced velocity region. Figure~\ref{fig:Q_VIV}
-displaces the Q-criterion for two reduced velocities $V_{R,n}=4$ and
-$V_{R,n}=8$ for $\beta=45^\circ$ case, which represent the typical vortex
-shedding modes of the initial excitation branch and the lower branch,
-respectively. As the figure shown, when $V_{R,n}=4$, one vortex shedding period
-includes two singular vortices (2S mode) shed alternately from either side of
-the cylinder. On the contrary, when $V_{R,n}=8$ and ``lock-in'' happens,
-periodic vortex shedding pattern switches to two pairs of vortices (2P mode).
-Vortex shedding frequency lock onto the natural frequency as a result of 2P
-mode. The vortex shedding mode of the upper branch would shift between these
-two modes.
+As seen in Figs.~\ref{fig:VIV_amp} and~\ref{fig:VIV_yaw}, the amplitude jumps
+up from initial excitation branch and jumps down from the upper branch to the
+lower branch with increasing $V_{R,n}$. These jumps occur as the mode in which
+the vortex shedding occurs switches between two possible configurations. These
+are shown in Fig.~\ref{fig:VIV_Q} using iso-surface of the Q-criterion as well
+using schematics. In the `2S mode', one vortex shedding period includes two
+single vortices shed alternately from either side of the cylinder, while in the
+`2P mode', two pairs of vortices are shed from each side of the cylinder.  In
+the initial excitation branch, vortex shedding occurs in the 2S mode, while in
+the lower branch, it switches to the 2P mode. In the upper branch of the
+``lock-in'' regime, the vortex shedding switches between the 2S and 2P modes.
 %
 \begin{figure}[htb!]
-  \subcaptionbox {Q-criterion for $V_{R,n}=4$}
-    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Q_45_RV4_1.png}}
-  \hspace*{\fill}
-  \subcaptionbox{Q-criterion for $V_{R,n}=8$ }
-    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Q_45_RV8_1.png}}
-  \vskip\baselineskip
-   \subcaptionbox {A schematic of 2S mode for $V_{R,n}=4$}
-    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/2S_RV4.png}}
-  \hspace*{\fill}
-  \subcaptionbox{A schematic of 2P mode $V_{R,n}=8$ }
-    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/2P_RV8.png}}
-    \caption{Q-criterion and vortex shedding modes for $\beta=45^\circ$ yawed flow simulation} 
-  \label{fig:Q_VIV}
-\end{figure}
-
-The force coefficients are shown in Fig.~\ref{fig:force_VIV}. It is well known
-that the vibration motion can significantly increase the fluctuation of forces.
-Mean transverse force coefficient $\bar{C}_{x,n}$ for reduce velocities
-$V_{R,N} < 5.9$ have a very similar curve as mean amplitude $\bar{A}/D$ in
-Fig.~\ref{fig:Amplitude_VIV}. However, mean amplitude $\bar{A}/D$ is almost
-constant in the lower branch while $\bar{C}_{x,n}$ continuously declines. The
-predicted rms of longitudinal force coefficients $C_{y,n,rms}$ has very sharp
-peak at $V_{R,n}=4$, which is slightly different from Exp. II. Similar to
-$\bar{A}/D$ at $V_{R,n}=4$, $C_{y,n,rms}$ for $\beta=45^\circ$ is much larger
-than $\beta=0^\circ$. Overall, two yawed angle flow simulations have very
-similar results for small amplitude vibrations. Independent principle can be
-applied to forces coefficients except for the upper branch ($4 \leqslant
-V_{R,n}\leqslant 5.9$).
+  \subcaptionbox{Q-criterion iso-surfaces; $V_{R,n}=4$}{\incfig[width=.48\textwidth]{Figures/Q_45_RV4_1.png}} \qquad
+  \subcaptionbox{Q-criterion iso-surfaces; $V_{R,n}=8$}{\incfig[width=.48\textwidth]{Figures/Q_45_RV8_1.png}} \\
 %
+  \subcaptionbox{2S mode; $V_{R,n}=4$}{\incfig[width=.48\textwidth]{Figures/2S_RV4.png}} \qquad
+  \subcaptionbox{2P mode; $V_{R,n}=8$}{\incfig[width=.48\textwidth]{Figures/2P_RV8.png}} \\
+    \caption{Iso-surfaces of the Q-criterion and schematics of the two modes of
+      vortex shedding observed in the simulations. The plots are shown for the
+      $\beta=45^\circ$ case.}
+  \label{fig:VIV_Q}
+\end{figure}
+%
+%The force coefficients are shown in Fig.~\ref{fig:force_VIV}. It is well known
+%that the vibration motion can significantly increase the fluctuation of forces.
+%Mean transverse force coefficient $\bar{C}_{x,n}$ for reduce velocities
+%$V_{R,N} < 5.9$ have a very similar curve as mean amplitude $\bar{A}/D$ in
+%Fig.~\ref{fig:VIV_amp}. However, mean amplitude $\bar{A}/D$ is almost constant
+%in the lower branch while $\bar{C}_{x,n}$ continuously declines. The predicted
+%rms of longitudinal force coefficients $C_{y,n,rms}$ has very sharp peak at
+%$V_{R,n}=4$, which is slightly different from Exp. II. Similar to $\bar{A}/D$
+%at $V_{R,n}=4$, $C_{y,n,rms}$ for $\beta=45^\circ$ is much larger than
+%$\beta=0^\circ$. Overall, two yawed angle flow simulations have very similar
+%results for small amplitude vibrations. Independent principle can be applied to
+%forces coefficients except for the upper branch ($4 \leqslant V_{R,n}\leqslant
+%5.9$).
+%%
 \begin{figure}[htb!]
   \subcaptionbox {$C_{x,n}$}
     [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cd_VIV.png}}
