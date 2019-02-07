@@ -26,8 +26,8 @@
 
 \begin{frontmatter}
 
-\title{Numerical Study of Static and Vortex-Induced Vibrations of Normal and
-Yawed Cylinder with Detached Eddy Simulations}
+\title{Verification of DES for Flow over Rigidly and Elastically-Mounted
+Circular Cylinders in Normal and Yawed Flow}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{}
@@ -40,7 +40,7 @@ Yawed Cylinder with Detached Eddy Simulations}
 \author[3]{Anupam Sharma\corref{a}}
 \ead{sharma@iastate.edu}
 \cortext[a]{Corresponding author}
-\fntext[1]{Graduate Student}
+\fntext[1]{PhD Student}
 \fntext[2]{Professor, Iowa State University}
 \fntext[3]{Associate Professor, Iowa State University}
 
@@ -50,33 +50,34 @@ Yawed Cylinder with Detached Eddy Simulations}
 A computational approach based on a $k-\omega$ delayed detached eddy simulation
 model for predicting aerodynamic loads on a smooth circular cylinder is
 verified against experiments. Comparisons with experiments are performed for
-flow over a stationary cylinder and for a cylinder oscillating in the
-transverse direction due to flow-induced forces (vortex-induced vibration or
-VIV). For the static cases, measurement data from the literature is used to
-validate the predictions for normally-incident flow. New experiments are
-conducted as a part of this study for yawed flow, where the cylinder axis is
-inclined with respect to the inflow velocity at the desired yaw angle,
-$\beta=30^\circ$. Good agreement is observed between the predictions and
-measurements for mean and rms surface pressure and wake velocity deficit.
+flow over a stationary cylinder and for an elastically-mounted rigid cylinder
+oscillating in the transverse direction due to flow-induced forces
+(vortex-induced vibration or VIV). For the static cases, measurement data from
+the literature is used to validate the predictions for normally-incident flow.
+New experiments are conducted as a part of this study for yawed flow, where the
+cylinder axis is inclined with respect to the inflow velocity at the desired
+yaw angle, $\beta=30^\circ$. Good agreement is observed between the predictions
+and measurements for mean and rms surface pressure and wake velocity deficit.
 However the lift spectrum prediction shows a slight offset in frequency from
 the measurements. Three yawed flow cases ($\beta=15^\circ, 30^\circ, \,\&\,
 45^\circ$) are simulated and the results are found to be independent of $\beta$
 (dynamic scaling) when the flow speed normal to the cylinder axis is selected
-as the reference velocity scale.  
+as the reference velocity scale.
 
-Dynamic (VIV) simulations are performed by coupling the flow solver with a
-solid dynamics solver where the cylinder motion in the transverse direction is
-modeled as a spring-mass-damper system. The simulations accurately predict the
-displacement amplitude and unsteady loading over a wide range of reduced
-velocity, including the region where lock-in occurs. VIV simulations are
-performed at two yaw angles, $\beta=0^\circ$ and $45^\circ$ and the
-appropriately-scaled results are found to be similar over the range of reduced
-velocities tested with slightly higher discrepancy around the reduced velocity
-corresponding to the natural frequency of the system.
+Dynamic (VIV) simulations for an elastically-mounted rigid cylinder are
+performed by coupling the flow solver with a solid dynamics solver where the
+cylinder motion is modeled as a mass-spring-damper system. The simulations
+accurately predict the displacement amplitude and unsteady loading over a wide
+range of reduced velocity, including the region where ``lock-in'' occurs. VIV
+simulations are performed at two yaw angles, $\beta=0^\circ$ and $45^\circ$ and
+the appropriately-scaled results are found to be similar over the range of
+reduced velocities tested with a slightly higher discrepancy around the reduced
+velocity corresponding to the natural frequency of the system.
 \end{abstract}
 
 \begin{keyword}
-  Vortex-Induced Vibrations \sep Detached Eddy Simulations \sep Yawed Cylinder \sep Independence Principle
+  Vortex-Induced Vibrations \sep Detached Eddy Simulations \sep Yawed Cylinder
+  \sep Independence Principle
 \end{keyword}
 \end{frontmatter}
 
