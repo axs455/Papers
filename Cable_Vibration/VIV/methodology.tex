@@ -42,17 +42,17 @@ filtered flow-field, which is modeled using a sub-grid scale (SGS) stress
 model. Denoting spatially filtered quantities by overhead tilde ($^\sim$), the
 incompressible flow equations with an eddy-viscosity turbulence model are
 %
-\begin{gather*}
-  \frac{\partial{\tilde{U_i}}}{\partial{x_i}}=0,~{\rm and} \\
+\begin{align}
+  \frac{\partial{\tilde{U_i}}}{\partial{x_i}}&=0,~{\rm and} \nonumber \\
    \frac{\partial{\tilde{U_i}}}{\partial{t}}+
    \frac{\partial{(\tilde{U_j}\tilde{U_i})}}{\partial{x_j}}
-   =-\frac{1}{\rho}\frac{\partial{\tilde{p}}}{\partial{x_i}}+\nu\frac{\partial{^2\tilde{U_i}}}{\partial{x_j^2}}-\frac{\partial{\tau_{ij}}}{\partial{x_j}}, \\
+   &=-\frac{1}{\rho}\frac{\partial{\tilde{p}}}{\partial{x_i}}+\nu\frac{\partial{^2\tilde{U_i}}}{\partial{x_j^2}}-\frac{\partial{\tau_{ij}}}{\partial{x_j}},
  \label{eq:geqs}
-\end{gather*}
+\end{align}
 %
 where $\tau_{ij} = \widetilde{U_i U_j}-\tilde{U_i}\tilde{U_j} = -2 \, \nu_{SGS}
 \, \tilde{S}$ and $\tilde{S} = (\partial{\tilde{U_i}}/\partial{x_j} +
-\partial{\tilde{U_j}}/\partial{x_i})/2$.  In the above, SGS denotes a sub-grid
+\partial{\tilde{U_j}}/\partial{x_i})/2$. In the above, SGS denotes a sub-grid
 scale quantity, $\tau_{ij}^{SGS}$ denotes the sub-grid scale stress tensor
 which is modeled as the product of eddy viscosity, $\nu_{SGS}$ and the strain
 rate tensor $S_{ij}$; turbulence models of such type are referred to as
@@ -68,19 +68,6 @@ this paper are obtained using OpenFOAM. The numerical scheme uses second order
 backward difference for time integration and linear interpolation with central
 differencing for spatial discretization of the governing equations.
 
-Simulations of VIV are using pimpleDyMFoam solver with sixDoFRigidBodyMotion
-feature on OpenFOAM. The incompressible Navier-Stokes equations are solved by
-pimpleDyMFoam solver. For VIV cases, the incompressible Navier-Stokes equations
-includes an addition body force term due to interaction between the moving
-cylinder and fluid. 
-
-\[ m\ddot{Y}+c\dot{Y}+kY=F_{fluid}, \] where $m$ is the mass of the rigid body,
-$\ddot{Y}$, $\dot{Y}$, and $Y$ are the instantaneous acceleration, velocity and
-displacement of the cylinder, respectively, $c$ is spring damping, $k$ is the
-spring stiffness and $F_{fluid}$ is the fluid forces applying on the cylinder
-solved by Navier-Stokes equations. 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Detached Eddy Simulation Model}
 \label{sec:DDES}
@@ -93,11 +80,12 @@ LES zones. The eddy viscosity in the $k-\omega$ DDES can be defined as
 $\nu_T=l_{DDES}^2\, \omega$, where $l_{DDES}$ is the DDES length scale. The
 different length scales in the $k-\omega$ DDES model are defined as
 %
-\begin{align*}  
-  l_{DDES} &=l_{RANS}-f_d\, \max( 0,~l_{RANS}-l_{LES}), \\
-  l_{RANS} &=\sqrt{k}/\omega,\\
-  l_{LES} &=C_{DES}\bigtriangleup.
-\end{align*}
+\begin{align}  
+  l_{DDES} &=l_{RANS}-f_d\, \max( 0,~l_{RANS}-l_{LES}), \nonumber \\
+  l_{RANS} &=\sqrt{k}/\omega, \\
+  l_{LES} &=C_{DES}\bigtriangleup. \nonumber
+  \label{eq:ddes_lscale}
+\end{align}
 %
 In the above, $l_{RANS}$ and $l_{LES}$ are the length scales of the RANS and LES
 branches respectively and $\bigtriangleup = f_d \,V^{1/3}+(1-f_d ) \,h_{max}$,
@@ -112,34 +100,64 @@ the distance between the cell and the nearest wall, and $U_{i,j}=\partial_j
 U_i$ is the velocity gradient.  In the RANS branch, the transport equation for
 k and $\omega$ are written as
 %
-\begin{align*}  
-  \frac{Dk}{Dt} & = 2\nu_T |S|^2-C_\mu k\omega+\partial{_j [(\nu+\sigma_k \nu_T ) \partial{_j k}]},\\
+\begin{align}  
+  \frac{Dk}{Dt} & = 2\nu_T |S|^2-C_\mu k\omega+\partial{_j [(\nu+\sigma_k \nu_T ) \partial{_j k}]}, \nonumber \\
   \frac{D\omega}{Dt} & = 2C_{\omega1} |S|^2-C_{\omega2} \omega^2 
                     +\partial{_j [(\nu+\sigma_\omega \nu_T )\partial{_j \omega}]},\\
-    &~~~~~~~\rm{where}~\nu_T=k^2/\omega.   
-\end{align*}  
+    &~~~~~~~\rm{where}~\nu_T=k^2/\omega. \nonumber
+    \label{eq:transportEqs}
+\end{align}  
 %
-In the LES region ($f_d=1,l_{DDES}=C_{DES} \, \bigtriangleup$), the eddy viscosity
-switches to $\nu_T=l_{DDES}^2\,\omega=(C_{DES}\bigtriangleup)^2\omega$, which is
-similar to the eddy viscosity in the Smagorinsky model, $\nu_s=(C_s
-\bigtriangleup)^2 |S|$.
+In the LES region ($f_d=1,l_{DDES}=C_{DES} \, \bigtriangleup$), the eddy
+viscosity switches to
+$\nu_T=l_{DDES}^2\,\omega=(C_{DES}\bigtriangleup)^2\omega$, which is similar to
+the eddy viscosity in the Smagorinsky model, $\nu_s=(C_s \bigtriangleup)^2
+|S|$.
 
 The LES branch of this $k-\omega$ DDES model uses a dynamic procedure which
 defines the value of $C_{DES}$ as
 %
-\begin{align*}  
-  C_{DES}   & =  \max( C_{lm},~C_{dyn} ), \\
-  C_{dyn}^2 & = \max \left( 0,\; 0.5 \frac{L_{i,j} M_{i,j}}{M_{i,j} M_{i,j}}\right),\\
+\begin{align}
+  C_{DES}   & =  \max( C_{lm},~C_{dyn} ), \nonumber \\
+  C_{dyn}^2 & = \max \left( 0,\; 0.5 \frac{L_{i,j} M_{i,j}}{M_{i,j} M_{i,j}}\right), \nonumber \\
   C_{lim}   &=C_{DES}^0 \left[1-\tanh \left(\alpha \exp \left(\frac{-\beta \, h_{max}}{L_k}\right)\right)\right],\\
-  C_{DES}^0 &=0.12, \quad   L_k=\left(\frac{\nu^3}{\epsilon}\right)^{\frac{1}{4}},  \quad  \alpha=25,  \quad  \beta=0.05,\\
-  \epsilon  &= 2 \left(C_{DES}^0 h_{max} \right)^2 \omega\,|S|^2+C_\mu k\,\omega.
-\end{align*}  
+  C_{DES}^0 &=0.12, \quad   L_k=\left(\frac{\nu^3}{\epsilon}\right)^{\frac{1}{4}},  \quad  \alpha=25,  \quad  \beta=0.05, \nonumber \\
+  \epsilon  &= 2 \left(C_{DES}^0 h_{max} \right)^2 \omega\,|S|^2+C_\mu k\,\omega. \nonumber
+\end{align}  
 %
-For further details about the DES model, the reader is referred to~\cite{yin2015dynamic}.
+For further details about the DES model, the reader is referred
+to~\cite{yin2015dynamic}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Solid Body Dynamics and Coupling}
+\label{sec:coupling}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Simulations of VIV are using pimpleDyMFoam solver using the {\em
+sixDoFRigidBodyMotion} feature of OpenFOAM. For each timestep, pimpleDyMFoam
+solver calculates the motion and updates the displacement of the cylinder by
+the following equation using Crank-Nicolson method.
+%
+\begin{equation}
+  m\ddot{y} + c\dot{y} + ky = F_{fluid},
+  \label{eq:solidBodyDynamics}
+\end{equation}
+%
+where $m$ is the mass of the rigid body, $\ddot{y}$, $\dot{y}$, and $y$ are the
+instantaneous acceleration, velocity and displacement of the cylinder,
+respectively, $c$ is spring damping, $k$ is the spring stiffness and
+$F_{fluid}$ is the fluid force acting on the cylinder surface.
+
+In order to maintain the quality of the meshes inside the boundary layer in
+dynamic simulations, the mesh around the cylinder (up to 1 diameter from the
+cylinder axis) moves with the cylinder as a solid-body motion. Other parts of
+the mesh are deformed based on the new displacement of the cylinder. Then the
+solver updates the flux according to the motion and uses the PIMPLE method to
+solve the incompressible Navier-Stokes equations.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Computational Grids}
+\subsection{Computational Grid}
 \label{sec:grids}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
