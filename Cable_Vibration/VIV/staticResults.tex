@@ -3,22 +3,19 @@
 \label{sec:comp_results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-The objective of this paper is to demonstrate the capability of detached eddy
-simulations to predict aerodynamic loads on a static cylinder and an
-elastically-mounted cylinder.  Verification with existing experimental data in
-the literature, and data from new experiments conducted as a part of this
-study, are presented for both the static cylinder and the elastically-mounted
-cylinder. Smooth inflow is used -- zero turbulence in the numerical simulations
-and the minimum possible inflow turbulence intensity ($\sim$0.2\%) in the
-tunnel. Cylinder surface is very smooth and hence surface roughness is not
-modeled in the simulations.
+The objective of this paper is to demonstrate the capability of DES to predict
+aerodynamic loads on a static cylinder and an elastically-mounted cylinder.
+This section discusses the results of the simulations of flow over a stationary
+cylinder. 
 
-Static testing is performed for (1) flow normal to the cylinder axis, and (2)
-flow at an angle to the cylinder axis (inclined cylinder); three inclination
-angles are analyzed in this study. These cases are simulated at Reynolds number
-$Re_D=20,000$ which is corresponding to laminar separation (LS), where flows
-are laminar before separation and transition to turbulence occurs in the shear
-layer.
+Simulations are performed for (1) flow normal to the cylinder axis, and (2)
+flow at an angle to the cylinder axis (inclined/yawwed cylinder); three yaw
+angles ($\beta$) are analyzed in this study. Smooth inflow is used -- zero
+turbulence in the numerical simulations and the minimum possible inflow
+turbulence intensity ($\sim$0.2\%) in the tunnel. Cylinder surface is very
+smooth and hence surface roughness is not modeled in the simulations.
+Verification with existing experimental data in the literature, as well as data
+from new experiments conducted as a part of this study, are presented. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Normally-Incident Flow}
@@ -26,7 +23,7 @@ layer.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Table~\ref{tab:comparisonRe20k} summarizes the simulation results for the
-static case and compares them with two sets of experimental data. The peak
+static cases and compares them with two sets of experimental data. The peak
 shedding Strouhal number ($St_p$), the mean drag coefficient, $\overline{C}_d$
 and the mean back pressure coefficient, $\overline{C}_{pb}$ are compared in the
 table. Strouhal number is a non-dimensional frequency, defined here as $St =
@@ -50,7 +47,7 @@ over the cylinder surface agrees well with the measurements.
   \caption{Summary of results for normally-incident flow simulations} 
   \label{tab:comparisonRe20k} 
   \begin{center}
-  \begin{tabular}{c|c|c|c|c|c}
+  \begin{tabular}{c|c|c|c|c}
       $\boldsymbol{Re_D}$ & \textbf{Method} & $\boldsymbol{St_p}$ & $\boldsymbol{\overline{C}_d}$ & $\boldsymbol{\overline{C}_{pb}}$ \\ \hline
       \hline
       20,000 & $k-\omega$ DDES & 0.21 & 1.13 & -1.16 \\ \hline
@@ -93,9 +90,9 @@ Figure~\ref{fig:force_20k} presents predicted temporal variation of sectional
 lift and drag coefficients ($C_l$ and $C_d$). As expected for a circular
 cylinder, the mean lift coefficient ($\overline{C}_l$) is zero but the mean
 drag coefficient ($\overline{C}_d$) is finite. The high-frequency oscillations,
-more apparent in $C_l$ time history are due to Karman vortex shedding, which
-occurs at $St=fd/U \sim 0.2$ for bluff bodies in the range of $Re_D$ considered
-here. In addition to the oscillations at the Karman vortex shedding frequency,
+more apparent in $C_l$ time history are due to K\'arm\'an vortex shedding, which
+occurs at $St=fD/U \sim 0.2$ for bluff bodies in the range of $Re_D$ considered
+here. In addition to the oscillations at the K\'arm\'an vortex shedding frequency,
 the entire signal appears to modulate at a frequency which is an order of
 magnitude lower than that corresponding to $St=0.2$. This modulation has a
 certain randomness to it and is not perfectly periodic. This modulation
@@ -111,7 +108,7 @@ Figure~\ref{fig:St_Compared_Re20k} (a) compares the power spectral densities of
 lift coefficient ($C_l$) between data from Exp-ISU and the simulation. 
 The lift in the measurements is obtained by integrating the surface
 pressure measured using the pressure taps. Figure~\ref{fig:St_Compared_Re20k} (b)
-presents the DES computed spectra of $C_d$.  Because vortex shedding alternates
+presents the DES computed spectra of $C_d$. Because vortex shedding alternates
 between the top and bottom sides of the cylinder, one vortex shedding period contains two cycles
 of drag but only one cycle of lift. This can be seen in
 Figure~\ref{fig:St_Compared_Re20k}, where the spectral peak for $C_l$ occurs at
@@ -151,7 +148,7 @@ magnitude is slightly higher than the measured data.
 \label{sec:inclined_cylinder}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-Figure~\ref{fig:yawedModel} is a schematic that illustrates the setup for the
+The schematic in Fig.~\ref{fig:yawedModel} illustrates the setup for the
 inclined-cylinder simulations. The relative inclination of the cylinder axis
 with respect to the flow is obtained by yawing the flow rather than inclining
 the cylinder; these simulations are therefore also referred to as yawed flow
@@ -178,11 +175,11 @@ $\beta=15,\,30,\,\&\,45$ degrees are investigated in these simulations.
 
 Table~\ref{tab:comparisonYawedRe20k} summarizes the peak Strouhal number
 ($St_p$) and the back pressure coefficient ($C_{pb}$) for four different flow
-yaw angles, $\beta=0,15,30,\,\&\,45$ degrees. 
-The component of the freestream velocity normal to the cylinder axis is used as the reference
-velocity scale to define a new set of non-dimensional quantities, such as
-Reynolds number, $Re_{D,n} = \rho V_n D / \mu$, Strouhal number, $St_{p,n}=f\,D
-/V_n$, and aerodynamic pressure coefficient, $\overline{C}_{p,n}=2
+yaw angles, $\beta=0,15,30,\,\&\,45$ degrees. The component of the freestream
+velocity normal to the cylinder axis is used as the reference velocity scale to
+define a new set of non-dimensional quantities, such as Reynolds number,
+$Re_{D,n} = \rho V_n D / \mu$, Strouhal number, $St_{p,n}=f\,D /V_n$, and
+aerodynamic pressure coefficient, $\overline{C}_{p,n}=2
 (\overline{p}-p_\infty)/(\rho V_n^2)$. The peak shedding Strouhal number and
 the mean back pressure coefficient normalized in this manner are labeled
 respectively as $St_{p,n}$ and $\overline{C}_{pb,n}$. The measured value of

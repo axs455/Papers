@@ -153,7 +153,7 @@ updates the fluxes according to the motion and uses the PIMPLE method to solve
 the incompressible Navier-Stokes equations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Computational Grid}
+\subsection{Computational Grid and Mesh Sensitivity Study}
 \label{sec:grids}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -167,10 +167,9 @@ used to resolve the flow around the cylinder, (2) an H-grid to resolve the
 wake, and (3) a C-grid for the far field. In order to accurately capture the
 aerodynamic forces on the cylinder, the flow around the cylinder and in the
 near-wake region has to be resolved with high precision. A fine mesh is
-therefore applied in these regions.  Figure~\ref{fig:Mesh} shows a
+therefore applied in these regions. Figure~\ref{fig:Mesh} shows a
 cross-sectional view of the full computational domain as well as a zoom-view to
-highlight the grid topology. Results of a mesh sensitivity study are presented
-in Section~\ref{sec:mesh_sensitivity}.
+highlight the grid topology.
 %
 \begin{figure}[htb!]
   \centering
@@ -183,41 +182,41 @@ in Section~\ref{sec:mesh_sensitivity}.
   \label{fig:Mesh}
 \end{figure}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Mesh Sensitivity Study}
-\label{sec:mesh_sensitivity}
+%\subsection{Mesh Sensitivity Study}
+%\label{sec:mesh_sensitivity}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-A mesh sensitivity study is performed for normally-incident flow at
-$Re_D=20,000$. Table~\ref{tab:meshSize} provides a summary of the different
-cases simulated for this study. Three different meshes, labeled `Mesh 1',
-`Mesh 2', and `Mesh 3' are shown in the table. The computational domain is
-$25\times D$ in the radial direction and $10\times D$ in the span direction.
+A mesh sensitivity study is performed for normally-incident flow.
+Table~\ref{tab:meshSize} provides a summary of the different cases simulated
+for this study. Three different meshes, labeled `Mesh 1', `Mesh 2', and `Mesh
+3' are shown in the table. The computational domain is $25\times D$ in the
+radial direction and $10\times D$ in the span direction.
 %
 \begin{table}[htb!]
-  \caption{Summary of the test cases simulated to investigate sensitivity of results to mesh size} 
+  \caption{Summary of the test cases simulated to investigate sensitivity of
+    results to mesh size {\color{red} add average $y^+$ values and some results
+    here like back pressure, rms $C_p$, etc. same as in Table 2}} 
   \label{tab:meshSize} 
   \begin{center}
-  \begin{tabular}{c|c|c|c}
-    $\boldsymbol{Re_D}$ & \textbf{Mesh name} &  \textbf{Cell count}$\boldsymbol{(\theta,r,z)}$ \\ \hline
-    \hline
-    20,000  & Mesh 1 & 157, 233, 65\\ \hline
-    20,000  & Mesh 2 & 236, 343, 100\\ \hline
-    20,000  & Mesh 3 & 354, 507, 150\\ \hline \hline
-    \hline
-  \end{tabular}
+    \begin{tabular}{c|c}
+      \textbf{Mesh name} &  \textbf{Cell count}$\boldsymbol{(\theta,r,z)}$ \\ \hline
+      \hline
+      Mesh 1 & 157, 233, 65\\ \hline
+      Mesh 2 & 236, 343, 100\\ \hline
+      Mesh 3 & 354, 507, 150\\ 
+      \hline \hline
+    \end{tabular}
   \end{center}
-\end {table}
+\end{table}
 
 Figure~\ref{fig:Cp_compare_LS_Mesh} compares the mean aerodynamic pressure
 coefficient, $\overline{C}_p=2 (\overline{p}-p_\infty)/(\rho V_\infty^2)$
 obtained using simulations with different grids, and experimental data.
 Experiment I refers to data from~\cite{norberg2013pressure} and Exp-ISU is from
-our measurements. Simulations are simulated at `cylinder diameter based'
-Reynolds number, $Re_D=20,000$, which is the same as Experiment I, but the
-$Re_D$ in Exp-ISU is higher ($Re_D=51,500$) due to the limitation of the wind
-tunnel and measurement equipment.
+our measurements. Simulations are performed at $Re_D=20,000$, which is the same
+as Experiment I, but the $Re_D$ in Exp-ISU is higher ($=51,500$) due to the
+limitation of the wind tunnel and measurement equipment.
 
 Consistent with the results of~\cite{travin2000detached}
 and~\cite{breuer2000challenging}, the simulation results are found to be
