@@ -1,8 +1,13 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{32}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Al-Jamal and Dalton(2004)}]{al2004vortex}
+Al-Jamal, H., Dalton, C., 2004. Vortex induced vibrations using large eddy
+  simulation at a moderate reynolds number. Journal of fluids and structures
+  19~(1), 73--92.
 
 \bibitem[{Bearman(1984)}]{bearman1984vortex}
 Bearman, P.~W., 1984. Vortex shedding from oscillating bluff bodies. Annual
@@ -18,6 +23,10 @@ Breuer, M., 2000. A challenging test case for large eddy simulation: high
   reynolds number circular cylinder flow. International Journal of Heat and
   Fluid Flow 21~(5), 648--654.
 
+\bibitem[{Brika and Laneville(1993)}]{brika1993vortex}
+Brika, D., Laneville, A., 1993. Vortex-induced vibrations of a long flexible
+  circular cylinder. Journal of Fluid Mechanics 250, 481--508.
+
 \bibitem[{Catalano et~al.(2003)Catalano, Wang, Iaccarino, and
   Moin}]{catalano2003numerical}
 Catalano, P., Wang, M., Iaccarino, G., Moin, P., 2003. Numerical simulation of
@@ -29,13 +38,27 @@ Davenport, A., 1995. The dynamics of cables in wind. In: Proceedings of
   Symposium on Cable Dynamics.
 
 \bibitem[{Dong and Karniadakis(2005)}]{dong2005dns}
-Dong, S., Karniadakis, G.~E., 2005. {DNS} of flow past a stationary and
-  oscillating cylinder at. Journal of Fluids and Structures 20~(4), 519--531.
+Dong, S., Karniadakis, G.~E., 2005. Dns of flow past a stationary and
+  oscillating cylinder at re= 10000. Journal of fluids and structures 20~(4),
+  519--531.
+
+\bibitem[{Evangelinos et~al.(2000)Evangelinos, Lucor, and
+  Karniadakis}]{evangelinos2000dns}
+Evangelinos, C., Lucor, D., Karniadakis, G., 2000. Dns-derived force
+  distribution on flexible cylinders subject to vortex-induced vibration.
+  Journal of fluids and structures 14~(3), 429--440.
 
 \bibitem[{Feng(1968)}]{feng1968measurement}
 Feng, C., 1968. The measurement of vortex induced effects in flow past
   stationary and oscillating circular and d-section cylinders. Ph.D. thesis,
   University of British Columbia.
+
+\bibitem[{Franzini et~al.(2009)Franzini, Fujarra, Meneghini, Korkischko, and
+  Franciss}]{franzini2009experimental}
+Franzini, G., Fujarra, A. L.~C., Meneghini, J.~R., Korkischko, I., Franciss,
+  R., 2009. Experimental investigation of vortex-induced vibration on rigid,
+  smooth and inclined cylinders. Journal of Fluids and Structures 25~(4),
+  742--750.
 
 \bibitem[{Franzini et~al.(2013)Franzini, Gon{\c{c}}alves, Meneghini, and
   Fujarra}]{franzini2013one}
@@ -43,10 +66,10 @@ Franzini, G.~R., Gon{\c{c}}alves, R.~T., Meneghini, J.~R., Fujarra, A. L.~C.,
   2013. One and two degrees-of-freedom vortex-induced vibration experiments
   with yawed cylinders. Journal of fluids and structures 42, 401--420.
 
-\bibitem[{Govardhan and Williamson(2000)}]{govardhan2000modes}
-Govardhan, R., Williamson, C., 2000. Modes of vortex formation and frequency
-  response of a freely vibrating cylinder. Journal of Fluid Mechanics 420,
-  85--130.
+\bibitem[{Guilmineau and Queutey(2004)}]{guilmineau2004numerical}
+Guilmineau, E., Queutey, P., 2004. Numerical simulation of vortex-induced
+  vibration of a circular cylinder with low mass-damping in a turbulent flow.
+  Journal of fluids and structures 19~(4), 449--466.
 
 \bibitem[{Jain and Modarres-Sadeghi(2013)}]{jain2013vortex}
 Jain, A., Modarres-Sadeghi, Y., 2013. Vortex-induced vibrations of a
@@ -61,6 +84,11 @@ Khalak, A., Williamson, C., 1997. Fluid forces and dynamics of a hydroelastic
 \bibitem[{Kravchenko and Moin(2000)}]{kravchenko2000numerical}
 Kravchenko, A.~G., Moin, P., 2000. Numerical studies of flow over a circular
   cylinder at re d= 3900. Physics of fluids 12~(2), 403--417.
+
+\bibitem[{Lucor et~al.(2005)Lucor, Foo, and Karniadakis}]{lucor2005vortex}
+Lucor, D., Foo, J., Karniadakis, G., 2005. Vortex mode selection of a rigid
+  cylinder subject to viv at low mass-damping. Journal of Fluids and Structures
+  20~(4), 483--503.
 
 \bibitem[{Norberg(2013)}]{norberg2013pressure}
 Norberg, C., 2013. Pressure forces on a circular cylinder in cross flow. In:
@@ -92,6 +120,11 @@ Travin, A., Shur, M., Strelets, M., Spalart, P., 2000. Detached-eddy
 \bibitem[{Williamson and Govardhan(2004)}]{williamson2004vortex}
 Williamson, C., Govardhan, R., 2004. Vortex-induced vibrations. Annu. Rev.
   Fluid Mech. 36, 413--455.
+
+\bibitem[{Xu et~al.(2008)Xu, Zeng, and Wu}]{xu2008high}
+Xu, W.-H., Zeng, X.-H., Wu, Y.-X., 2008. High aspect ratio (l/d) riser viv
+  prediction using wake oscillator model. Ocean Engineering 35~(17-18),
+  1769--1774.
 
 \bibitem[{Yeo et~al.(2007)Yeo, Jones, and Meneveau}]{yeo2007characteristics}
 Yeo, D., Jones, N., Meneveau, C., 2007. Characteristics of aerodynamic forces

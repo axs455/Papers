@@ -7,6 +7,10 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{bm}
+\usepackage{hyperref}
+\hypersetup{pdftex,colorlinks=true,allcolors=blue}
+\usepackage{hypcap}
+
 \linespread{1.5} %line spacing
 
 \newcommand{\incfig}{\centering\includegraphics}
@@ -50,14 +54,14 @@ Circular Cylinders in Normal and Yawed Flow}
 A computational approach based on a $k-\omega$ delayed detached eddy simulation
 model for predicting aerodynamic loads on a smooth circular cylinder is
 verified against experiments. Comparisons with experiments are performed for
-flow over a stationary cylinder and for an elastically-mounted rigid cylinder
-oscillating in the transverse direction due to flow-induced forces
-(vortex-induced vibration or VIV). For the static cases, measurement data from
-the literature is used to validate the predictions for normally-incident flow.
-New experiments are conducted as a part of this study for yawed flow, where the
-cylinder axis is inclined with respect to the inflow velocity at the desired
-yaw angle, $\beta=30^\circ$. Good agreement is observed between the predictions
-and measurements for mean and rms surface pressure and wake velocity deficit.
+flow over a rigidly-mounted (static) cylinder and for an elastically-mounted
+rigid cylinder oscillating in the transverse direction due to vortex-induced
+vibration (VIV). For the static cases, measurement data from the literature is
+used to validate the predictions for normally-incident flow.  New experiments
+are conducted as a part of this study for yawed flow, where the cylinder axis
+is inclined with respect to the inflow velocity at the desired yaw angle,
+$\beta=30^\circ$. Good agreement is observed between the predictions and
+measurements for mean and rms surface pressure and wake velocity deficit.
 However the lift spectrum prediction shows a slight offset in frequency from
 the measurements. Three yawed flow cases ($\beta=15^\circ, 30^\circ, \,\&\,
 45^\circ$) are simulated and the results are found to be independent of $\beta$
@@ -89,7 +93,9 @@ frequency is close to the natural frequency of the system.
 \input{introduction.tex}
 \input{methodology.tex}
 \input{experiment.tex}
-\input{results.tex}
+%\input{results.tex}
+\input{staticResults.tex}
+\input{viv.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}

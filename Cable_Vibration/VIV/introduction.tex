@@ -19,7 +19,7 @@ serviceability of these systems.
 Wind induced vibration can be classified into the following categories:
 K\'arm\'an vortex-induced vibration (VIV), rain-wind induced vibration (RWIV),
 wake-induced vibration, and dry- or iced-cable galloping. While VIV and RWIV
-occur at relatively low wind speeds ($<20$ m/s), wake-induced vibration and or
+occur at relatively low wind speeds ($<20$ m/s), wake-induced vibration and
 dry-cable galloping occur at higher speeds. Simulation of any of these
 aeroelastic phenomena requires accurate computation of the aerodynamic loads
 acting on the cable.  This paper presents a comprehensive verification of a
@@ -27,38 +27,38 @@ high-fidelity flow simulation technique (detached eddy simulations or DES) for
 flow over rigidly and elastically-mounted rigid circular cylinders in normal
 and yawed flow. Yaw angle ($\beta$) is defined as the angle between the
 cylinder axis and a vector orthogonal to the flow velocity vector in the plane
-of the cylinder axis.  Yawed flow is considered because RWIV and dry-cable
-galloping occur only when $\beta \ne 0$. The diameter-based Reynolds number in
-the simulations is $Re_D=2\times 10^4$. At this $Re_D$, the boundary layer is
-laminar when separation occurs and transition to turbulence takes place in the
-free shear layer. The results of this paper are presented in two parts - the
-first part deals with rigidly-mounted (static) cylinders and the second part
-addresses elastically-mounted cylinders.
+of the cylinder axis. Yawed flow is considered because RWIV and dry-cable
+galloping occur only when $\beta$ is non-zero. The diameter-based Reynolds
+number ($Re_D$) in the simulations is $2\times 10^4$. At this $Re_D$, the
+boundary layer is laminar when it separates and transitions to turbulence in
+the free shear layer. The results of this paper are presented in two parts -
+the first part deals with rigidly-mounted (static) cylinders and the second
+part addresses elastically-mounted cylinders.
 
 In the first part of the paper, simulations of flow over a static cylinder are
 verified with measurements from the literature as well as new experiments that
-are performed for $\beta=0^\circ$ and $30^\circ$ as a part of this study;
+are performed for $\beta=0^\circ$ and $30^\circ$ as a part of this study.
+Comparisons between the simulations and the measurements include mean and rms
+of surface pressure, mean wake velocity profile, and power spectra of lift and
+drag. The agreement with the measured data ranges from very good to acceptable.
 Simulations are performed for four values of $\beta$
-($=0^\circ,~15^\circ,~30^\circ,$ and $45^\circ$) to investigate the effect of
-yaw and to examine the validity of the {\em independence principle} (IP) which
-states that the aerodynamic loads scaled using the velocity component normal to
-the cylinder axis are independent of $\beta$ (\citet{zdravkovich2003flow}).
-Prior research (see e.g., \citet{franzini2009experimental} and
-\citet{zhao2009direct}) has suggested the validity of IP for $\beta$ up to
-$45^\circ$. Comparisons between the simulations and measurements include mean
-and rms of surface pressure, mean wake velocity profile, and power spectra of
-lift and drag. The agreement with the measured data ranges from very good to
-acceptable. The results of yawed flow simulations confirm the validity of IP
-for the static configurations analyzed.
+($=0^\circ,~15^\circ,~30^\circ,$ and $45^\circ$) and the validity of the {\em
+independence principle} (IP). According to IP, the aerodynamic loads scaled
+using the velocity component normal to the cylinder axis are independent of
+$\beta$ (\citet{zdravkovich2003flow}). Prior research (see e.g.,
+\citet{franzini2009experimental} and \citet{zhao2009direct}) has suggested the
+validity of IP for $\beta$ up to $45^\circ$. The results of yawed flow
+simulations confirm the validity of IP for the static configurations analyzed.
 
-Vortex-induced vibrations are self-excited oscillations that occur due to the
-unsteady lift generated on a cylinder as a result of the vortex shedding in its
-wake. VIV is a very common occurrence in many engineering applications, e.g.,
-offshore structures, transmission lines, stacks, and bridges. Of particular
-interest is the phenomenon of ``lock-in'' or ``synchronization'' which occurs
-when the vortex-shedding frequency gets locked in with the natural frequency of
-the system. High but finite-amplitude (limit-cycle) oscillations are observed
-in this resonance condition due to nonlinearity in the system. These
+The second part of the paper deals with vortex-induced vibrations (VIV).  VIV
+are self-excited oscillations that occur due to the unsteady lift generated on
+a cylinder as a result of the vortex shedding in its wake. VIV is a very common
+occurrence in many engineering structures, e.g., transmission lines, stacks,
+bridges, and offshore platform supports. Of particular interest is the
+phenomenon of ``lock-in'' or ``synchronization'' which occurs when the
+vortex-shedding frequency gets locked in with the natural frequency of the
+system. High but finite-amplitude (limit-cycle) oscillations are observed in
+this resonance condition due to non-linearity in the system. These
 high-amplitude oscillations can cause significant damage to the structure. VIV
 has been investigated extensively in the past few decades due to its practical
 significance. \cite{bearman1984vortex},~\cite{sarpkaya2004critical} and
@@ -67,8 +67,8 @@ topic.
 
 Investigations of VIV over the past several decades, have resulted in an
 improved understanding of the phenomenon. Until recently, most of these
-investigations considered relatively high mass and damping systems. In the last
-two decades, VIV of low mass and damping systems has garnered considerable
+investigations considered relatively high mass-damping systems. In the last
+two decades, VIV of low mass-damping systems has garnered considerable
 interest due to the applicability of the phenomenon in marine engineering and
 offshore wind turbines (mooring lines). Such low mass-damping systems have been
 largely investigated using experiments (e.g., \citet{jain2013vortex} and
@@ -79,33 +79,31 @@ Experiments of VIV in low mass-damping systems have been typically conducted in
 water channels with partially or fully-submerged cylinders. Such setup can
 suffer from finite-span effects due to different end conditions on the two ends
 -- wall on one side and free surface on the other. These effects are distinctly
-observable in yawed flow measurements where the results are found to be
-dependent on the direction with respect to the flow the cylinder is yawed
-(i.e., $\beta=45^\circ$ versus $-45^\circ$). Simulations do not suffer from end
-effects as periodic boundary conditions enable simulating an infinitely long
-cylinder. 
+observable in yawed flow measurements (see e.g.,~\citet{franzini2013one}) where
+the results are found to be dependent on the direction with respect to the flow
+the cylinder is yawed (i.e., $\beta=45^\circ$ versus $-45^\circ$). Simulations
+do not suffer from end effects as periodic boundary conditions enable
+simulating an infinitely long cylinder. 
 
 Numerical computations of VIV of low mass-damping systems have been performed
 using the Reynolds Averaged Navier-Stokes (RANS) equations (e.g.,
 \citet{guilmineau2004numerical}), large eddy simulations or LES (e.g.,
 \citet{al2004vortex}), and direct numerical simulations or DNS (e.g.,
 \citet{lucor2005vortex}, \citet{evangelinos2000dns}, and \citet{dong2005dns}).
-While the DNS approch is attractive from the perspective of resolving the
-entire turbulence spectrum, it is only feasible for very low Reynolds number
-($Re$) due to the associated computation cost. Large Eddy Simulation (LES) is
-more feasible at moderate $Re$ while Detached Eddy Simulations (DES) can be
-used over a very large range of $Re$ without making the computations
-prohibitively expensive. 
+While the DNS approach is attractive from the perspective of resolving the
+entire turbulence spectrum, it is only feasible for very low $Re_D$ flows due
+to the associated computation cost. Large Eddy Simulation (LES) is more
+feasible at moderate $Re_D$ while Detached Eddy Simulations (DES) can be used
+over a very large range of $Re_D$ without making the computations prohibitively
+expensive. The DES approach is used here.
 
-In the second part of this paper, the phenomenon of VIV is investigated with
-elastically-mounted cylinder simulations and the results are verified against
-measured data available in the literature. The VIV simulations are also
-performed at multiple values of $\beta$ ($=0^\circ$ and $45^\circ$) to
-investigate the validity of the independence principle for VIV of low
-mass-damping systems.
-
-With the detailed comparisons with measurements for rigid and
-elastically-mounted oscillating cylinder presented here, this paper can serve
-asa benchmark for the accurancy of the DES technique in predicting aerodynamic
-loads on cables in static condition and in dynamic motion.
+The phenomenon of VIV is investigated with elastically-mounted cylinder
+simulations and the results are verified against measured data available in the
+literature. The VIV simulations are also performed at multiple values of
+$\beta$ ($=0^\circ$ and $45^\circ$) to investigate the validity of the
+independence principle for VIV of low mass-damping systems. With the detailed
+comparisons against measurements for rigidly-mounted and elastically-mounted
+oscillating cylinder presented here, this paper can serve as a benchmark for
+the accuracy of the DES technique in predicting aerodynamic loads on cables in
+static condition and in dynamic motion.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

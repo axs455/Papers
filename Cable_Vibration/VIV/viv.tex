@@ -1,19 +1,17 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Vortex-Induced Vibration (VIV)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vortex-Induced Vibration (VIV)}
 \label{sec:VIV}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 A schematic of the computational setup for the vortex-induced vibration (VIV)
 simulations is presented in Figure~\ref{fig:VIVmodel}. The setup is the same as
 for the static simulations except for an additional forced mass-spring-damper
-system. The cylinder is allowed to move only in the $y$ (cross-stream)
-direction. The $y$ component of the integrated aerodynamic surface force on the
-cylinder (denoted by $F_y$) drives the mass-spring-damper system given by
-%
-\begin{equation}
-  m \frac{{\rm d}^2 y}{{\rm d}t^2} + c \frac{{\rm d} y}{{\rm d}t} + k y = F_y(t).
-  \label{eq:mass-spring-damper}
-\end{equation}
+system. The cylinder is constrained to move only in the cross-stream ($y$)
+direction. The $y$-component of the integrated aerodynamic surface force on the
+cylinder drives the mass-spring-damper system given by
+Eq.~\ref{eq:solidBodyDynamics}. Simulations are performed for eight inflow
+reduced velocities and two values of yaw angle, $\beta$ ($=0^\circ$ and
+$45^\circ$).
  
 In the simulations the mass ratio $m^*=m/(\rho {\cal V})=2.6$, where $m$ is the
 mass of the cylinder, ${\cal V}=\pi (D^2/4) . S$ is the volume of the cylinder,
@@ -28,12 +26,10 @@ dataset reported in~\cite{khalak1997fluid}, which is referred as Exp III here.
 The mass ratio and damping ratio used in Exp III are slightly different
 ($m^*=2.4$ and $\zeta=0.0045$) from Exp II and the simulations. It should be
 noted that the measurement results have end effects due to the finite length of
-the cylinder. {\color{red} The experiments were conducted in water channels
-\ldots check aspect ratio and differences between Exp II and III} The
-simulations use periodic boundary conditions in the span direction, which
-theoretically simulates an infinite span. However, span-periodicity can induce
-artificial effects if the spanwise coherence is greater than the simulated
-span.
+the cylinder. The simulations use periodic boundary conditions in the span
+direction, which theoretically simulates an infinite span. However,
+span-periodicity can induce artificial effects if the spanwise coherence is
+greater than the simulated span.
 %
 \begin{figure}[htb!]
   \incfig[width=.6\textwidth]{Figures/VIV_setup.jpg}
@@ -48,7 +44,7 @@ Figure~\ref{fig:VIV_amp} compares the predicted non-dimensional mean
 displacement amplitude ($\bar{A}/D$) with the measurements of Exp II and III
 over a wide range of reduced velocity, $V_{R,n} = V_n/(f_N\,D)$, where $f_N$ is
 the natural frequency of the system. The subscript $n$ refers to the component
-of the vector normal to the cylinder axis to accommmodate for yawed flow. Two
+of the vector normal to the cylinder axis to accommodate for yawed flow. Two
 different yaw angle flows are evaluated -- $\beta=0^\circ$ and $45^\circ$ --
 both at $Re_{D,n}=20,000$.
 
@@ -102,13 +98,13 @@ any data at higher $V_{R,n}$ to test the prediction accuracy in the {\em
 desynchronization} branch.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Indepedence Principle in VIV}
+\subsection{Independence Principle in VIV}
 \label{sec:IPinVIV}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 This section investigates the validity of the {\em independence principle} on
 the oscillating frequency, amplitude and force coefficients of an
-elastically-mounted cylinder udergoing VIV. Prior experiments (e.g.,
+elastically-mounted cylinder undergoing VIV. Prior experiments (e.g.,
 ~\citet{jain2013vortex} and \citet{franzini2013one}) have investigated IP.
 \citet{zhao2015validity} also investigated IP at Reynolds numbers ($Re_D$=150
 and $1,000$) using DNS. Much higher $Re_D$ is considered here and the

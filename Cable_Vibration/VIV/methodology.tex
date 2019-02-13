@@ -16,24 +16,18 @@ for separated (detached) flow away from the surfaces. DES allows computation of
 high Reynolds number flows relatively inexpensively by removing the constraint
 in LES to have very fine grids near solid boundaries.
 
-Flow over slender structures with circular cross-section has been studied using
-unsteady RANS~\citep{pontaza2009three},
-DES~\citep{travin2000detached,yeo2012aerodynamic},
+Flow over stationary slender structures with circular cross-section has been
+studied using unsteady RANS~\citep{pontaza2009three},
+DES~\citep{travin2000detached,yeo2011computational,yeo2012aerodynamic},
 LES~\citep{breuer1998large,kravchenko2000numerical,catalano2003numerical}, and
-DNS~\citep{dong2005dns,zhao2009direct} approaches. Latest numerical efforts in
-simulating aerodynamics of cable vibration have utilized
-DES~\citep{yeo2007characteristics,yeo2008investigation,yeo2012aerodynamic,yeo2011computational}
-as the primary numerical approach. Detailed flow simulations have been
-performed with a single, stationary, yawed cylinder in uniform
-inflow~\citep{yeo2007characteristics,yeo2008investigation} and oscillating
-inflow~\citep{yeo2012aerodynamic}. It has been concluded
-by~\cite{yeo2012aerodynamic} that oblique wind-induced aerodynamic forces play
-an important role in initiating and increasing the vibration at low
-frequencies. DES has also been used to investigate the use of strakes in cables
-for aerodynamic mitigation of wind-induced oscillations
-by~\cite{yeo2011computational}. In essence, high-fidelity simulations have been
-instrumental in gaining insights into the problem of flow-induced cylinder
-vibration.
+DNS~\citep{dong2005dns,zhao2009direct} approaches. Detailed flow simulations
+have been performed using DES for a single, stationary, yawed cylinder in
+uniform inflow~\citep{yeo2007characteristics,yeo2008investigation} and
+oscillating inflow~\citep{yeo2012aerodynamic}.  DES has also been used to
+investigate the use of strakes in cables for aerodynamic mitigation of
+wind-induced oscillations by~\cite{yeo2011computational}. In essence,
+high-fidelity simulations have been instrumental in gaining insights into the
+problem of flow-induced cylinder vibration.
 
 In LES and DES, the equations are spatially filtered (low-pass) and the
 numerical procedure solves for the filtered quantities that can be resolved by
@@ -63,10 +57,11 @@ tensor in the corresponding LES. In the original DES formulation
 were used. We use the method developed by~\cite{yin2015dynamic}, which
 introduces a dynamic procedure to improve the DES capability by correcting for
 modeled stress depletion and log-layer mismatch. This model has been
-implemented in the open source CFD software OpenFOAM. All the simulations in
-this paper are obtained using OpenFOAM. The numerical scheme uses second order
-backward difference for time integration and linear interpolation with central
-differencing for spatial discretization of the governing equations.
+implemented in the open source CFD software OpenFOAM. All the simulations
+results in this paper are obtained using OpenFOAM. The numerical scheme uses
+second order backward difference for time integration and linear interpolation
+with central differencing for spatial discretization of the governing
+equations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Detached Eddy Simulation Model}
@@ -95,7 +90,7 @@ shielding function of the DDES model, defined as $f_d = 1 -
 \[
   r_d=\frac{k/\omega+\nu}{\kappa^2 \, d_w^2 \, \sqrt{U_{i,j} U_{i,j} }},
 \]
-$\nu$ is the molecular viscosity, $\kappa$ is the von Karman constant, $d_w$ is
+$\nu$ is the molecular viscosity, $\kappa$ is the von K\'arm\'an constant, $d_w$ is
 the distance between the cell and the nearest wall, and $U_{i,j}=\partial_j
 U_i$ is the velocity gradient.  In the RANS branch, the transport equation for
 k and $\omega$ are written as
@@ -133,10 +128,11 @@ to~\cite{yin2015dynamic}.
 \label{sec:coupling}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-Simulations of VIV are using pimpleDyMFoam solver using the {\em
-sixDoFRigidBodyMotion} feature of OpenFOAM. For each timestep, pimpleDyMFoam
-solver calculates the motion and updates the displacement of the cylinder by
-the following equation using Crank-Nicolson method.
+Simulations of VIV are performed with the pimpleDyMFoam solver which uses the
+{\em sixDoFRigidBodyMotion} feature of OpenFOAM. For each timestep,
+pimpleDyMFoam solver calculates the motion and updates the displacement of the
+cylinder by integrating the following equation in time using the Crank-Nicolson
+method.
 %
 \begin{equation}
   m\ddot{y} + c\dot{y} + ky = F_{fluid},
@@ -145,16 +141,16 @@ the following equation using Crank-Nicolson method.
 %
 where $m$ is the mass of the rigid body, $\ddot{y}$, $\dot{y}$, and $y$ are the
 instantaneous acceleration, velocity and displacement of the cylinder,
-respectively, $c$ is spring damping, $k$ is the spring stiffness and
-$F_{fluid}$ is the fluid force acting on the cylinder surface.
+respectively, $c$ is the damping of the system, $k$ is the spring stiffness and
+$F_{fluid}$ is the transverse (cross-stream) component of the fluid force
+acting on the cylinder surface.
 
 In order to maintain the quality of the meshes inside the boundary layer in
 dynamic simulations, the mesh around the cylinder (up to 1 diameter from the
-cylinder axis) moves with the cylinder as a solid-body motion. Other parts of
-the mesh are deformed based on the new displacement of the cylinder. Then the
-solver updates the flux according to the motion and uses the PIMPLE method to
-solve the incompressible Navier-Stokes equations.
-
+cylinder axis) moves with the cylinder without deforming. The mesh away from
+the cylinder is deformed based on position of the cylinder. The solver then
+updates the fluxes according to the motion and uses the PIMPLE method to solve
+the incompressible Navier-Stokes equations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Computational Grid}
@@ -186,5 +182,62 @@ in Section~\ref{sec:mesh_sensitivity}.
   \caption{Cross-sectional views of the computational grid}
   \label{fig:Mesh}
 \end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mesh Sensitivity Study}
+\label{sec:mesh_sensitivity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+A mesh sensitivity study is performed for normally-incident flow at
+$Re_D=20,000$. Table~\ref{tab:meshSize} provides a summary of the different
+cases simulated for this study. Three different meshes, labeled `Mesh 1',
+`Mesh 2', and `Mesh 3' are shown in the table. The computational domain is
+$25\times D$ in the radial direction and $10\times D$ in the span direction.
+%
+\begin{table}[htb!]
+  \caption{Summary of the test cases simulated to investigate sensitivity of results to mesh size} 
+  \label{tab:meshSize} 
+  \begin{center}
+  \begin{tabular}{c|c|c|c}
+    $\boldsymbol{Re_D}$ & \textbf{Mesh name} &  \textbf{Cell count}$\boldsymbol{(\theta,r,z)}$ \\ \hline
+    \hline
+    20,000  & Mesh 1 & 157, 233, 65\\ \hline
+    20,000  & Mesh 2 & 236, 343, 100\\ \hline
+    20,000  & Mesh 3 & 354, 507, 150\\ \hline \hline
+    \hline
+  \end{tabular}
+  \end{center}
+\end {table}
+
+Figure~\ref{fig:Cp_compare_LS_Mesh} compares the mean aerodynamic pressure
+coefficient, $\overline{C}_p=2 (\overline{p}-p_\infty)/(\rho V_\infty^2)$
+obtained using simulations with different grids, and experimental data.
+Experiment I refers to data from~\cite{norberg2013pressure} and Exp-ISU is from
+our measurements. Simulations are simulated at `cylinder diameter based'
+Reynolds number, $Re_D=20,000$, which is the same as Experiment I, but the
+$Re_D$ in Exp-ISU is higher ($Re_D=51,500$) due to the limitation of the wind
+tunnel and measurement equipment.
+
+Consistent with the results of~\cite{travin2000detached}
+and~\cite{breuer2000challenging}, the simulation results are found to be
+sensitive to mesh size even with the highest mesh resolution attempted. Mesh 2
+and Mesh 3 capture the flow separation location correctly (same as in the
+experiment), but separation is delayed with Mesh 1. Results of Mesh 2 are in
+closer agreement with Experiment I, however they differ from the results of
+Mesh 3 in the separated flow region. Interestingly, the Exp-ISU data agrees
+well with Mesh 3 results in the same region. Based on this study, Mesh 2 is
+chosen for the subsequent simulations because it can predict aerodynamic
+loading and resolve wake turbulence reasonably accurately within a reasonable
+computational cost.
+%
+\begin{figure}[htb!]
+  \centering
+  \incfig[width=.5\textwidth]{Figures/Cp_Compared_Mesh_Re20k.png} 
+  \caption{$\overline{C}_p$ comparisons between simulation results using
+  different meshes.}
+  \label{fig:Cp_compare_LS_Mesh}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
