@@ -13,19 +13,25 @@ given by Eq.~\ref{eq:solidBodyDynamics}. Simulations are performed for eight
 inflow reduced velocities and two values of yaw angle, $\beta$ ($=0^\circ$ and
 $45^\circ$).
  
-In the simulations the mass ratio $m^*=m/(\rho {\cal V})=2.6$, where $m$ is the
-mass of the cylinder, ${\cal V}=\pi (D^2/4) . S$ is the volume of the cylinder,
-$S$ is the cylinder span, and $\rho$ is the density of the fluid flowing over
-the cylinder. The mechanical damping ratio of the system $\zeta = c/c_c$ is
-$0.001$ where, $c_c=2\sqrt{k.m}$ is the critical damping, and the spring
-stiffness $k$ is related to the natural frequency, $f_N$ by $k=m(2\pi\,f_N)^2$.
-The non-dimensional parameters, $m^*$, $\zeta$, and reduced velocity, are
-selected to match the measurements of~\citet{franzini2013one}. This measurement
-dataset is referred as Exp II in this paper. The reduced velocity is varied in
-the experiments by changing the freestream flow speed, which changes $Re_D$.
-In the simulations, the reduced velocity is varied by changing the spring
-stiffness, and $Re_D$ is held constant. In addition to Exp II, the simulation
-results are also compared to another dataset reported
+In the simulations presented here, the mass ratio $m^*=m/(\rho {\cal V})=2.6$,
+where $m$ is the mass of the cylinder, ${\cal V}=\pi (D^2/4) . L$ is the volume
+of the cylinder, $L$ is the cylinder span, and $\rho$ is the density of the
+fluid flowing over the cylinder. The mechanical damping ratio of the system
+$\zeta = c/c_c$ is $0.001$ where, $c_c=2\sqrt{k.m}$ is the coefficient of
+critical damping, and the spring stiffness $k_s$ is related to the natural
+frequency, $f_N$ by $k_s=m(2\pi\,f_N)^2$.  Reduced velocity, $V_{R,n} =
+V_n/(f_N\,D)$, where $f_N$ is the natural frequency of the system and the
+subscript $n$ refers to the component of the velocity vector normal to the
+cylinder axis to accommodate yawed flow. Two different yaw angle flows are
+evaluated, $\beta=0^\circ$ and $45^\circ$, at $Re_{D,n}=20,000$. The
+non-dimensional parameters, $m^*$, $\zeta$, and $V_{R,n}$ are selected to match
+the measurements of~\citet{franzini2013one}. This measurement dataset is
+referred as Exp II in this paper. 
+
+$V_{R,n}$ is varied in the experiments by changing the freestream flow speed,
+which changes $Re_D$. In the simulations, $V_{R,n}$ is varied by changing the
+spring stiffness, and $Re_D$ is held constant. In addition to Exp II, the
+simulation results are also compared to another dataset reported
 in~\cite{khalak1997fluid}, which is referred as Exp III here. The values of
 $m^*$ ($=2.4$) and $\zeta$ ($=0.0045$) in Exp III are slightly different from
 Exp II and the simulations. 
@@ -41,34 +47,28 @@ Exp II and the simulations.
 
 Figure~\ref{fig:VIV_amp} compares the predicted scaled mean displacement
 amplitude ($\bar{A}/D$) with the measurements of Exp II and III over a wide
-range of reduced velocity, $V_{R,n} = V_n/(f_N\,D)$, where $f_N$ is the natural
-frequency of the system. The subscript $n$ refers to the component of the
-velocity vector normal to the cylinder axis to accommodate yawed flow. Two
-different yaw angle flows are evaluated -- $\beta=0^\circ$ and $45^\circ$ --
-both at $Re_{D,n}=20,000$.
-
-\citet{khalak1997fluid} identified the following four distinct branches in the
-$\bar{A}/D$ versus $V_{R,n}$ plot of their VIV measurements for the zero-yaw
-case: the ``initial excitation'' branch, the ``upper'' branch, the ``lower''
-branch, and the ``desynchronization'' branch. These are labeled and identified
-with solid black lines as best curve fits of the measured data in
+$V_{R,n}$. \citet{khalak1997fluid} identified the following four distinct
+branches in the $\bar{A}/D$ versus $V_{R,n}$ plot of their VIV measurements for
+the zero-yaw case: the ``initial excitation'' branch, the ``upper'' branch, the
+``lower'' branch, and the ``desynchronization'' branch. These are labeled and
+identified with solid black lines as best curve fits of the measured data in
 Fig.~\ref{fig:VIV_amp} (a). Note that the variation of $\bar{A}/D$ with
-$V_{R,n}$ is topologically different for systems with high $m^*$, e.g.,
-measurements of \citet{feng1968measurement} show two branches (multi-valued
-solution) in the lock-in regime. For the selected low $m^*$ system, $\bar{A}/D$
-grows rapidly with $V_{R,n}$ in the {\em initial excitation} branch, reaches a
-peak in the {\em upper} branch, then reduces to 60\% of the peak value in the
-{\em lower} branch, and finally drops to a negligible value at higher $V_{R,n}$
-in the {\em desynchronization} branch. The current DES simulations agree very
-well with the data (particularly with Exp III) in the {\em initial excitation}
-and {\em upper} branches. The peak amplitude is well captured and occurs around
-$V_{R,n}=4.76$, which corresponds to the peak vortex shedding Strouhal number,
-$St_p=0.21$ for a stationary cylinder. The predicted amplitude is slightly
-lower than the measurements in the {\em lower} and {\em desynchronization}
-branches.  Considering the relatively large differences in the two sets of
-measurements (Exp II and Exp III), which provides an estimate of
-uncertainity/repeatibility, the prediction accuracy of the simulations is very
-good.
+$V_{R,n}$ is topologically different for systems with high mass and damping,
+e.g., measurements of \citet{feng1968measurement} show two branches
+(multi-valued solution) in the lock-in regime. For the selected low
+mass-damping system, $\bar{A}/D$ grows rapidly with $V_{R,n}$ in the {\em
+initial excitation} branch, reaches a peak in the {\em upper} branch, then
+reduces to 60\% of the peak value in the {\em lower} branch, and finally drops
+to a negligible value at higher $V_{R,n}$ in the {\em desynchronization}
+branch. The current DES simulations agree very well with the data (particularly
+with Exp III) in the {\em initial excitation} and {\em upper} branches. The
+peak amplitude is well captured and occurs around $V_{R,n}=4.76$, which
+corresponds to $St\sim0.2$ for a stationary cylinder. The predicted amplitude
+is slightly lower than the measurements in the {\em lower} and {\em
+desynchronization} branches.  Considering the relatively large differences in
+the two sets of measurements (Exp II and Exp III), which provides an estimate
+of uncertainity/repeatibility, the prediction accuracy of the simulations is
+very good.
 %
 \begin{figure}[htb!]
   \centering
@@ -84,18 +84,18 @@ good.
 \end{figure}
 
 Figure~\ref{fig:VIV_amp} (b) compares the predicted VIV amplitude with the data
-from Exp II. The measurements were taken for two different configurations of
-the cylinder, which are shown in the inset in the figure. Since the top and
-bottom surfaces are not the same, the two configurations are not identical and
-the measured data for the two configurations shows a large difference. Since
-the setup in the experiment is asymmetric (wall at the bottom and free surface
-on the top) and the fact that end plates were not used, end effects
-(finite-span effect) might be the reason for the observed differences between
-the two configurations. The predictions agree better with the ``Up''
-configuration in the {\em initial excitation} and {\em upper} branches, and
-with the ``Dn'' configuration in the {\em lower} branch. Exp II did not collect
-any data at higher $V_{R,n}$ to test the prediction accuracy in the {\em
-desynchronization} branch.
+from Exp II for $\beta=45^\circ$. The measurements were taken for two
+different configurations of the cylinder, which are shown in the inset in the
+figure. Since the top and bottom surfaces are not the same, the two
+configurations are not identical and the measured data for the two
+configurations shows a large difference. Since the setup in the experiment is
+asymmetric (wall at the bottom and free surface on the top) and the fact that
+end plates were not used, end effects (finite-span effect) might be the reason
+for the observed differences between the two configurations. The predictions
+agree better with the ``Up'' configuration in the {\em initial excitation} and
+{\em upper} branches, and with the ``Dn'' configuration in the {\em lower}
+branch. Exp II did not collect any data at higher $V_{R,n}$ to test the
+prediction accuracy in the {\em desynchronization} branch.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modes of Vortex Shedding}
@@ -168,9 +168,9 @@ displacement amplitude and oscillating frequency of an elastically-mounted
 cylinder undergoing VIV. Prior experiments (e.g., ~\citet{jain2013vortex} and
 \citet{franzini2013one}) have investigated IP for a circular cylinder.
 \citet{zhao2015validity} investigated IP using DNS at Reynolds numbers
-($Re_D$=150 and $1,000$). Much higher $Re_D$ is considered here and the DES
-methodology used here can scale to significantly larger $Re_D$ without a
-substantial increase in computation cost.
+($Re_D$=150 and $1,000$). Much higher $Re_D$ ($=20,000$) is considered here and
+the DES methodology used here can scale to significantly higher $Re_D$ without
+a substantial increase in computation cost.
 
 The data from \citet{franzini2013one} (Exp II) is plotted in
 Fig.~\ref{fig:VIV_yaw} (a) and the DES predictions in Fig.~\ref{fig:VIV_yaw}
@@ -198,28 +198,27 @@ branch.
   \label{fig:VIV_yaw}
 \end{figure}
 
-Figure~\ref{fig:VIV_freq} compares the normalized frequency ($f/f_N$) between
-the DES predictions and the measurements from Exp III over a range of
-$V_{R,n}$. The purple dashed line corresponds to the peak vortex-shedding
-frequency for a static cylinder ($St_p=0.21$) and the black dashed line
-corresponds to $f=f_N$. The simulations capture the variation of
-vortex-shedding frequency over the entire range of $V_{R,n}$ tested. In the
-{\em initial excitation} branch, the vortex shedding frequency ($f$), and hence
-$f/f_N$ increases linearly with the reduced velocity $V_{R,n}$. Beyond
-resonance, which occurs around $f=f_N$, the vortex shedding frequency gets
-``locked-in'' with the natural frequency of the system.  This occurs in the
-{\em upper} and {\em lower} branches identified in Fig.~\ref{fig:VIV_amp} (a).
-The added mass of the fluid causes the lock-in frequency to be higher than
-$f_N$, particularly for low-$m^*$ systems. As $V_{R,n}$ increases beyond
-lock-in, the vortex shedding frequency desynchronizes with the natural
-frequency and $f/f_N$ again follows the purple line in the figure.
-Figure~\ref{fig:VIV_freq} also plots the simulation results for
-$\beta=45^\circ$, which are nearly coincident with the results for
-$\beta=0^\circ$, verifying IP.
+Figure~\ref{fig:VIV_freq} compares the vortex shedding frequency normalized by
+the natural frequency of the system ($f_v/f_N$) between the DES predictions and
+the measurements from Exp III over a range of $V_{R,n}$. The purple dashed line
+corresponds to the peak vortex-shedding frequency for a static cylinder
+($St\sim0.2$) and the black dashed line corresponds to $f_v=f_N$. The
+simulations capture the variation of vortex-shedding frequency over the entire
+range of $V_{R,n}$ tested. In the {\em initial excitation} branch, $f_v$
+increases linearly with the reduced velocity $V_{R,n}$. Beyond resonance, which
+occurs around $f_v=f_N$, the vortex shedding frequency gets ``locked-in'' with
+the natural frequency of the system.  This occurs in the {\em upper} and {\em
+lower} branches identified in Fig.~\ref{fig:VIV_amp} (a).  The added mass of
+the fluid causes the lock-in frequency to be higher than $f_N$, particularly
+for low-$m^*$ systems. As $V_{R,n}$ increases beyond lock-in, the vortex
+shedding frequency desynchronizes with the natural frequency and $f_v/f_N$
+again follows the purple line in the figure.  Figure~\ref{fig:VIV_freq} also
+plots the simulation results for $\beta=45^\circ$, which are nearly coincident
+with the results for $\beta=0^\circ$, verifying IP.
 %
 \begin{figure}[htb!]
   \incfig[width=.5\textwidth]{fig/viv_freq.pdf}
-  \caption{Non-dimensional frequency $f/f_N$ for various reduced velocities
+  \caption{Non-dimensional frequency $f_v/f_N$ for various reduced velocities
     $V_{R,n}$}
   \label{fig:VIV_freq}
 \end{figure}

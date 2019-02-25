@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{35}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -17,11 +17,6 @@ Bearman, P.~W., 1984. Vortex shedding from oscillating bluff bodies. Annual
 Breuer, M., 1998. Large eddy simulation of the subcritical flow past a circular
   cylinder: numerical and modeling aspects. International Journal for Numerical
   Methods in Fluids 28~(9), 1281--1302.
-
-\bibitem[{Breuer(2000)}]{breuer2000challenging}
-Breuer, M., 2000. A challenging test case for large eddy simulation: high
-  reynolds number circular cylinder flow. International Journal of Heat and
-  Fluid Flow 21~(5), 648--654.
 
 \bibitem[{Brika and Laneville(1993)}]{brika1993vortex}
 Brika, D., Laneville, A., 1993. Vortex-induced vibrations of a long flexible
@@ -90,10 +85,19 @@ Lucor, D., Foo, J., Karniadakis, G., 2005. Vortex mode selection of a rigid
   cylinder subject to viv at low mass-damping. Journal of Fluids and Structures
   20~(4), 483--503.
 
+\bibitem[{Naudascher and Rockwell(2012)}]{naudascher2012flow}
+Naudascher, E., Rockwell, D., 2012. Flow-induced vibrations: an engineering
+  guide. Courier Corporation.
+
 \bibitem[{Norberg(2013)}]{norberg2013pressure}
 Norberg, C., 2013. Pressure forces on a circular cylinder in cross flow. In:
   IUTAM Symposium on Bluff Body Wakes, Dynamics and Instabilities, eds H
   Eckelmann, JMR Graham, P Hierre, PA Monkewitz. pp. 275--278.
+
+\bibitem[{Pa{\"\i}doussis et~al.(2010)Pa{\"\i}doussis, Price, and
+  De~Langre}]{paidoussis2010fluid}
+Pa{\"\i}doussis, M.~P., Price, S.~J., De~Langre, E., 2010. Fluid-structure
+  interactions: cross-flow-induced instabilities. Cambridge University Press.
 
 \bibitem[{Pontaza et~al.(2009)Pontaza, Menon, and Chen}]{pontaza2009three}
 Pontaza, J.~P., Menon, R.~G., Chen, H.-C., 2009. Three-dimensional numerical
@@ -104,6 +108,10 @@ Pontaza, J.~P., Menon, R.~G., Chen, H.-C., 2009. Three-dimensional numerical
 \bibitem[{Sarpkaya(2004)}]{sarpkaya2004critical}
 Sarpkaya, T., 2004. A critical review of the intrinsic nature of vortex-induced
   vibrations. Journal of fluids and structures 19~(4), 389--447.
+
+\bibitem[{Scruton(1955)}]{scruton1955wind}
+Scruton, C., 1955. Wind-excited oscillations of tall stacks. The Engineer
+  199~(5185), 806--808.
 
 \bibitem[{Spalart et~al.(1997)Spalart, Jou, Strelets, Allmaras,
   et~al.}]{spalart1997comments}
@@ -116,6 +124,10 @@ Spalart, P., Jou, W., Strelets, M., Allmaras, S., et~al., 1997. Comments on the
 Travin, A., Shur, M., Strelets, M., Spalart, P., 2000. Detached-eddy
   simulations past a circular cylinder. Flow, Turbulence and Combustion
   63~(1-4), 293--313.
+
+\bibitem[{Vandiver(2012)}]{vandiver2012damping}
+Vandiver, J.~K., 2012. Damping parameters for flow-induced vibration. Journal
+  of fluids and structures 35, 105--119.
 
 \bibitem[{Williamson and Govardhan(2004)}]{williamson2004vortex}
 Williamson, C., Govardhan, R., 2004. Vortex-induced vibrations. Annu. Rev.

@@ -62,7 +62,7 @@ plot 'ExpII_VIV.dat' i 2 u 1:2 t 'Exp II - Up' w p ls 2 pt 1 ps 1.5, \
 set key left top
 set yrange[0:3.5]
 set ytics 0.5
-set ylabel '$f/f_N$'
+set ylabel '$f_v/f_N$'
 set output 'viv_freq.eps'
 plot 'ExpIII_VIV.dat' i 4 u 1:2 t 'Exp III' w p ls 1 ps 1.5, \
       'sim_VIV.dat' i 1 u 1:2 t 'DES, $\beta=0^\circ$'  w p ls 3 pt 5 ps 2, \

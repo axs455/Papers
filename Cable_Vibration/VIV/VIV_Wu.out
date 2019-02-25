@@ -1,6 +1,6 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Computational Methodology}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Detached Eddy Simulation Model}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Delayed Detached Eddy Simulation \(DDES\) Model}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Solid Body Dynamics and Coupling}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{Computational Grid and Mesh Sensitivity Study}{section.2}% 5
 \BOOKMARK [1][-]{section.3}{Experimental Setup and Measurements}{}% 6

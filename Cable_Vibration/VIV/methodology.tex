@@ -12,9 +12,9 @@ energy containing eddies but model the net effect of smaller
 (unresolved/universal) eddies on larger (resolved) eddies. The detached eddy
 simulation (DES) technique~\citep{spalart1997comments} is a hybrid approach
 that uses RANS equations to simulate attached flow near solid surfaces and LES
-for separated (detached) flow away from the surfaces. DES allows computation of
-high Reynolds number flows relatively inexpensively by removing the constraint
-in LES to have very fine grids near solid boundaries.
+for separated (detached) flow away from them. DES allows computation of high
+Reynolds number flows relatively inexpensively by removing the constraint in
+LES to have very fine grids near solid boundaries.
 
 Flow over stationary slender structures with circular cross-section has been
 studied using unsteady RANS~\citep{pontaza2009three},
@@ -23,11 +23,12 @@ LES~\citep{breuer1998large,kravchenko2000numerical,catalano2003numerical}, and
 DNS~\citep{dong2005dns,zhao2009direct} approaches. Detailed flow simulations
 have been performed using DES for a single, stationary, yawed cylinder in
 uniform inflow~\citep{yeo2007characteristics,yeo2008investigation} and
-oscillating inflow~\citep{yeo2012aerodynamic}.  DES has also been used to
-investigate the use of strakes in cables for aerodynamic mitigation of
-wind-induced oscillations by~\cite{yeo2011computational}. In essence,
-high-fidelity simulations have been instrumental in gaining insights into the
-problem of flow-induced vibration.
+oscillating inflow~\citep{yeo2012aerodynamic}. 
+%DES has also been used to investigate the use of strakes in cables for
+%aerodynamic mitigation of wind-induced oscillations
+%by~\cite{yeo2011computational}. 
+High-fidelity simulations using DNS, LES, and DES have been instrumental in
+gaining insights into the problem of flow-induced vibration.
 
 In LES and DES, the equations are spatially filtered (low-pass) and the
 numerical procedure solves for the filtered quantities that can be resolved by
@@ -48,27 +49,27 @@ where $\tau_{ij} = \widetilde{U_i U_j}-\tilde{U_i}\tilde{U_j} = -2 \, \nu_{SGS}
 \, \tilde{S}$ and $\tilde{S} = (\partial{\tilde{U_i}}/\partial{x_j} +
 \partial{\tilde{U_j}}/\partial{x_i})/2$. In the above, SGS denotes a sub-grid
 scale quantity, $\tau_{ij}^{SGS}$ denotes the sub-grid scale stress tensor
-which is modeled as the product of the eddy viscosity, $\nu_{SGS}$ and the strain
-rate tensor $S_{ij}$; turbulence models of such type are referred to as
+which is modeled as the product of the eddy viscosity, $\nu_{SGS}$ and the
+strain rate tensor $S_{ij}$; turbulence models of such type are referred to as
 eddy-viscosity models. DES is a non-zonal hybrid RANS-LES method, where a RANS
 turbulence model is used to compute the eddy viscosity for the SGS stress
 tensor in the corresponding LES. In the original DES formulation
 (\cite{spalart1997comments}), the Spalart-Allmaras (SA) LES and SA-RANS models
 were used. We use the method developed by~\cite{yin2015dynamic}, which
 introduces a dynamic procedure to improve the DES capability by correcting for
-modeled stress depletion and log-layer mismatch. This model has been
+modeled stress depletion and log-layer mismatch. This improved model is
+referred to as delayed detached eddy simulation or DDES. The model has been
 implemented in the open source CFD software OpenFOAM. All the simulations
 results in this paper are obtained using OpenFOAM. The numerical scheme uses
 second order backward difference for time integration and linear interpolation
-with central differencing for spatial discretization of the governing
-equations.
+with central differencing for spatial discretization of the governing equations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Detached Eddy Simulation Model}
+\subsection{Delayed Detached Eddy Simulation (DDES) Model}
 \label{sec:DDES}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-A summary of the DES model used in this study is provided here; details are
+A summary of the DDES model used in this study is provided here; details are
 available in~\cite{yin2015dynamic}. It uses a $k-\omega$ turbulence closure
 model in the RANS zones, and the same model is used to calculate $\nu_T$ in the
 LES zones. The eddy viscosity in the $k-\omega$ DDES can be defined as
@@ -129,19 +130,21 @@ to~\cite{yin2015dynamic}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Simulations of VIV are performed with the pimpleDyMFoam solver which uses the
-{\em sixDoFRigidBodyMotion} feature of OpenFOAM. For each timestep,
-pimpleDyMFoam solver calculates the motion and updates the displacement of the
-cylinder by integrating the following equation in time using the Crank-Nicolson
-method.
+{\em sixDoFRigidBodyMotion} feature of OpenFOAM. Single degree of freedom (dof)
+motion of the cylinder is considered here with displacement permitted only in
+the $y-$direction (orthogonal to the freestream flow direction). At each time
+step, pimpleDyMFoam solver calculates the motion and updates the displacement
+of the cylinder by integrating the following equation in time using the
+Crank-Nicolson method.
 %
 \begin{equation}
-  m\ddot{y} + c\dot{y} + ky = F_{fluid},
+  m\,\ddot{y} + c\,\dot{y} + k_s \,y = F_{fluid},
   \label{eq:solidBodyDynamics}
 \end{equation}
 %
 where $m$ is the mass of the rigid cylinder, $\ddot{y}$, $\dot{y}$, and $y$ are the
 instantaneous acceleration, velocity and displacement of the cylinder,
-respectively, $c$ is the damping of the system, $k$ is the spring stiffness and
+respectively, $c$ is the damping of the system, $k_s$ is the spring stiffness and
 $F_{fluid}$ is the transverse (cross-stream) component of the fluid force
 acting on the cylinder surface.
 
@@ -159,15 +162,15 @@ the incompressible Navier-Stokes equations.
 %
 The outer boundary of the computational domain is circular with a radius of
 $25\times D$, where $D$ is the diameter of the cylinder. The cylinder is placed
-in the center of the domain and the span dimension is $10\times D$ for all the
-simulations presented here. Periodic boundary conditions are used in the span
-direction, while freestream condition is used on the outer radial boundary. The
-domain is discretized using a multi-block grid that has three blocks: (1) an
-O-grid is used to resolve the flow around the cylinder, (2) an H-grid to
-resolve the wake, and (3) a C-grid for the far field. In order to accurately
-capture the aerodynamic forces on the cylinder, the flow around the cylinder
-and in the near-wake region has to be resolved with high precision. A fine mesh
-is therefore applied in these regions. Figure~\ref{fig:Mesh} shows a
+in the center of the domain and the span dimension is $L=10\times D$ for all
+the simulations presented here. Periodic boundary conditions are used in the
+span direction, while freestream condition is used on the outer radial
+boundary. The domain is discretized using a multi-block grid that has three
+blocks: (1) an O-grid is used to resolve the flow around the cylinder, (2) an
+H-grid to resolve the wake, and (3) a C-grid for the far field. In order to
+accurately capture the aerodynamic forces on the cylinder, the flow around the
+cylinder and in the near-wake region has to be resolved with high precision. A
+fine mesh is therefore applied in these regions. Figure~\ref{fig:Mesh} shows a
 cross-sectional view of the full computational domain as well as a zoom-view to
 highlight the grid topology.
 %
@@ -182,62 +185,48 @@ highlight the grid topology.
   \label{fig:Mesh}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Mesh Sensitivity Study}
-%\label{sec:mesh_sensitivity}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
 A mesh sensitivity study is performed for normally-incident flow.
-Table~\ref{tab:meshSize} provides a summary of the different cases simulated
-for this study. Three different meshes, labeled `Mesh 1', `Mesh 2', and `Mesh
-3' are shown in the table. The computational domain is $25\times D$ in the
-radial direction and $10\times D$ in the span direction.
+Table~\ref{tab:meshSize} provides a summary of the three meshes used for this
+study. These are labeled `Mesh 1', `Mesh 2', and `Mesh 3'.  Cell counts,
+Strouhal number ($St$), mean drag coefficient ($\overline{C_d}$), and mean back
+pressure coefficient ($\overline{C_{p,b}}$) are also listed in the table.
+Figure~\ref{fig:Cp_compare_LS_Mesh} compares the predicted mean aerodynamic
+pressure coefficient, $\overline{C}_p=2 (\overline{p}-p_\infty)/(\rho
+V_\infty^2)$ and the r.m.s. of pressure coeff., $C_{p'rms}$ for the different
+grids. Mesh 2 and Mesh 3 show consistent distributions of $\overline{C}_p$ and
+$C_{p'rms}$ and predict the same location for boundary layer separation
+($\theta \sim 80^\circ$); separation location is delayed with Mesh 1. Based on
+the results of this mesh-refinement study, Mesh 3 is chosen for the subsequent
+simulations.
 %
 \begin{table}[htb!]
   \caption{Summary of the test cases simulated to investigate sensitivity of
-    results to mesh size {\color{red} add average $y^+$ values and some results
-    here like back pressure, rms $C_p$, etc. same as in Table 2}} 
+    results to mesh size. $N_\theta$, $N_r$, and $N_z$ denote number of cells in 
+    circumferential, radial, and span directions respectively. Also tabulated 
+    are $St$, $\overline{C_d}$, and $\overline{C_{p,b}}$.}
   \label{tab:meshSize} 
   \begin{center}
-    \begin{tabular}{c|c}
-      \textbf{Mesh name} &  \textbf{Cell counts} $\boldsymbol{(\theta,r,z)}$ \\ \hline
+    \begin{tabular}{c|c|c|c|c|c}
+      \textbf{Mesh name} &  \textbf{Cell counts} ${(N_{\theta} \times N_r \times N_z)}$ & \textbf{Total cell count} & 
+      \boldsymbol{$St$} & \boldsymbol{$\overline{C_d}$} & \boldsymbol{$\overline{C_{p,b}}$} \\ \hline
       \hline
-      Mesh 1 & 157, 233, 65\\ \hline
-      Mesh 2 & 236, 343, 100\\ \hline
-      Mesh 3 & 354, 507, 150\\ 
+      Mesh 1 & $157 \times 233 \times 65$  & 2.37 M & 0.201 & 1.065 & -0.983 \\ \hline
+      Mesh 2 & $188 \times 275 \times 80$  & 4.14 M & 0.208 & 1.125 & -1.132 \\ \hline
+      Mesh 3 & $236 \times 343 \times 100$ & 8.09 M & 0.208 & 1.137 & -1.148 \\
       \hline \hline
     \end{tabular}
   \end{center}
 \end{table}
 
-Figure~\ref{fig:Cp_compare_LS_Mesh} compares the mean aerodynamic pressure
-coefficient, $\overline{C}_p=2 (\overline{p}-p_\infty)/(\rho V_\infty^2)$
-obtained using the simulations with the different grids, and the experimental
-data. Experiment I refers to the data from~\cite{norberg2013pressure} and
-Exp-ISU is from our measurements (Section~\ref{sec:experiments} provides the
-details). Simulations are performed at $Re_D=20,000$, which is the same as
-Experiment I, but the $Re_D$ in Exp-ISU is higher ($=51,500$) due to the
-limitation of the wind tunnel and the measurement equipment.
-
-Consistent with the results of~\cite{travin2000detached}
-and~\cite{breuer2000challenging}, the simulation results are found to be
-sensitive to mesh size even with the highest mesh resolution attempted. Mesh 2
-and Mesh 3 capture the flow separation location correctly (same as in the
-experiment), but separation is delayed with Mesh 1. Results of Mesh 2 are in
-close agreement with Experiment I, however they differ from the results of Mesh
-3 in the separated flow region. Interestingly, the Exp-ISU data agrees well
-with Mesh 3 results in the same region. Based on this study, Mesh 2 is chosen
-for the subsequent simulations because it can predict aerodynamic loading and
-resolve wake turbulence reasonably accurately, and has a modest computational
-cost.
 %
 \begin{figure}[htb!]
   \centering
-  \incfig[width=.5\textwidth]{Figures/Cp_Compared_Mesh_Re20k.png} 
-  \caption{$\overline{C}_p$ comparisons between simulation results using
-  different meshes.}
+  \subcaptionbox{mean pressure coeff., $\overline{C}_p$}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cp_Mesh_Re20k_no_exp.pdf}}
+  \hspace*{\fill}
+  \subcaptionbox{r.m.s. of pressure coeff., $C_{p'rms}$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/CpRMS_Mesh_Re20_k_no_exp.pdf}}
+  \caption{Results of mesh refinement study.}
   \label{fig:Cp_compare_LS_Mesh}
 \end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -23,35 +23,39 @@ well as data from new experiments conducted as a part of this study.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Table~\ref{tab:comparisonRe20k} summarizes the simulation results for the
-static cases and compares them with two sets of experimental data. The peak
-shedding Strouhal number ($St_p$), the mean drag coefficient, $\overline{C}_d$
-and the mean back pressure coefficient, $\overline{C}_{pb}$ are compared in the
-table. Strouhal number is a non-dimensional frequency, defined as $St =
-f\,D/V_\infty$, and $St_p$ corresponds to the peak vortex shedding frequency of
-the cylinder.
+static cases and compares them with two sets of experimental data. Exp-I refers
+to the data from~\cite{norberg2013pressure} and Exp-ISU is from our
+measurements (Section~\ref{sec:experiments} provides the details). Simulations
+are performed at $Re_D=20,000$, which is the same as Exp-I, but the $Re_D$ in
+Exp-ISU is higher ($=51,500$) due to the limitation of the wind tunnel and the
+measurement equipment. The Strouhal number ($St$), the mean drag coefficient,
+$\overline{C}_d$ and the mean back pressure coefficient, $\overline{C}_{pb}$
+are compared in the table. Strouhal number is defined as $St =
+f_v\,D/V_\infty$, where $f_v$ is the vortex-shedding frequency, $D$ is the
+cylinder diameter, and $V_\infty$ is the freestream flow speed.
 
 Figure~\ref{fig:Cp_compared_Re20k} compares the predicted mean aerodynamic
 pressure coefficient, $\overline{C}_p$ and the root mean square of perturbation
-pressure coefficient, $C_{p'rms} = \left(\,\overline{C^2_p -
-\overline{C}^2_p}\,\right)^{1/2}$ with the data from the two experiments. The
-predicted $\overline{C}_p$ agrees very well with the data from Experiment I;
-Exp-ISU data shows slightly lower $\overline{C}_p$ than observed in
-Experiment I and the simulation, especially after $100^\circ$, and the mean
-back pressure, $\overline{C}_{pb}$ is lower as well. The predicted
-$C_{p'rms}$ distribution lies in between the two measurements. Both
-measurements as well as the simulation show the peak to be around $80^\circ$,
-which indicates the location of flow separation. The predicted distribution
-over the cylinder surface agrees well with the measurements.
+pressure coefficient, $C_{p'rms} = \sqrt{(\,\overline{C^2_p} -
+\overline{C}^2_p\,)}$ with the data from the two experiments. The predicted
+$\overline{C}_p$ agrees very well with the data from Exp-I; Exp-ISU data shows
+slightly lower $\overline{C}_p$ than observed in Exp-I and the simulation,
+after $100^\circ$, and the mean back pressure, $\overline{C}_{pb}$ is lower as
+well. The predicted $C_{p'rms}$ distribution lies in between the two
+measurements. Both measurements as well as the simulation show the peak of
+$C_{p'rms}$ to be around $80^\circ$, which indicates the location of flow
+separation. The predicted distribution over the cylinder surface agrees well
+with the measurements.
 %
 \begin{table}[htb!]
   \caption{Summary of results for normally-incident flow simulations} 
   \label{tab:comparisonRe20k} 
   \begin{center}
   \begin{tabular}{c|c|c|c|c}
-      $\boldsymbol{Re_D}$ & \textbf{Method} & $\boldsymbol{St_p}$ & $\boldsymbol{\overline{C}_d}$ & $\boldsymbol{\overline{C}_{pb}}$ \\ \hline
+      $\boldsymbol{Re_D}$ & \textbf{Method} & $\boldsymbol{St}$ & $\boldsymbol{\overline{C}_d}$ & $\boldsymbol{\overline{C}_{pb}}$ \\ \hline
       \hline
       20,000 & $k-\omega$ DDES & 0.21 & 1.13 & -1.16 \\ \hline
-      20,000 & Experiment I    & 0.19 & 1.22 & -1.1  \\ \hline
+      20,000 & Exp-I    & 0.19 & 1.22 & -1.1  \\ \hline
       51,500 & Exp-ISU         & 0.21 & 1.14 & -1.3  \\ \hline
       \hline
   \end{tabular}
@@ -60,7 +64,7 @@ over the cylinder surface agrees well with the measurements.
 
 \begin{figure}[htb!]
   \centering
-  \subcaptionbox{Mean aerodynamic pressure coeff., $\overline{C}_p$}
+  \subcaptionbox{mean pressure coeff., $\overline{C}_p$}
     [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cp_Compared.png}}
   \hspace*{\fill}
   \subcaptionbox{r.m.s. of pressure coeff., $C_{p'rms}$ }
@@ -82,20 +86,23 @@ the experimental data is averaged over 540 cycles.
 \begin{figure}[htb!]
   \incfig[width=.5\textwidth]{Figures/velocity_Normal_Re20k.png}
   \caption{Comparison of predicted and measured velocity profiles in the
-    cylinder wake $2D$ downstream of the cylinder axis.}
+    cylinder wake $2D$ downstream of the cylinder axis. $u$ is the streamwise
+    component of velocity and $y$ is normal to the flow direction and the cylinder
+    span.}
   \label{fig:velocity_Normal_Re20k}
 \end{figure}
 
 Figure~\ref{fig:force_20k} presents predicted temporal variation of sectional
 lift and drag coefficients ($C_l$ and $C_d$). As expected for a circular
 cylinder, the mean lift coefficient ($\overline{C}_l$) is zero but the mean
-drag coefficient ($\overline{C}_d$) is finite. The high-frequency oscillations,
-more apparent in $C_l$ time history are due to K\'arm\'an vortex shedding, which
-occurs at $St=fD/U \sim 0.2$ for bluff bodies in the range of $Re_D$ considered
-here. In addition to the oscillations at the K\'arm\'an vortex shedding frequency,
-the entire signal appears to modulate at a frequency which is an order of
-magnitude lower than that corresponding to $St=0.2$. This modulation has a
-certain randomness to it and is not perfectly periodic. This modulation
+drag coefficient ($\overline{C}_d$) is finite. The high-frequency oscillations
+which are apparent in $C_l$ time history, are due to K\'arm\'an vortex
+shedding. The Strouhal number ($St$) is $\sim 0.2$ as expected for bluff bodies
+for the $Re_D$ considered here (see~\cite{travin2000detached}
+and~\cite{norberg2013pressure}). In addition to the oscillations at the
+vortex-shedding frequency ($f_v$), the entire signal appears to modulate at a
+frequency which is an order of magnitude lower than $f_v$. This modulation has
+a certain randomness to it and is not perfectly periodic. This modulation
 phenomenon has been reported elsewhere, see e.g.,~\cite{travin2000detached}. 
 %
 \begin{figure}[htb!]
@@ -105,42 +112,40 @@ phenomenon has been reported elsewhere, see e.g.,~\cite{travin2000detached}.
 \end{figure}
 
 Figure~\ref{fig:St_Compared_Re20k} (a) compares the power spectral densities of
-$C_l$ between data from Exp-ISU and the simulation.  The lift in the
-measurements is obtained by integrating the surface pressure measured using the
-pressure taps. Figure~\ref{fig:St_Compared_Re20k} (b) presents the DES computed
-spectra of $C_d$. Because vortex shedding alternates between the top and bottom
-sides of the cylinder, one vortex shedding period contains two cycles of drag
-but only one cycle of lift. This can be seen in
-Figure~\ref{fig:St_Compared_Re20k}, where the spectral peak for $C_l$ occurs at
-$f_p$ while the spectral peak for drag is at $2\times f_p$, where $f_p$ is
-determined by the peak shedding Strouhal number, $St_p = f_p\,D/V_\infty$.
-Based on existing literature (see~\cite{travin2000detached}
-and~\cite{norberg2013pressure}), $St_p \sim 0.2$. Both measurement and
-prediction agree very well with each other and show the peak for lift to be
-around $f_p$ corresponding to $St_p$.
+$C_l$ between data from Exp-ISU and the simulation. Non-dimensional frequency,
+$k=fD/V_\infty$ is used to plot the spectra. The lift in the measurements is
+obtained by integrating the surface pressure measured using the pressure taps.
+Figure~\ref{fig:St_Compared_Re20k} (b) presents the DES computed spectra of
+$C_d$. Because vortex shedding alternates between the top and bottom sides of
+the cylinder, one vortex shedding period contains two cycles of drag but only
+one cycle of lift. This can be seen in Figure~\ref{fig:St_Compared_Re20k},
+where the spectral peak for $C_l$ occurs at $f_v$ while the spectral peak for
+drag is at $2\,f_v$. Both measurement and prediction agree very well with
+each other and show the peak for lift to be around $f_v$ corresponding to
+$k=St\sim0.2$.
 %
 \begin{figure}[htb!]
   \centering
   \subcaptionbox{PSD of $C_l$ }
-    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/St_Compared_Cl_Re20k.png}}
+    [.49\linewidth]{\incfig[width=.49\textwidth]{Figures/St_Compared_Cl_Re20k.pdf}}
   \hspace*{\fill}
   \subcaptionbox{PSD of $C_d$}
-    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/St_Compared_Cd_Re20k.png}}
+    [.49\linewidth]{\incfig[width=.49\textwidth]{Figures/St_Compared_Cd_Re20k.pdf}}
     \caption{Comparison of predicted and measured power spectral densities
       (PSDs) of $C_l$ and $C_d$. The
       measured data here is from our experiments (Exp-ISU).}
 \label{fig:St_Compared_Re20k}
 \end{figure}
 
-The peak frequency and its first three harmonics that occur at $St = 0.4, 0.6,
+The peak frequency and its first three harmonics that occur at $k = 0.4, 0.6,
 \& \,0.8$, are identified in the figure using vertical grid lines and labeled
-as $2f_p,\,3f_p,\,\&\,4f_p$. The prediction and experiment both show a second,
-smaller peak in the lift spectrum at the third harmonic ($St=0.6$).  Since the
+as $2f_v,\,3f_v,\,\&\,4f_v$. The prediction and experiment both show a second,
+smaller peak in the lift spectrum at the third harmonic ($k=0.6$).  Since the
 lift vector alternates with the side the vortex sheds from, only odd harmonics
-of $f_p$ (i.e., $3f_p,~5f_p,\ldots$) are expected in the spectra. Therefore, no
-peak is observed in the lift spectra at the second harmonic ($St=0.4$) or
-higher {\em even} harmonics in either the measured or the simulated data. The
-spectral shape of the PSD of $C_l$ is correctly predicted, even though the
+of $f_v$ (i.e., $3f_v,~5f_v,\ldots$) are expected in the spectra. Therefore, no
+peak is observed in the lift spectra at the second harmonic ($k=0.4$) or higher
+{\em even} harmonics in either the measured or the simulated data. The spectral
+shape of the PSD of $C_l$ is correctly predicted, although the predicted
 magnitude is slightly higher than the measured data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,9 +164,9 @@ Yaw angle, $\beta$ is defined as the angle between the inflow velocity vector
 $\boldsymbol{V_\infty}$ and the $x$ axis; the cylinder is aligned with the $z$
 axis (see Fig.~\ref{fig:yawedModel}. The normal component of the flow velocity
 is $V_n=V_\infty \cos\,\beta$ and the spanwise component is $V_z = V_\infty
-\,\sin\,\beta$, where $V_\infty=\abs{\boldsymbol{V_\infty}}$.  The
-computational domain is $10\times D$ in the spanwise direction to resolve and
-investigate spanwise variation of aerodynamic forces.
+\,\sin\,\beta$, where $V_\infty=\abs{\boldsymbol{V_\infty}}$. The computational
+domain is $L=10\times D$ long in the spanwise direction to investigate spanwise
+variation of aerodynamic forces.
 %
 \begin{figure}[htb!]
   \incfig[width=0.6\textwidth]{Figures/yawedModel.png}
@@ -172,16 +177,15 @@ investigate spanwise variation of aerodynamic forces.
   \label{fig:yawedModel}
 \end{figure}
 
-Table~\ref{tab:comparisonYawedRe20k} summarizes the peak Strouhal number
-($St_p$) and the back pressure coefficient ($C_{pb}$) for four different flow
-yaw angles, $\beta=0,15,30,\,\&\,45$ degrees. The velocity component normal to
-the cylinder axis ($V_n$) is used as the reference velocity scale to define a
-new set of non-dimensional quantities, such as Reynolds number, $Re_{D,n} =
-\rho V_n D / \mu$, Strouhal number, $St_{p,n}=f\,D /V_n$, and aerodynamic
-pressure coefficient, $\overline{C}_{p,n}=2 (\overline{p}-p_\infty)/(\rho
-V_n^2)$. The peak shedding Strouhal number and the mean back pressure
-coefficient normalized in this manner are labeled respectively as $St_{p,n}$
-and $\overline{C}_{pb,n}$. The measured value of $\overline{C}_{pb,n}$ is lower
+Table~\ref{tab:comparisonYawedRe20k} summarizes the Strouhal number ($St$) and
+the back pressure coefficient ($C_{pb}$) for four different flow yaw angles,
+$\beta=0,15,30,\,\&\,45$ degrees. The velocity component normal to the cylinder
+axis ($V_n$) is used as the reference velocity scale to define a new set of
+non-dimensional quantities, such as Reynolds number, $Re_{D,n} = \rho V_n D /
+\mu$, Strouhal number, $St_{n}=f_v\,D /V_n$, and aerodynamic pressure
+coefficient, $\overline{C}_{p,n}=2 (\overline{p}-p_\infty)/(\rho V_n^2)$. The
+the mean back pressure coefficient normalized in this manner is labeled as
+$\overline{C}_{pb,n}$. The measured value of $\overline{C}_{pb,n}$ is lower
 than that predicted by the simulations (see
 Table~\ref{tab:comparisonYawedRe20k}).
 %
@@ -193,7 +197,7 @@ Table~\ref{tab:comparisonYawedRe20k}).
   \label{tab:comparisonYawedRe20k} 
   \begin{center}
   \begin{tabular}{c|c|c|c|c|c}
-      \textbf{Method} & \textbf{flow angle,} $\boldsymbol{\beta}$ & $\boldsymbol{Re_D}$ & $\boldsymbol{Re_{D,n}}$  & $\boldsymbol{St_{p,n}}$ & $\boldsymbol{\overline{C}_{pb,n}}$  \\ \hline
+      \textbf{Method} & \textbf{flow angle,} $\boldsymbol{\beta}$ & $\boldsymbol{Re_D}$ & $\boldsymbol{Re_{D,n}}$  & $\boldsymbol{St_{n}}$ & $\boldsymbol{\overline{C}_{pb,n}}$  \\ \hline
       \hline
       Simulation  & $0^\circ$  & 20,000 & 20,000 & 0.21 & -1.15 \\ \hline
       Simulation  & $15^\circ$ & 20,000 & 19,318 & 0.21 & -1.11 \\ \hline
@@ -210,10 +214,10 @@ Figure~\ref{fig:Cp_Compared_Yawed_Exp-ISU} compares with measured data the
 predicted mean aerodynamic pressure coefficient ($\overline{C}_{p,n}$) and root
 mean square of perturbation pressure coefficient, $C_{p'rms,n}$ for
 $\beta=30^\circ$. The predicted back pressure ($\overline{C}_{pb,n}$) is found
-to be slightly higher than Exp-ISU data, which is consisted with the
+to be slightly higher than Exp-ISU data, which is consistent with the
 observation for the normally-incident flow cases. The predicted $C_{p'rms,n}$
 distribution agrees very well with measurement, especially for
-$\theta>120^\circ$, where $\theta$ is the angular position on the cylinder
+$\theta<120^\circ$, where $\theta$ is the angular position on the cylinder
 surface measured from upstream. The peak of $C_{p'rms,n}$ is observed around
 $80^\circ$ in both experiment and simulation, which is indicative of the
 location of separation of the shear layer. For $\theta > 120^\circ$, the
@@ -222,7 +226,7 @@ similar underprediction is observed in the normally-incident flow case.
 %
 \begin{figure}[htb!]
   \centering
-  \subcaptionbox{Mean pressure distribution,$\overline{C}_{p,n}$}
+  \subcaptionbox{mean pressure coeff.,$\overline{C}_{p,n}$}
     [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cp_Compared_Yawed_Exp-ISU.png}}
   \hspace*{\fill}
   \subcaptionbox{rms of perturbation pressure, $C_{p'rms,n}$ }
@@ -277,30 +281,29 @@ be very similar irrespective of $\beta$;~\cite{zdravkovich2003flow} refers to
 this as `independence principle' (IP). IP is also observed in the power
 spectral densities of the transverse force coefficient, $C_{y,n}$ for the same
 set of values of $\beta$ analyzed. $C_{y,n}=2\, f_y/ (\rho V^2_n)$, where $f_y$
-is force per unit area in the $y$ direction, and $C_{x,n}$ is correspondingly
-defined for the $x-$component of force.  Figure~\ref{fig:Compared_Yawed_Re20k}
-(b) shows that the spectra collapse when $V_n$ is used to normalize the force
-coefficients and the frequency; the abscissa in
-Fig.~\ref{fig:Compared_Yawed_Re20k} (b) is $St_n$.  
+is force per unit projected area ($f_y = F_y/(L\,D)$) in the $y$ direction, and $C_{x,n}$
+is correspondingly defined for the $x-$component of force.
+Figure~\ref{fig:Compared_Yawed_Re20k} (b) shows that the spectra collapse when
+$V_n$ is used to normalize the force coefficients and the frequency; the
+abscissa in Fig.~\ref{fig:Compared_Yawed_Re20k} (b) is $k_n = fD/V_n$.  
 %
 \begin{figure}[htb!]
   \subcaptionbox{Mean pressure coeff., $\overline{C}_{p,n}$}[0.48\linewidth]
     {\incfig[width=.48\textwidth]{Figures/Cp_Compared_Yawed_Re20k.png}}
   \hspace*{\fill}
-  \subcaptionbox{PSDs of $C_{y,n}$}[0.48\linewidth]
-    {\incfig[width=.48\textwidth]{Figures/St_Compared_Yawed_Cl_Re20k.png}}
+  \subcaptionbox{PSDs of $C_{y,n}$}[0.53\linewidth]
+    {\incfig[width=.53\textwidth]{Figures/St_Compared_Yawed_Cl_Re20k.pdf}}
   \caption{Independence principle: comparisons of (a) $\overline{C}_{p,n}$, and
     (b) power spectral densities (PSDs) of $C_{y,n}$ between predictions for various $\beta$ values.}
 \label{fig:Compared_Yawed_Re20k}
 \end{figure}
 
 Figure~\ref{fig:Spatial_temporal_CxCyRe20k} shows spatio-temporal plots of the
-the force coefficients $C_{x,n}$ and $C_{y,n}$.  The contours clearly show that
-$C_{x,n}$ and $C_{y,n}$ vary along the span, indicating that vortex shedding
-does not occur simultaneously along the entire span. In fact, a spatial drift
-from left to right with increasing time can be seen in the contours (more
-visible in the $C_{x,n}$ spatio-temporal plot) which is indicative of spanwise
-flow over the cylinder.
+force coefficients $C_{x,n}$ and $C_{y,n}$. The contours show that $C_{x,n}$
+and $C_{y,n}$ vary along the span, indicating that vortex shedding does not
+occur simultaneously along the entire span. A spatial drift from left to right
+with increasing time can be seen in the contours (more visible in the $C_{x,n}$
+spatio-temporal plot) which is indicative of spanwise flow over the cylinder.
 %
 \begin{figure}[htb!]
   \subcaptionbox {$C_{x,n}$}
@@ -324,7 +327,7 @@ $\gamma^2(\Delta z)$ is defined as
 \end{align}
 %
 where $S_{xy}$ denotes cross-spectral density of the quantity ($C_{x,n}$ or
-$C_{y,n}$) at two points separated by a distance $\Delta z$, and
+$C_{y,n}$) at two points separated by a distance $\Delta z$ along the span, and
 $S_{xx},~S_{yy}$ are auto-spectral densities; angular brackets denote ensemble
 averaging, however ergodicity assumption is used to relate that to time
 averaging. The coherence plot of $C_{y,n}$ indicates that spanwise correlation
