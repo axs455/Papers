@@ -1,0 +1,281 @@
+\documentclass[12pt,authoryear]{elsarticle}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{makecell}
+\usepackage[table]{xcolor}
+\usepackage[margin=1in]{geometry}
+
+% Font size for subcaption
+\DeclareCaptionFont{mysize}{\fontsize{9}{9.6}\selectfont}
+\captionsetup[sub]{font=mysize}
+
+%\captionsetup{compatibility=false}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times,authoryear]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn,authoryear]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+\usepackage[mathlines,pagewise]{lineno}
+%%\modulolinenumbers[2]
+\usepackage{bm}
+
+\journal{Journal of Fluids and Structures}
+
+\newcommand{\hl}[1]{\textcolor{red}{#1}}
+\newcommand{\hb}[1]{\textcolor{blue}{#1}}
+\newcommand{\incfig}{\centering\includegraphics}
+\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+\title{Numerical Study of Aspect Ratio Effects on Vortex-Induced Vibrations}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \address[label1]{}
+%% \address[label2]{}
+
+\author[1]{Xingeng Wu}
+\author[2]{Anupam Sharma\corref{a}}
+\ead{sharma@iastate.edu}
+\cortext[a]{Corresponding author}
+\fntext[1]{Graduate Student}
+\fntext[2]{Associate Professor, Iowa State University}
+
+\address{Department of Aerospace Engineering, Iowa State University, Ames, Iowa, 50011}
+
+
+\begin{abstract}
+
+
+
+\end{abstract}
+
+\begin{keyword}
+%% keywords here, in the form: keyword \sep keyword
+
+%% PACS codes here, in the form: \PACS code \sep code
+
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+  Vortex-Induced Vibrations \sep Detached Eddy Simulations \sep Aspect Ratio
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+%\begin{linenumbers}
+%% main text
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Introduction of VIV, review
+
+Aspect ratio of cylinder, history
+
+Motivation for this paper
+
+Figure~\ref{fig:Coherence_staic} presents a lift coherence contour for a $20\times D$ static cylinder. As 
+the figure shown, the cylinder is not corelated for the most frequency when it is long enough, exact for 
+$St\sim 0.2$. In here, the peak frequency ($St\sim 0.2$) is the Kármán vortex shedding frequency. It is 
+well known that the amplitude of rigit cylinder will significant increase if the natural frequency is close
+to the vortex shedding frequency. 
+
+\begin{figure}[htb!]
+  \incfig[width=.6\textwidth]{Figures/Cl_Coherence_Z20_Static.png}
+  \caption{Lift coherence for static cylinder}
+  \label{fig:Coherence_staic}
+\end{figure}
+
+\hl{change Z to L/D}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Computational Methodology}
+\label{sec:methodology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\hl{add A schematic of the setup for the vortex-induced vibration(VIV) simulations}
+As Figur~\ref{fig:VIV_setup} shown, an elastically-mounted cylinder with different aspect ratio 
+is placed in the center. 
+
+\begin{figure}[htb!]
+  \incfig[width=.6\textwidth]{Figures/VIV_setup}
+  \caption{A schematic of the simulated setup for VIV simulations.}
+  \label{fig:VIV_setup}
+\end{figure}
+
+
+\hl{numerical method, mesh}
+
+In order to study the aspect ratio of the circular cylinder, four different aspect ratios ($L/D = 1, 2, 5,$ and $10$)
+have been chosen and simulated at reduced velocity $V_{R,n}=2, 3, 4, 5, 5.9, 7, 8$. The averaged peak amplitude 
+results are shown in 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Numerical Results and Verification}
+\label{sec:results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+
+Figure~\ref{fig:Amplitude_VIV} compared the predicted non-dimensional mean amplitude for $10\times D$ 
+cylinder with the experiment ~\citep{khalak1997fluid}.  Overall, the predicted amplitudes agree well with
+the experiment. Four branches can be identified on the experiment : initial excitation,
+upper branch, lower branch and desynchronization. All four branches are observed on the simulations.
+Therefore, the simulated method is able to simulate vortex induced vibration.
+
+\begin{figure}[htb!]
+  \incfig[width=.6\textwidth]{Figures/A_Exp_Z10D_Compared.png}
+  \caption{Comparison of predicted and experimental non-dimensional 
+    mean amplitude $A/D$ for various reduced velocities $V_{R,n}$}
+  \label{fig:Amplitude_VIV}
+\end{figure}
+
+\begin{figure}[htb!]
+  \incfig[width=.6\textwidth]{Figures/A.png}
+  \caption{Comparison of predicted non-dimensional mean amplitude $A/D$ for various reduced 
+  velocities $V_{R,n}$ for different span lengths}
+  \label{fig:Amplitude_Compared}
+\end{figure}
+
+Figure~\ref{fig:Coherence_Cl} and \ref{fig:Coherence_Cd} present force coefficients coherence for different 
+spans cylinders ($Z = 1D, 2D, 5D,$ and $10D$). For longer cylinders ($Z = 5D$ and $10D$) are only correlated
+to the peak vortex shedding frequency and its harmonics. However, the shorter cylinders ($Z = 1D$ and $2D$) 
+have more wider coherence for more frequencies??
+
+
+\begin{figure}[htb!]
+  \subcaptionbox{$Z=1D$ }
+    [.1\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z1D.png}}
+  \hspace*{\fill}
+  \subcaptionbox{$Z=2D$ }
+    [.1\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z2D.png}}
+  \hspace*{\fill}
+  \subcaptionbox{$Z=5D$ }
+    [.25\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z5D.png}}
+  \hspace*{\fill}
+  \subcaptionbox{$Z=10D$ }
+    [.5\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z10D.png}}
+    \caption{Lift coherence for various aspect ratio at $V_{R,n}=5$}
+  \label{fig:Coherence_Cl}
+\end{figure}
+
+\begin{figure}[htb!]
+  \subcaptionbox{$Z=1D$ }
+    [.1\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z1D_Cd.png}}
+  \hspace*{\fill}
+  \subcaptionbox{$Z=2D$ }
+    [.1\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z2D_Cd.png}}
+  \hspace*{\fill}
+  \subcaptionbox{$Z=5D$ }
+    [.25\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z5D_Cd.png}}
+  \hspace*{\fill}
+  \subcaptionbox{$Z=10D$ }
+    [.5\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z10D_Cd.png}}
+    \caption{Drag coherence for various aspect ratio at $V_{R,n}=5$}
+  \label{fig:Coherence_Cd}
+\end{figure}
+
+Figure~\ref{fig:force_VIV} shows ... different peak value, wider, lower psd smaller L/D. 
+
+\begin{figure}[htb!]
+  \subcaptionbox {Power spectral densities of $C_l$}
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/St_f.png}}
+  \hspace*{\fill}
+  \subcaptionbox{Zoom-in }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/St_f_2.png}}
+    \caption{Comparison of predicted power spectral densities
+      (PSDs) of $C_l$ for various frequencies at $V_{R,n}=5$.}
+  \label{fig:force_VIV}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\label{sec:conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+%% If you have bibdatabase file and want bibtex to generate the
+%% bibitems, please use
+%%
+%\end{linenumbers}
+
+\section{References}
+\label{sec:references}
+
+\bibliographystyle{elsarticle-harv} 
+\bibliography{references}
+
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
+
+%\begin{thebibliography}{00}
+
+%% \bibitem[Author(year)]{label}
+%% Text of bibliographic item
+%\bibitem[ ()]{}
+%\end{thebibliography}
+
+\end{document}
+
+\endinput
+%%
+%% End of file `elsarticle-template-harv.tex'.
