@@ -50,7 +50,7 @@ Circular Cylinders in Normal and Yawed Flow}
 \address{Department of Aerospace Engineering, Iowa State University, Ames, Iowa, 50011}
 
 \begin{abstract}
-A computational approach based on a $k-\omega$ delayed detached eddy simulation
+A computational approach based on a $k$-$\omega$ delayed detached eddy simulation
 model for predicting aerodynamic loads on a smooth circular cylinder is
 verified against experiments. Comparisons with experiments are performed for
 flow over a rigidly-mounted (static) cylinder and for an elastically-mounted
@@ -69,11 +69,12 @@ Dynamic (VIV) simulations for an elastically-mounted rigid cylinder are
 performed by coupling the flow solver with a solid dynamics solver where the
 cylinder motion is modeled as a mass-spring-damper system. The simulations
 accurately predict the displacement amplitude and unsteady loading over a wide
-range of reduced velocity, including the region where ``lock-in'' occurs. VIV
-simulations are performed at two yaw angles, $\beta=0^\circ$ and $45^\circ$ and
-the independence principle is found to be valid over the range of reduced
-velocities tested with a slightly higher discrepancy when the vortex shedding
-frequency is close to the natural frequency of the system.
+range of reduced velocity, including the region where ``lock-in''
+(synchronization) occurs. VIV simulations are performed at two yaw angles,
+$\beta=0^\circ$ and $45^\circ$ and the independence principle is found to be
+valid over the range of reduced velocities tested with a slightly higher
+discrepancy when the vortex shedding frequency is close to the natural
+frequency of the system.
 \end{abstract}
 
 \begin{keyword}
@@ -100,7 +101,7 @@ frequency is close to the natural frequency of the system.
 \label{sec:conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-A computational methodology based on a $k-\omega$ delayed detached eddy
+A computational methodology based on a $k$-$\omega$ delayed detached eddy
 simulation (DDES) model is used to investigate aerodynamic loading on a smooth
 circular cylinder. Simulations are performed for a static and an
 elastically-mounted rigid cylinder in normally-incident flow and yawed flow.
@@ -124,11 +125,12 @@ the agreement of the predicted displacement amplitude and vortex shedding
 frequency with the measurements is found to be good over a wide range of
 reduced velocity. The frequency lock-in phenomenon is captured by the
 simulations. Different modes of vortex shedding (2S and 2P) are observed in the
-simulations and are identified by plotting iso-surfaces of the Q-criterion.
-Results for two values of $\beta$ ($=0^\circ$ and $45^\circ$) are compared and,
-barring some difference in the regions where the displacement amplitude is
-highly sensitive to the reduced velocity, the independence principle is found
-to hold for circular cylinders in VIV up to a yaw angle of $45^\circ$. 
+simulations and are identified through visualization of the iso-surfaces of the
+Q-criterion. Results for two values of $\beta$ ($=0^\circ$ and $45^\circ$) are
+compared and, barring some difference in the regions where the displacement
+amplitude is highly sensitive to the reduced velocity, the independence
+principle is found to hold for circular cylinders in VIV up to a yaw angle of
+$45^\circ$. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgments}

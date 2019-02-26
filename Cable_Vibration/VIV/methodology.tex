@@ -22,8 +22,8 @@ DES~\citep{travin2000detached,yeo2011computational,yeo2012aerodynamic},
 LES~\citep{breuer1998large,kravchenko2000numerical,catalano2003numerical}, and
 DNS~\citep{dong2005dns,zhao2009direct} approaches. Detailed flow simulations
 have been performed using DES for a single, stationary, yawed cylinder in
-uniform inflow~\citep{yeo2007characteristics,yeo2008investigation} and
-oscillating inflow~\citep{yeo2012aerodynamic}. 
+uniform inflow~\citep{yeo2008investigation} and oscillating
+inflow~\citep{yeo2012aerodynamic}. 
 %DES has also been used to investigate the use of strakes in cables for
 %aerodynamic mitigation of wind-induced oscillations
 %by~\cite{yeo2011computational}. 
@@ -70,11 +70,11 @@ with central differencing for spatial discretization of the governing equations.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 A summary of the DDES model used in this study is provided here; details are
-available in~\cite{yin2015dynamic}. It uses a $k-\omega$ turbulence closure
+available in~\cite{yin2015dynamic}. It uses a $k$-$\omega$ turbulence closure
 model in the RANS zones, and the same model is used to calculate $\nu_T$ in the
-LES zones. The eddy viscosity in the $k-\omega$ DDES can be defined as
+LES zones. The eddy viscosity in the $k$-$\omega$ DDES can be defined as
 $\nu_T=l_{DDES}^2\, \omega$, where $l_{DDES}$ is the DDES length scale. The
-different length scales in the $k-\omega$ DDES model are defined as
+different length scales in the $k$-$\omega$ DDES model are defined as
 %
 \begin{align}  
   l_{DDES} &=l_{RANS}-f_d\, \max( 0,~l_{RANS}-l_{LES}), \nonumber \\
@@ -110,7 +110,7 @@ $\nu_T=l_{DDES}^2\,\omega=(C_{DES}\bigtriangleup)^2\omega$, which is similar to
 the eddy viscosity in the Smagorinsky model, $\nu_s=(C_s \bigtriangleup)^2
 |S|$.
 
-The LES branch of this $k-\omega$ DDES model uses a dynamic procedure which
+The LES branch of this $k$-$\omega$ DDES model uses a dynamic procedure which
 defines the value of $C_{DES}$ as
 %
 \begin{align}
@@ -133,9 +133,9 @@ Simulations of VIV are performed with the pimpleDyMFoam solver which uses the
 {\em sixDoFRigidBodyMotion} feature of OpenFOAM. Single degree of freedom (dof)
 motion of the cylinder is considered here with displacement permitted only in
 the $y-$direction (orthogonal to the freestream flow direction). At each time
-step, pimpleDyMFoam solver calculates the motion and updates the displacement
-of the cylinder by integrating the following equation in time using the
-Crank-Nicolson method.
+step, pimpleDyMFoam calculates the motion and updates the displacement of the
+cylinder by integrating the following equation in time using the Crank-Nicolson
+method.
 %
 \begin{equation}
   m\,\ddot{y} + c\,\dot{y} + k_s \,y = F_{fluid},
@@ -188,22 +188,21 @@ highlight the grid topology.
 A mesh sensitivity study is performed for normally-incident flow.
 Table~\ref{tab:meshSize} provides a summary of the three meshes used for this
 study. These are labeled `Mesh 1', `Mesh 2', and `Mesh 3'.  Cell counts,
-Strouhal number ($St$), mean drag coefficient ($\overline{C_d}$), and mean back
-pressure coefficient ($\overline{C_{p,b}}$) are also listed in the table.
+Strouhal number ($St$), mean drag coefficient ($\overline{C}_d$), and mean back
+pressure coefficient ($\overline{C}_{p,b}$) are also listed in the table.
 Figure~\ref{fig:Cp_compare_LS_Mesh} compares the predicted mean aerodynamic
 pressure coefficient, $\overline{C}_p=2 (\overline{p}-p_\infty)/(\rho
 V_\infty^2)$ and the r.m.s. of pressure coeff., $C_{p'rms}$ for the different
 grids. Mesh 2 and Mesh 3 show consistent distributions of $\overline{C}_p$ and
 $C_{p'rms}$ and predict the same location for boundary layer separation
-($\theta \sim 80^\circ$); separation location is delayed with Mesh 1. Based on
-the results of this mesh-refinement study, Mesh 3 is chosen for the subsequent
-simulations.
+($\theta \sim 80^\circ$); separation location is delayed with Mesh 1.  Based on
+these results, Mesh 3 is chosen for the subsequent simulations.
 %
 \begin{table}[htb!]
   \caption{Summary of the test cases simulated to investigate sensitivity of
     results to mesh size. $N_\theta$, $N_r$, and $N_z$ denote number of cells in 
     circumferential, radial, and span directions respectively. Also tabulated 
-    are $St$, $\overline{C_d}$, and $\overline{C_{p,b}}$.}
+    are $St$, $\overline{C}_d$, and $\overline{C}_{p,b}$.}
   \label{tab:meshSize} 
   \begin{center}
     \begin{tabular}{c|c|c|c|c|c}
@@ -226,7 +225,7 @@ simulations.
   \hspace*{\fill}
   \subcaptionbox{r.m.s. of pressure coeff., $C_{p'rms}$ }
     [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/CpRMS_Mesh_Re20_k_no_exp.pdf}}
-  \caption{Results of mesh refinement study.}
+  \caption{Results of mesh refinement study}
   \label{fig:Cp_compare_LS_Mesh}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

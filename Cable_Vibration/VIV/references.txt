@@ -1,0 +1,69 @@
+Al-Jamal, H., Dalton, C., 2004. Vortex induced vibrations using large eddy simulation at a moderate reynolds number. Journal of fluids and structures 19 (1), 73-92.
+
+Bearman, P. W., 1984. Vortex shedding from oscillating bluff bodies. Annual review of fluid mechanics 16 (1), 195-222.
+
+Breuer, M., 1998. Large eddy simulation of the subcritical flow past a circular cylinder: numerical and modeling aspects. International Journal for Numerical Methods in Fluids 28 (9), 1281-1302.
+
+Brika, D., Laneville, A., 1993. Vortex-induced vibrations of a long flexible circular cylinder. Journal of Fluid Mechanics 250, 481-508.
+
+Catalano, P., Wang, M., Iaccarino, G., Moin, P., 2003. Numerical simulation of the flow around a circular cylinder at high Reynolds numbers. International Journal of Heat and Fluid Flow 24 (4), 463-469.
+
+Davenport, A., 1995. The dynamics of cables in wind. In: Proceedings of Symposium on Cable Dynamics.
+
+Dong, S., Karniadakis, G. E., 2005. DNS of flow past a stationary and oscillating cylinder at re= 10000. Journal of fluids and structures 20 (4), 519-531.
+
+Evangelinos, C., Lucor, D., Karniadakis, G., 2000. DNS-derived force distribution on flexible cylinders subject to vortex-induced vibration. Journal of fluids and structures 14 (3), 429-440.
+
+Feng, C., 1968. The measurement of vortex-induced effects in flow past stationary and oscillating circular and d-section cylinders. Ph.D. thesis, University of British Columbia.
+
+Franzini, G., Fujarra, A. L. C., Meneghini, J. R., Korkischko, I., Franciss, R., 2009. Experimental investigation of vortex-induced vibration on rigid, smooth and inclined cylinders. Journal of Fluids and Structures 25 (4), 742-750.
+
+Franzini, G. R., Gon ̧calves, R. T., Meneghini, J. R., Fujarra, A. L. C., 2013. One and two degrees-of-freedom vortex-induced vibration experiments with yawed cylinders. Journal of fluids and structures 42, 401-420.
+
+Guilmineau, E., Queutey, P., 2004. Numerical simulation of vortex-induced vibration of a circular cylinder with low mass-damping in a turbulent flow. Journal of fluids and structures 19 (4), 449-466.
+
+Jain, A., Modarres-Sadeghi, Y., 2013. Vortex-induced vibrations of a flexibly-mounted inclined cylinder. Journal of Fluids and Structures 43, 28-40.
+
+Khalak, A., Williamson, C., 1997. Fluid forces and dynamics of a hydroelastic structure with very low mass and damping. Journal of Fluids and Structures 11 (8), 973-982.
+
+Kravchenko, A. G., Moin, P., 2000. Numerical studies of flow over a circular cylinder at red = 3900. Physics of fluids 12 (2), 403-417.
+
+Lucor, D., Foo, J., Karniadakis, G., 2005. Vortex mode selection of a rigid cylinder subject to VIV at low mass-damping. Journal of Fluids and Structures 20 (4), 483-503.
+
+Naudascher, E., Rockwell, D., 2012. Flow-induced vibrations: an engineering guide. Courier Corporation.
+
+Norberg, C., 2013. Pressure forces on a circular cylinder in cross flow. In: IUTAM Symposium on Bluff Body Wakes, Dynamics and Instabilities, eds H Eckelmann, JMR Graham, P Hierre, PA Monkewitz. pp. 275-278.
+
+Pa ̈ıdoussis, M. P., Price, S. J., De Langre, E., 2010. Fluid-structure interactions: cross-flow- induced instabilities. Cambridge University Press.
+
+Pontaza, J. P., Menon, R. G., Chen, H., 2009. Three-dimensional numerical simulations of flows past smooth and rough/bare and helically straked circular cylinders allowed to undergo two degree-of-freedom motions. Journal of Offshore Mechanics and Arctic Engineering 131 (2):021301.
+
+Sarpkaya, T., 2004. A critical review of the intrinsic nature of vortex-induced vibrations. Journal of fluids and structures 19 (4), 389-447.
+
+Scruton, C., 1955. Wind-excited oscillations of tall stacks. The Engineer 199 (5185), 806-808.
+
+Spalart, P., Jou, W., Strelets, M., Allmaras, S., et al., 1997. Comments on the feasibility of LES for wings, and on a hybrid RANS/LES approach. Advances in DNS/LES 1, 4-8.
+
+Travin, A., Shur, M., Strelets, M., Spalart, P., 2000. Detached-eddy simulations past a circular cylinder. Flow, Turbulence and Combustion 63 (1-4), 293-313.
+
+Vandiver, J. K., 2012. Damping parameters for flow-induced vibration. Journal of fluids and structures 35, 105-119.
+
+Williamson, C., Govardhan, R., 2004. Vortex-induced vibrations. Annu. Rev. Fluid Mech. 36, 413-455.
+
+Williamson, C. H., Roshko, A., 1988. Vortex formation in the wake of an oscillating cylinder. Journal of fluids and structures 2 (4), 355-381.
+
+Xu, W.-H., Zeng, X.-H., Wu, Y.-X., 2008. High aspect ratio (l/d) riser VIV prediction using wake oscillator model. Ocean Engineering 35 (17-18), 1769-1774.
+
+Yeo, D., Jones, N. P., 2008. Investigation on 3-d characteristics of flow around a yawed and inclined circular cylinder. Journal of Wind Engineering and Industrial Aerodynamics 96 (10), 1947–1960.
+
+Yeo, D., Jones, N. P., 2011. Computational study on aerodynamic mitigation of wind-induced, large-amplitude vibrations of stay cables with strakes. Journal of Wind Engineering and Industrial Aerodynamics 99 (4), 389–399.
+
+Yeo, D., Jones, N. P., 2012. Aerodynamic forces induced by vertically oscillating incoming flow on a yawed horizontal circular cylinder. Journal of Wind Engineering and Industrial Aerodynamics 104, 188–195.
+
+Yin, Z., Reddy, K., Durbin, P. A., 2015. On the dynamic computation of the model constant in delayed detached eddy simulation. Physics of Fluids 27 (2), 025105.
+
+Zdravkovich, M. M., 2003. Flow around Circular Cylinders: Volume 2: Applications. Vol. 2. Oxford university press.
+
+Zhao, M., 2015. The validity of the independence principle applied to the vortex-induced vibration of an inclined cylinder in steady flow. Applied Ocean Research 53, 155-160.
+
+Zhao, M., Cheng, L., Zhou, T., 2009. Direct numerical simulation of three-dimensional flow past a yawed circular cylinder of infinite length. Journal of Fluids and Structures 25 (5), 831-847.

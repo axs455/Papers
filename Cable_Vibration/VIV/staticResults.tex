@@ -4,9 +4,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 The objective of this paper is to demonstrate the capability of DES to predict
-aerodynamic loads on a static cylinder and an elastically-mounted cylinder.
-This section discusses the results of the simulations of flow over a static
-cylinder.
+aerodynamic loads on a static (tethered) cylinder and an elastically-mounted
+cylinder in normal and yawed flow.  This section discusses the results of the
+simulations of flow over a static cylinder.
 
 Simulations are performed for (1) flow normal to the cylinder axis, and (2)
 flow at an angle to the cylinder axis (inclined/yawed cylinder); three yaw
@@ -14,8 +14,8 @@ angles ($\beta$) are analyzed in this study. Smooth inflow is used -- zero
 turbulence in the numerical simulations and the minimum possible inflow
 turbulence intensity ($\sim$0.2\%) in the tunnel. Cylinder surface is very
 smooth and hence surface roughness is not modeled in the simulations.
-Verification is performed with existing experimental data in the literature, as
-well as data from new experiments conducted as a part of this study.
+Verification is performed with experimental data available in the literature,
+as well as data from new experiments conducted as a part of this study.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Normally-Incident Flow}
@@ -25,14 +25,13 @@ well as data from new experiments conducted as a part of this study.
 Table~\ref{tab:comparisonRe20k} summarizes the simulation results for the
 static cases and compares them with two sets of experimental data. Exp-I refers
 to the data from~\cite{norberg2013pressure} and Exp-ISU is from our
-measurements (Section~\ref{sec:experiments} provides the details). Simulations
-are performed at $Re_D=20,000$, which is the same as Exp-I, but the $Re_D$ in
-Exp-ISU is higher ($=51,500$) due to the limitation of the wind tunnel and the
-measurement equipment. The Strouhal number ($St$), the mean drag coefficient,
-$\overline{C}_d$ and the mean back pressure coefficient, $\overline{C}_{pb}$
-are compared in the table. Strouhal number is defined as $St =
-f_v\,D/V_\infty$, where $f_v$ is the vortex-shedding frequency, $D$ is the
-cylinder diameter, and $V_\infty$ is the freestream flow speed.
+measurements. Simulations are performed at $Re_D=20,000$, which is the same as
+Exp-I, but the $Re_D$ in Exp-ISU is higher ($=51,500$).  The Strouhal number
+($St$), the mean drag coefficient, $\overline{C}_d$ and the mean back pressure
+coefficient, $\overline{C}_{pb}$ are compared in the table. Strouhal number is
+defined as $St = f_v\,D/V_\infty$, where $f_v$ is the vortex-shedding
+frequency, $D$ is the cylinder diameter, and $V_\infty$ is the freestream flow
+speed.
 
 Figure~\ref{fig:Cp_compared_Re20k} compares the predicted mean aerodynamic
 pressure coefficient, $\overline{C}_p$ and the root mean square of perturbation
@@ -54,7 +53,7 @@ with the measurements.
   \begin{tabular}{c|c|c|c|c}
       $\boldsymbol{Re_D}$ & \textbf{Method} & $\boldsymbol{St}$ & $\boldsymbol{\overline{C}_d}$ & $\boldsymbol{\overline{C}_{pb}}$ \\ \hline
       \hline
-      20,000 & $k-\omega$ DDES & 0.21 & 1.13 & -1.16 \\ \hline
+      20,000 & $k$-$\omega$ DDES & 0.21 & 1.13 & -1.16 \\ \hline
       20,000 & Exp-I    & 0.19 & 1.22 & -1.1  \\ \hline
       51,500 & Exp-ISU         & 0.21 & 1.14 & -1.3  \\ \hline
       \hline
@@ -306,11 +305,11 @@ with increasing time can be seen in the contours (more visible in the $C_{x,n}$
 spatio-temporal plot) which is indicative of spanwise flow over the cylinder.
 %
 \begin{figure}[htb!]
+  \subcaptionbox{$C_{y,n}$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Spatial_temporal_Cy_Re20k_Yawed30.png}}
   \subcaptionbox {$C_{x,n}$}
     [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Spatial_temporal_Cx_Re20k_Yawed30.png}}
   \hspace*{\fill}
-  \subcaptionbox{$C_{y,n}$ }
-    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Spatial_temporal_Cy_Re20k_Yawed30.png}}
   \caption{Spatio-temporal distribution of force coefficients at
   $\beta=30^\circ$}
   \label{fig:Spatial_temporal_CxCyRe20k}
@@ -337,13 +336,13 @@ literature. $C_{x,n}$ however is not that highly correlated along the span even
 at the peak vortex shedding frequency.
 %
 \begin{figure}[htb!]
+  \subcaptionbox{$C_{y,n}$ }
+    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cl_coherence_Yawed30_Re20k.png}}
   \subcaptionbox {$C_{x,n}$}
     [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cd_coherence_Yawed30_Re20k.png}}
   \hspace*{\fill}
-  \subcaptionbox{$C_{y,n}$ }
-    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/Cl_coherence_Yawed30_Re20k.png}}
     \caption{Magnitude squared coherence, $\gamma^2(\Delta z)$ of transverse
-      and longitudinal force coefficients, $C_{x,n}$ and $C_{y,n}$ for
+      and longitudinal force coefficients - $C_{y,n}$ and $C_{x,n}$ for
       $\beta=30^\circ$ case.}
   \label{fig:Coherence_Yawed30_Re20k}
 \end{figure}
