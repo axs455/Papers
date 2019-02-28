@@ -61,8 +61,13 @@
 Iowa, 50011}
 
 
-%\begin{abstract}
-%\end{abstract}
+\begin{abstract}
+  The effects of using periodic boundary conditions when simulating vortex
+  induced vibration (VIV) on a finite-span model are explored. When spanwise
+  coherence is smaller than the simulated span, the peak VIV amplitude is
+  under-predicted due to spreading of energy in frequencies around the Strouhal
+  number.
+\end{abstract}
 
 \begin{keyword}
   Vortex-Induced Vibration \sep 
@@ -81,6 +86,40 @@ Iowa, 50011}
 \label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %
+Vortex-induced vibrations (VIV) are commonly observed in bridge decks, cables,
+power conductors, risers in oil rigs, etc. The Karman vortex shedding in the
+wake of the cylinder produces periodic forcing on the cylinder. In certain
+conditions the vortex-shedding frequency synchronizes (``lock-in'') with the
+natural frequency of the system which results in high-amplitude oscillations
+(VIV) limited by the system damping. Experimental investigations of VIV are
+typically performed with finite-span cylinders with aspect ratios greater than
+$10$ to minimize ``end effects'' (*cite*), where end-effect refers to the
+three-dimensional flow that results due to the finiteness of the model. End
+plates have been used in experiments, which reduce but not completely eliminate
+the end effect as horse-shoe vortices develop at the intersection of the cable
+and the end plates. 
+
+This problem is avoided in simulations by using periodic boundaries in the span
+direction. While the periodic boundaries imply an infinitely-long cylinder, the
+finite size of the computational domain in the span direction imposes a
+periodicity in the flow which may not exist in reality. If spanwise variations
+occur in the problem and the length scale of these variations is larger than
+the simulated span, then the flow simulations with spanwise periodicity will
+likely yield incorrect results. For stochastic (turbulent) flows, this length
+scale can be measured using two-point correlation; in particular, spanwise
+coherence is used.
+
+In this paper, we present detached eddy simualtion (DES) results of four models
+of a circular cylinder experiencing VIV. The aspect ratio of these models are,
+$L/D=1,~2,~5,$ and $10$. Spanwise coherence is analyzed and it is observed that
+while the coherence is high around the vortex-shedding frequency ($f_v$),  
+
+when 
+
+the reduced frequency, $k=fD/V_\infty$ matches
+the Strouhal number, $f_v D/V_\infty$
+
+
 Introduction of VIV, review
 
 Aspect ratio of cylinder, history
