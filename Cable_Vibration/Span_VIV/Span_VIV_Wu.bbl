@@ -1,23 +1,37 @@
-\begin{thebibliography}{1}
-\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
-\providecommand{\href}[2]{#2}
-\providecommand{\path}[1]{#1}
-\providecommand{\DOIprefix}{doi:}
-\providecommand{\ArXivprefix}{arXiv:}
-\providecommand{\URLprefix}{URL: }
-\providecommand{\Pubmedprefix}{pmid:}
-\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
-\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\eprint}[2][]{\url{#2}}
 \providecommand{\bibinfo}[2]{#2}
-\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+\ifx\xfnm\undefined \def\xfnm[#1]{\unskip,\space#1}\fi
+\makeatletter\def\@biblabel#1{#1.}\makeatother
+%Type = Article
+\bibitem[{Yin et~al.(2015)Yin, Reddy and Durbin}]{yin2015dynamic}
+\bibinfo{author}{Yin\xfnm[ Z.]}, \bibinfo{author}{Reddy\xfnm[ K.]},
+  \bibinfo{author}{Durbin\xfnm[ P.A.]}.
+\newblock \bibinfo{title}{On the dynamic computation of the model constant in
+  delayed detached eddy simulation}.
+\newblock \emph{\bibinfo{journal}{Physics of Fluids}}
+  \bibinfo{year}{2015};\hspace{0pt}\textbf{\bibinfo{volume}{27}}(\bibinfo{number}{2}).
+%Type = Article
+\bibitem[{Wu et~al.(2019)Wu, Jafari, Sarkar and Sharma}]{wu2019}
+\bibinfo{author}{Wu\xfnm[ X.]}, \bibinfo{author}{Jafari\xfnm[ M.]},
+  \bibinfo{author}{Sarkar\xfnm[ P.]}, \bibinfo{author}{Sharma\xfnm[ A.]}.
+\newblock \bibinfo{title}{Verification of des for flow over rigidly and
+  elastically-mounted circular cylinders in normal and yawed flow}.
+\newblock \emph{\bibinfo{journal}{Journal of Fluids and Structures}}
+  \bibinfo{year}{2019};\hspace{0pt}.
 %Type = Article
 \bibitem[{Khalak and Williamson(1997)}]{khalak1997fluid}
-\bibinfo{author}{Khalak, A.}, \bibinfo{author}{Williamson, C.},
-  \bibinfo{year}{1997}.
+\bibinfo{author}{Khalak\xfnm[ A.]}, \bibinfo{author}{Williamson\xfnm[ C.]}.
 \newblock \bibinfo{title}{Fluid forces and dynamics of a hydroelastic structure
   with very low mass and damping}.
-\newblock \bibinfo{journal}{Journal of Fluids and Structures}
-  \bibinfo{volume}{11}, \bibinfo{pages}{973--982}.
+\newblock \emph{\bibinfo{journal}{Journal of Fluids and Structures}}
+  \bibinfo{year}{1997};\hspace{0pt}\textbf{\bibinfo{volume}{11}}(\bibinfo{number}{8}):\bibinfo{pages}{973--982}.
 
 \end{thebibliography}

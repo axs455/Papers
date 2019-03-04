@@ -1,23 +1,31 @@
 \documentclass[12pt,preprint]{elsarticle}
 \usepackage[margin=1in]{geometry}
-\usepackage{subcaption}
+\usepackage{wrapfig}
 \usepackage{amsmath}
+\usepackage{bm}
 \usepackage{makecell}
 \usepackage[table]{xcolor}
 
+\usepackage{subcaption}
 % Font size for subcaption
 \DeclareCaptionFont{mysize}{\fontsize{9}{9.6}\selectfont}
 \captionsetup[sub]{font=mysize}
+
 %\usepackage[mathlines,pagewise]{lineno}
 %%\modulolinenumbers[2]
-\usepackage{bm}
 
-\journal{Journal of Sound \& Vibration}
+%\journal{Journal of Sound \& Vibration}
 
 \newcommand{\hl}[1]{\textcolor{red}{#1}}
 \newcommand{\hb}[1]{\textcolor{blue}{#1}}
 \newcommand{\incfig}{\centering\includegraphics}
 \newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+\newcommand{\etal}{\textit{et al}. }
+\newcommand{\ie}{\textit{i}.\textit{e}., }
+\newcommand{\eg}{\textit{e}.\textit{g}., }
+\usepackage{natbib}
+
+\usepackage[colorlinks=true,citecolor=red]{hyperref}
 
 \begin{document}
 
@@ -86,112 +94,119 @@ Iowa, 50011}
 \label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %
-Vortex-induced vibrations (VIV) are commonly observed in bridge decks, cables,
-power conductors, risers in oil rigs, etc. The Karman vortex shedding in the
-wake of the cylinder produces periodic forcing on the cylinder. In certain
-conditions the vortex-shedding frequency synchronizes (``lock-in'') with the
-natural frequency of the system which results in high-amplitude oscillations
-(VIV) limited by the system damping. Experimental investigations of VIV are
-typically performed with finite-span cylinders with aspect ratios greater than
-$10$ to minimize ``end effects'' (*cite*), where end-effect refers to the
-three-dimensional flow that results due to the finiteness of the model. End
-plates have been used in experiments, which reduce but not completely eliminate
-the end effect as horse-shoe vortices develop at the intersection of the cable
-and the end plates. 
+Vortex-induced vibrations (VIV) are commonly observed in bridge decks,
+cables, power conductors, risers in oil rigs, etc. The K\'arm\'an vortex
+shedding in the wake of the cylinder produces periodic forcing on the
+cylinder. In certain conditions the vortex-shedding frequency
+synchronizes (``lock-in'') with the natural frequency of the system
+which results in high-amplitude oscillations (VIV) limited by the
+system damping. Experimental investigations of VIV are typically
+performed with finite-span cylinders with aspect ratios greater than
+$10$ to minimize ``end effects'' (*cite*), where end-effect refers to
+the three-dimensional flow that results due to the finiteness of the
+model. End plates have been used in experiments (*cite*), which reduce
+but not completely eliminate the end effects as horse-shoe vortices
+develop at the intersection of the cable and the end plates. 
 
 This problem is avoided in simulations by using periodic boundaries in the span
 direction. While the periodic boundaries imply an infinitely-long cylinder, the
-finite size of the computational domain in the span direction imposes a
-periodicity in the flow which may not exist in reality. If spanwise variations
-occur in the problem and the length scale of these variations is larger than
-the simulated span, then the flow simulations with spanwise periodicity will
-likely yield incorrect results. For stochastic (turbulent) flows, this length
-scale can be measured using two-point correlation; in particular, spanwise
-coherence is used.
+finite size of the computational domain in the span direction imposes
+artificial periodicity in the flow. If spanwise variations are present in the
+flow and the length scale of these variations is larger than the simulated
+span, then span periodicity will likely yield incorrect results. For stochastic
+(turbulent) flows, this length scale can be measured using two-point
+correlations; in particular, spanwise coherence. Magnitude-squared coherence is
+defined as 
+%
+$\gamma^2(\Delta z,f) = \langle \abs{S_{xy}(f)}^2 \rangle/(\langle
+    S_{xx}(f)\rangle \langle S_{yy}(f) \rangle)$,
+%
+where $S_{xy}(f)$ denotes cross-spectral density of the desired quantity
+(e.g., sectional lift) at points $\bm{x}$ and $\bm{y}$ separated by a distance
+$\Delta z$ (along the span). $S_{xx}(f)$ and $S_{yy}(f)$ are
+auto-spectral densities at $\bm{x}$ and $\bm{y}$ respectively and angular
+brackets denote ensemble averaging.
 
-In this paper, we present detached eddy simualtion (DES) results of four models
-of a circular cylinder experiencing VIV. The aspect ratio of these models are,
-$L/D=1,~2,~5,$ and $10$. Spanwise coherence is analyzed and it is observed that
-while the coherence is high around the vortex-shedding frequency ($f_v$),  
-
-when 
-
-the reduced frequency, $k=fD/V_\infty$ matches
-the Strouhal number, $f_v D/V_\infty$
-
-
-Introduction of VIV, review
-
-Aspect ratio of cylinder, history
-
-Motivation for this paper
-
-Figure~\ref{fig:Coherence_staic} presents a lift coherence contour for a
-$20\times D$ static cylinder. As the figure shown, the cylinder is not
-corelated for the most frequency when it is long enough, exact for $St\sim
-0.2$. In here, the peak frequency ($St\sim 0.2$) is the Kármán vortex
-shedding frequency. It is well known that the amplitude of rigit cylinder will
-significant increase if the natural frequency is close to the vortex shedding
-frequency. 
-
-\begin{figure}[htb!]
-  \incfig[width=.6\textwidth]{Figures/Cl_Coherence_Z20_Static.png}
-  \caption{Lift coherence for static cylinder}
+Figure~\ref{fig:Coherence_staic} presents contours of $\gamma^2(\Delta
+z,\omega)$ of sectional lift for a static circular cylinder (aspect ratio,
+$L/D=20$) simulation. Nondimensional frequency, $k = f\,D/V_\infty$ is used to
+plot coherence. Spanwise coherence is small everywhere except at the K\'arm\'an
+vortex-shedding frequency ($f_v$), given by the Strouhal number, $St = f_v
+D/V_\infty$ of around $0.2$.
+%
+\begin{wrapfigure}{R}{0.5\textwidth}
+  \vspace*{-0.2in}
+  \incfig[width=.5\textwidth]{Figures/Cl_Coherence_Z20_Static.png}
+  \caption{$\gamma^2(\Delta z,f)$ of lift for a static cylinder}
   \label{fig:Coherence_staic}
-\end{figure}
+\end{wrapfigure}
 
-\hl{change Z to L/D}
+In this paper, we investigate the effect of span periodicity when simulating a
+circular cylinder experiencing VIV. While the effect of aspect ratio (span
+length to diameter ratio, $L/D$) have been investigated in VIV experiments
+(*cite*), such an investigation is lacking for simulations. (* provide a very
+brief summary of study on aspect-ratio-effects for flow over a cylinder *) We
+present detached eddy simualtion (DES) results of four models with
+$L/D=1,~2,~5,$ and $10$. Displacement amplitude, lift spectra and spanwise
+coherence are analyzed to study the effect of span periodicity.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Computational Methodology}
+\section{Computational Methodology and Verification} 
 \label{sec:methodology}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\hl{add A schematic of the setup for the vortex-induced vibration(VIV) simulations}
-As Figur~\ref{fig:VIV_setup} shown, an elastically-mounted cylinder with different aspect ratio 
-is used in the simulations. The flow is considering as the incompressible flow since similar experiments were carried
-out in water runnel(\hl{ref}).  
+A coupled fluid-solid dynamics solver is used to simulate an
+elastically-mounted rigid circular cylinder experiencing VIV. The detached eddy
+simulation (DES) technique is used to model the flow and a forced single-degree
+of freedom mass-spring-damper system is solved to model the dynamics of the
+cylinder. The $k$-$\omega$ delayed detached eddy simulation (DDES) formulation
+by Yin \etal \cite{yin2015dynamic} is used here for the flow simulation. The
+details of the approach are described in Wu \etal \citep{wu2019}.
+
+Figure~\ref{fig:VIV_verification} (a) shows a schematic of the simulation setup
+and a comparison with measured data for a low mass-damping cylinder undergoing
+VIV.  The following nondimensional numbers are matched between the experiments
+and the simulations: mass ratio, $m^*=2.6$, mechanical damping ratio,
+$\zeta=0.001$, and reduced velocity, $V_R = V_\infty/(f_N D)$, where $f_N$ is
+the natural frequency of the mass-spring-damper system. As seen in
+Fig.~\ref{fig:VIV_verification} (b\&c), the simulations accurately predict the
+displacement amplitude and the vortex shedding frequency of the cylinder over a
+wide range of $V_R$ which includes the four branches identified in the
+experiment~\cite{khalak1997fluid}: {\em initial excitation}, {\em upper}, {\em
+lower}, and {\em desynchronization}. Of particular interest is the ``lock-in''
+phenomenon which occurs in the {\em upper} and {\em lower} branches. 
 
 \begin{figure}[htb!]
-  \incfig[width=.6\textwidth]{Figures/VIV_setup}
-  \caption{A schematic of the simulated setup for VIV simulations.}
-  \label{fig:VIV_setup}
+  \subcaptionbox{simulation setup}{\incfig[width=.32\textwidth]{Figures/VIV_setup}} \;
+  \subcaptionbox{mean amplitude}  {\incfig[width=.32\textwidth]{Figures/validation/viv_amp_noyaw.pdf}} \;
+  \subcaptionbox{frequency}       {\incfig[width=.32\textwidth]{Figures/validation/viv_freq_noyaw.pdf}}
+  \caption{Verification of the DES approach to predict VIV: (a) a schematic
+    showing the simulation setup, (b) mean nondimensional displacement
+    amplitude ($\bar{A}/D$), and (c) vortex shedding frequency ($f_v$)
+    normalized by natural frequency of the system ($f_N$). Simulation results
+    are compared against measurements from Ref.~\cite{khalak1997fluid} for a
+    range of reduced velocity ($V_{R}$).}
+  \label{fig:VIV_verification}
 \end{figure}
 
 
-\hl{numerical method, mesh}
-
-In order to study the aspect ratio of the circular cylinder, four different aspect ratios ($L/D = 1, 2, 5,$ and $10$)
-have been chosen and simulated at reduced velocity $V_{R,n}=2, 3, 4, 5, 5.9, 7, 8$. The averaged peak amplitude 
-results are shown in 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Numerical Results and Verification}
-\label{sec:results}
+\section{Effect of Aspect Ratio}
+\label{sec:periodicity}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+Simulations are performed for four values of aspect ratio, $L/D$ ($= 1, 2, 5,$
+and $10$). For each configuration, seven values of reduced velocity $V_{R}$
+($=2, 3, 4, 5, 5.9, 7, 8$) are evaluated; this range covers the {\em initial
+excitation}, {\em upper}, and {\em lower} branches observed during VIV of a low
+mass-damping cylinder.
 
-
-Figure~\ref{fig:Amplitude_VIV} compared the predicted non-dimensional mean
-amplitude for $10\times D$ cylinder with the experiment
-(see e.g., Ref.~\cite{khalak1997fluid}). Overall, the predicted amplitudes agree well with
-the experiment. Four branches can be identified on the experiment : initial
-excitation, upper branch, lower branch and desynchronization. All four branches
-are observed on the simulations. Therefore, the simulated method is able to
-simulate vortex induced vibration.
 
 \begin{figure}[htb!]
-  \incfig[width=.6\textwidth]{Figures/A_Exp_Z10D_Compared.png}
-  \caption{Comparison of predicted and experimental non-dimensional mean
-    amplitude $A/D$ for various reduced velocities $V_{R,n}$}
-  \label{fig:Amplitude_VIV}
-\end{figure}
-
-\begin{figure}[htb!]
-  \incfig[width=.6\textwidth]{Figures/A.png}
-  \caption{Comparison of predicted non-dimensional mean amplitude $A/D$ for various reduced 
-  velocities $V_{R,n}$ for different span lengths}
+  \incfig[width=.5\textwidth]{Figures/A.png}
+  \caption{Comparison of predicted non-dimensional mean amplitude ${\bar A}/D$
+    using cylinder models of different span lengths.}
   \label{fig:Amplitude_Compared}
 \end{figure}
 
@@ -202,34 +217,20 @@ peak vortex shedding frequency and its harmonics. However, the shorter
 cylinders ($Z = 1D$ and $2D$) have more wider coherence for more frequencies??
 
 \begin{figure}[htb!]
-  \subcaptionbox{$Z=1D$ }
-    [.1\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z1D.png}}
-  \hspace*{\fill}
-  \subcaptionbox{$Z=2D$ }
-    [.1\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z2D.png}}
-  \hspace*{\fill}
-  \subcaptionbox{$Z=5D$ }
-    [.25\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z5D.png}}
-  \hspace*{\fill}
-  \subcaptionbox{$Z=10D$ }
-    [.5\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z10D.png}}
+  \subcaptionbox{$1D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z1D.png}} \qquad
+  \subcaptionbox{$2D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z2D.png}} \qquad
+  \subcaptionbox{$5D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z5D.png}} \qquad
+  \subcaptionbox{$10D$}{\incfig[height=.33\textwidth]{Figures/Coherence_Z10D.png}}
     \caption{Lift coherence for various aspect ratio at $V_{R,n}=5$}
   \label{fig:Coherence_Cl}
 \end{figure}
 
 \begin{figure}[htb!]
-  \subcaptionbox{$Z=1D$ }
-    [.1\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z1D_Cd.png}}
-  \hspace*{\fill}
-  \subcaptionbox{$Z=2D$ }
-    [.1\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z2D_Cd.png}}
-  \hspace*{\fill}
-  \subcaptionbox{$Z=5D$ }
-    [.25\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z5D_Cd.png}}
-  \hspace*{\fill}
-  \subcaptionbox{$Z=10D$ }
-    [.5\linewidth]{\incfig[height=.3\textwidth]{Figures/Coherence_Z10D_Cd.png}}
-    \caption{Drag coherence for various aspect ratio at $V_{R,n}=5$}
+  \subcaptionbox{$1D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z1D_Cd.png}} \qquad
+  \subcaptionbox{$2D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z2D_Cd.png}} \qquad
+  \subcaptionbox{$5D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z5D_Cd.png}} \qquad
+  \subcaptionbox{$10D$}{\incfig[height=.33\textwidth]{Figures/Coherence_Z10D_Cd.png}}
+  \caption{Drag coherence for various aspect ratio at $V_{R,n}=5$}
   \label{fig:Coherence_Cd}
 \end{figure}
 
@@ -247,7 +248,43 @@ smaller $L/D$.
   \label{fig:force_VIV}
 \end{figure}
 
+\clearpage
 
+\begin{figure}[htb!]
+  \subcaptionbox{Spectra}
+    {\incfig[width=.44\textwidth]{Figures/RV3/St_1_RV.pdf}}
+  \qquad
+  \subcaptionbox{Coherence}
+    {\incfig[width=.44\textwidth]{Figures/RV3/Coherence_Cl_Z10.pdf}} \\
+  \subcaptionbox{Coherence, $L/D=5$}
+    {\incfig[width=.32\textwidth]{Figures/RV3/Coherence_Cl_Z5.pdf}}
+  \;
+  \subcaptionbox{Coherence, $L/D=2$}
+    {\incfig[width=.32\textwidth]{Figures/RV3/Coherence_Cl_Z2.pdf}}
+  \;
+  \subcaptionbox{Coherence, $L/D=1$}
+    {\incfig[width=.32\textwidth]{Figures/RV3/Coherence_Cl_Z1.pdf}}
+    \caption{$V_{R,n}=3$}
+  \label{fig:RV_3}
+\end{figure}
+
+\begin{figure}[htb!]
+  \subcaptionbox{Spectra}
+    [.48\linewidth]{\incfig[width=.44\textwidth]{Figures/RV5_9/St_1_RV.pdf}}
+  \hspace*{\fill}
+  \subcaptionbox{Coherence, $L/D=10$}
+    [.48\linewidth]{\incfig[width=.44\textwidth]{Figures/RV5_9/Coherence_Cl_Z10.pdf}} \\
+  \subcaptionbox{Coherence, $L/D=5$}
+    [.32\linewidth]{\incfig[width=.32\textwidth]{Figures/RV5_9/Coherence_Cl_Z5.pdf}}
+  \hspace*{\fill}
+  \subcaptionbox{Coherence, $L/D=2$}
+    [.32\linewidth]{\incfig[width=.32\textwidth]{Figures/RV5_9/Coherence_Cl_Z2.pdf}}
+  \hspace*{\fill}
+  \subcaptionbox{Coherence, $L/D=1$}
+    [.32\linewidth]{\incfig[width=.32\textwidth]{Figures/RV5_9/Coherence_Cl_Z1.pdf}}
+    \caption{$V_{R,n}=5.9$}
+  \label{fig:RV_5p9}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
@@ -268,17 +305,15 @@ smaller $L/D$.
 %%
 %\end{linenumbers}
 
-\section{References}
-\label{sec:references}
 
-\bibliographystyle{elsarticle-harv} 
+
+%\bibliographystyle{elsarticle-num} 
 \bibliography{references}
+\bibliographystyle{model3a-num-names}
 
 %% else use the following coding to input the bibitems directly in the
 %% TeX file.
-
 %\begin{thebibliography}{00}
-
 %% \bibitem[Author(year)]{label}
 %% Text of bibliographic item
 %\bibitem[ ()]{}
