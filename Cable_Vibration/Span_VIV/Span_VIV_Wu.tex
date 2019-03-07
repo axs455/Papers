@@ -70,19 +70,21 @@ Iowa, 50011}
 
 
 \begin{abstract}
-  The effects of using periodic boundary conditions when simulating vortex
-  induced vibration (VIV) on a finite-span model are explored. When spanwise
-  coherence is smaller than the simulated span, the peak VIV amplitude is
-  under-predicted due to spreading of energy in frequencies around the Strouhal
-  number.
+  The effects of spanwise periodic boundary conditions to simulate vortex
+  induced vibration (VIV) of finite-span cylinders are investigated. Flow over
+  four elastically-mounted rigid circular cylinder models of varying span
+  lengths are studied using detached eddy simulations. Spectra of integrated
+  transverse loading and spanwise coherence of sectional force coefficient are
+  analyzed to explain the observed differences. Aspect ratio of ten is found to
+  be sufficient to accurately simulate VIV.
 \end{abstract}
 
-\begin{keyword}
-  Vortex-Induced Vibration \sep 
-  Detached Eddy Simulations \sep 
-  spanwise coherence
-\end{keyword}
-
+%\begin{keyword}
+%  Vortex-Induced Vibration \sep 
+%  Detached Eddy Simulations \sep 
+%  spanwise coherence
+%\end{keyword}
+%
 \end{frontmatter}
 
 %\linenumbers
@@ -94,52 +96,50 @@ Iowa, 50011}
 \label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %
-Vortex-induced vibrations (VIV) are commonly observed in bridge decks,
-cables, power conductors, risers in oil rigs, etc. The K\'arm\'an vortex
-shedding in the wake of the cylinder produces periodic forcing on the
-cylinder. In certain conditions the vortex-shedding frequency
-synchronizes (``lock-in'') with the natural frequency of the system
-which results in high-amplitude oscillations (VIV) limited by the
-system damping. Experimental investigations of VIV are typically
-performed with finite-span cylinders with aspect ratios greater than
-$10$ to minimize ``end effects'' (*cite*), where end-effect refers to
-the three-dimensional flow that results due to the finiteness of the
-model. End plates have been used in experiments (*cite*), which reduce
-but not completely eliminate the end effects as horse-shoe vortices
-develop at the intersection of the cable and the end plates. 
+Vortex-induced vibrations (VIV) are commonly observed in bridge decks, cables,
+power conductors, risers in oil rigs, etc. The K\'arm\'an vortex shedding in
+the wake of the cylinder produces periodic forcing on the cylinder. In certain
+conditions the vortex-shedding frequency synchronizes (``lock-in'') with the
+natural frequency of the system which results in high-amplitude oscillations
+limited only by the system damping. Experimental investigations of VIV are
+typically performed with finite-span cylinders with aspect ratios greater than
+$10$ to minimize ``end effects'' (*cite*), where end-effects refer to effects
+due to three-dimensional flow at span ends. End plates have been used in
+experiments (*cite*), which reduce but not completely eliminate the end effects
+as horse-shoe vortices develop at the intersection of the cylinder and the end
+plates.
 
 This problem is avoided in simulations by using periodic boundaries in the span
 direction. While the periodic boundaries imply an infinitely-long cylinder, the
 finite size of the computational domain in the span direction imposes
 artificial periodicity in the flow. If spanwise variations are present in the
 flow and the length scale of these variations is larger than the simulated
-span, then span periodicity will likely yield incorrect results. For stochastic
-(turbulent) flows, this length scale can be measured using two-point
-correlations; in particular, spanwise coherence. Magnitude-squared coherence is
-defined as 
+span, then span periodicity will likely yield incorrect results. For a
+turbulent flow (stochastic system), this length scale can be measured using
+two-point correlations; in particular, spanwise coherence. Magnitude-squared
+coherence is defined as 
 %
 $\gamma^2(\Delta z,f) = \langle \abs{S_{xy}(f)}^2 \rangle/(\langle
     S_{xx}(f)\rangle \langle S_{yy}(f) \rangle)$,
 %
-where $S_{xy}(f)$ denotes cross-spectral density of the desired quantity
-(e.g., sectional lift) at points $\bm{x}$ and $\bm{y}$ separated by a distance
-$\Delta z$ (along the span). $S_{xx}(f)$ and $S_{yy}(f)$ are
-auto-spectral densities at $\bm{x}$ and $\bm{y}$ respectively and angular
-brackets denote ensemble averaging.
-
-Figure~\ref{fig:Coherence_staic} presents contours of $\gamma^2(\Delta
-z,\omega)$ of sectional lift for a static circular cylinder (aspect ratio,
-$L/D=20$) simulation. Nondimensional frequency, $k = f\,D/V_\infty$ is used to
-plot coherence. Spanwise coherence is small everywhere except at the K\'arm\'an
-vortex-shedding frequency ($f_v$), given by the Strouhal number, $St = f_v
-D/V_\infty$ of around $0.2$.
+where $S_{xy}(f)$ denotes cross-spectral density of the desired quantity (e.g.,
+sectional force) at points $\bm{x}$ and $\bm{y}$ separated by a distance $\Delta
+z$ (along the span). $S_{xx}(f)$ and $S_{yy}(f)$ are auto-spectral densities at
+$\bm{x}$ and $\bm{y}$ respectively, and angle brackets denote ensemble
+averaging.
 %
-\begin{wrapfigure}{R}{0.5\textwidth}
-  \vspace*{-0.2in}
-  \incfig[width=.5\textwidth]{Figures/Cl_Coherence_Z20_Static.png}
-  \caption{$\gamma^2(\Delta z,f)$ of lift for a static cylinder}
+\begin{wrapfigure}[13]{r}{0.4\textwidth}
+  \incfig[width=0.4\textwidth]{Figures/Coherence_Cl_Z20}
+  \caption{$\gamma^2(\Delta z,f)$ for a static cylinder}
   \label{fig:Coherence_staic}
 \end{wrapfigure}
+%
+Figure~\ref{fig:Coherence_staic} presents contours of $\gamma^2(\Delta
+z,\omega)$ of sectional transverse force for a static circular cylinder (aspect
+ratio, $L/D$=20) simulation. Nondimensional frequency, $k = f\,D/V_\infty$ is
+used to plot coherence. Spanwise coherence is small everywhere except at the
+K\'arm\'an vortex-shedding frequency ($f_v$), which is given by the Strouhal
+number, $St = f_v D/V_\infty$ ($\sim 0.2$).
 
 In this paper, we investigate the effect of span periodicity when simulating a
 circular cylinder experiencing VIV. While the effect of aspect ratio (span
@@ -147,8 +147,9 @@ length to diameter ratio, $L/D$) have been investigated in VIV experiments
 (*cite*), such an investigation is lacking for simulations. (* provide a very
 brief summary of study on aspect-ratio-effects for flow over a cylinder *) We
 present detached eddy simualtion (DES) results of four models with
-$L/D=1,~2,~5,$ and $10$. Displacement amplitude, lift spectra and spanwise
-coherence are analyzed to study the effect of span periodicity.
+$L/D=1,~2,~5,$ and $10$. Displacement amplitude, oscillation frequency, lift
+spectra and spanwise coherence are analyzed to study the effect of span
+periodicity.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,36 +158,36 @@ coherence are analyzed to study the effect of span periodicity.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 A coupled fluid-solid dynamics solver is used to simulate an
-elastically-mounted rigid circular cylinder experiencing VIV. The detached eddy
-simulation (DES) technique is used to model the flow and a forced single-degree
-of freedom mass-spring-damper system is solved to model the dynamics of the
-cylinder. The $k$-$\omega$ delayed detached eddy simulation (DDES) formulation
-by Yin \etal \cite{yin2015dynamic} is used here for the flow simulation. The
-details of the approach are described in Wu \etal \citep{wu2019}.
+elastically-mounted rigid circular cylinder experiencing VIV. The $k$-$\omega$
+detached eddy simulation (DES) technique~\cite{yin2015dynamic} is used to model
+the flow and a forced single-degree of freedom mass-spring-damper system is
+solved to model the dynamics of the cylinder. The details of the numerical
+methodology are described in Wu \etal \citep{wu2019}.
 
 Figure~\ref{fig:VIV_verification} (a) shows a schematic of the simulation setup
-and a comparison with measured data for a low mass-damping cylinder undergoing
-VIV.  The following nondimensional numbers are matched between the experiments
-and the simulations: mass ratio, $m^*=2.6$, mechanical damping ratio,
-$\zeta=0.001$, and reduced velocity, $V_R = V_\infty/(f_N D)$, where $f_N$ is
-the natural frequency of the mass-spring-damper system. As seen in
-Fig.~\ref{fig:VIV_verification} (b\&c), the simulations accurately predict the
-displacement amplitude and the vortex shedding frequency of the cylinder over a
-wide range of $V_R$ which includes the four branches identified in the
-experiment~\cite{khalak1997fluid}: {\em initial excitation}, {\em upper}, {\em
-lower}, and {\em desynchronization}. Of particular interest is the ``lock-in''
-phenomenon which occurs in the {\em upper} and {\em lower} branches. 
+and a comparison with measured data from Ref.~\cite{khalak1997fluid} for a low
+mass-damping cylinder undergoing VIV. The following nondimensional numbers are
+matched between the experiment and the simulations: mass ratio, $m^*=2.6$,
+mechanical damping ratio, $\zeta=0.001$, and reduced velocity, $V_R =
+V_\infty/(f_N D)$, where $f_N$ is the natural frequency of the system (mounted
+cylinder). The flow Reynolds number based on the cylinder diameter,
+$Re_D=2\times 10^4$. The simulations accurately predict the displacement
+amplitude and the vortex shedding frequency of the cylinder (see
+Fig.~\ref{fig:VIV_verification}) over a wide range of $V_R$ which includes the
+four branches identified in Ref.~\cite{khalak1997fluid}: {\em Initial
+Excitation}, {\em Upper}, {\em Lower}, and {\em Desynchronization}. Of
+particular interest is the ``lock-in'' phenomenon which occurs in the {\em
+Upper} and {\em Lower} branches where the chances of structural damage are
+highest. 
 
 \begin{figure}[htb!]
-  \subcaptionbox{simulation setup}{\incfig[width=.32\textwidth]{Figures/VIV_setup}} \;
+  \subcaptionbox{simulation setup}{\incfig[width=.32\textwidth]{Figures/plot/VIV_setup}} \;
   \subcaptionbox{mean amplitude}  {\incfig[width=.32\textwidth]{Figures/validation/viv_amp_noyaw.pdf}} \;
   \subcaptionbox{frequency}       {\incfig[width=.32\textwidth]{Figures/validation/viv_freq_noyaw.pdf}}
   \caption{Verification of the DES approach to predict VIV: (a) a schematic
     showing the simulation setup, (b) mean nondimensional displacement
-    amplitude ($\bar{A}/D$), and (c) vortex shedding frequency ($f_v$)
-    normalized by natural frequency of the system ($f_N$). Simulation results
-    are compared against measurements from Ref.~\cite{khalak1997fluid} for a
-    range of reduced velocity ($V_{R}$).}
+    amplitude ($\bar{A}/D$), and (c) normalized oscillation frequency
+    ($f_v/f_N$). Measured data is from Ref.~\cite{khalak1997fluid}.}
   \label{fig:VIV_verification}
 \end{figure}
 
@@ -196,116 +197,124 @@ phenomenon which occurs in the {\em upper} and {\em lower} branches.
 \label{sec:periodicity}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-Simulations are performed for four values of aspect ratio, $L/D$ ($= 1, 2, 5,$
-and $10$). For each configuration, seven values of reduced velocity $V_{R}$
-($=2, 3, 4, 5, 5.9, 7, 8$) are evaluated; this range covers the {\em initial
-excitation}, {\em upper}, and {\em lower} branches observed during VIV of a low
-mass-damping cylinder.
-
-
+Four cylinder models with aspect ratio, $L/D$ $= 1, 2, 5,$ and $10$ are
+evaluated using DES with periodic span boundaries. For each configuration,
+seven values of reduced velocity $V_{R}$ ($=2, 3, 4, 5, 5.9, 7, 8$) are
+evaluated; this wide range of $V_R$ covers the {\em Initial Excitation}, {\em
+Upper}, and {\em Lower} branches. Figure~\ref{fig:span_amp_freq} compares the
+predicted scaled mean amplitude ($\bar{A}/D$) and the normalized oscillation
+frequency ($f_v/f_N$) for the different models. The convergence of the results
+for models with $L/D=$ $5$ and $10$ shows that span length of $10\times D$ is
+adequate for VIV simulations. While the smaller-span models exhibit the same
+qualitative trend, moderate-to-large differences are observed between them in
+the {\em Initial Excitation} and {\em Upper} branches including
+underprediction of the peak amplitude. 
+%
 \begin{figure}[htb!]
-  \incfig[width=.5\textwidth]{Figures/A.png}
-  \caption{Comparison of predicted non-dimensional mean amplitude ${\bar A}/D$
-    using cylinder models of different span lengths.}
-  \label{fig:Amplitude_Compared}
+  \centering
+    \subcaptionbox{mean amplitude}{\incfig[width=.4\textwidth]{Figures/validation/viv_amp_span}} \hfill
+    \subcaptionbox{frequency     }{\incfig[width=.4\textwidth]{Figures/validation/viv_freq_span}}
+  \caption{Comparison of predicted (a) ${\bar A}/D$, and (b) normalized
+    oscillation frequency, using cylinder models of different span lengths.}
+  \label{fig:span_amp_freq}
 \end{figure}
 
-Figure~\ref{fig:Coherence_Cl} and \ref{fig:Coherence_Cd} present force
-coefficients coherence for different spans cylinders ($Z = 1D, 2D, 5D,$ and
-$10D$). For longer cylinders ($Z = 5D$ and $10D$) are only correlated to the
-peak vortex shedding frequency and its harmonics. However, the shorter
-cylinders ($Z = 1D$ and $2D$) have more wider coherence for more frequencies??
+Peak amplitude is observed at resonance when $f_v$ matches $f_N$ and is
+expected to occur at $V_R=1/St$. Since the $St$ at the simulated $Re_D$ is
+approximately $0.2$, peak amplitude occurs at $V_R\sim 5$. Power spectral
+density (PSD) of the transverse aerodynamic force coefficient, $C_y = 2
+F_y/(\rho V^2_\infty L)$ of the four models are compared in Fig.~\ref{fig:RV_5}
+(a) for $V_R=5$. A linear scale is used to plot the PSDs to accentuate the
+differences. The spectral peak is higher and narrower for the models with
+$L\ge5D$. For shorter-span models, the energy is distributed over a wider
+frequency range, resulting in a broader peak. A sharp peak in $C_y$ at $k \sim
+St$ results in greater excitation, hence higher $\bar{A}/D$, for the
+larger-span models at $V_R=5$.
+
+Spanwise coherence of transverse sectional force coefficient, $c_y(z) = 2
+f_y(z)/(\rho V^2_\infty)$ are plotted in Fig.~\ref{fig:RV_5} (b) for $V_R=5$.
+For the larger-span cylinders ($L\ge5D$), high coherence ($\gamma^2$) is
+limited to a very small band of $k$ around $St$ ($\sim0.2$), whereas for the
+smaller-span models, $\gamma^2$ is very high over the entire span for
+$0.1<k<0.3$. High coherence at frequencies away from $k=St$ is the reason for
+the broader but shorter peaks observed in the $C_y$ spectra 
+%
+%and consequently, a lower peak $\bar{A}/D$ is observed at $k=St$ 
+%
+for the smaller-span models.
 
 \begin{figure}[htb!]
-  \subcaptionbox{$1D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z1D.png}} \qquad
-  \subcaptionbox{$2D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z2D.png}} \qquad
-  \subcaptionbox{$5D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z5D.png}} \qquad
-  \subcaptionbox{$10D$}{\incfig[height=.33\textwidth]{Figures/Coherence_Z10D.png}}
-    \caption{Lift coherence for various aspect ratio at $V_{R,n}=5$}
-  \label{fig:Coherence_Cl}
+  \subcaptionbox{$C_y$ spectra}     {\incfig[height=0.3\textwidth]{Figures/Coherence_St/RV5/spectra_RV5.pdf}} \quad
+  \subcaptionbox{coherence of $c_y$}{\incfig[height=0.3\textwidth]{Figures/plot/RV5_Coherence.png}}
+  \caption{Results at $V_R$=5: (a) PSD of $C_y$, and (b)
+  $\gamma^2(\Delta z,k)$ of $c_y$ for models with $L/D$=1,2,5,\&10.}
+  \label{fig:RV_5}
 \end{figure}
 
+Smaller-span models underpredict $\bar{A}/D$ throughout the {\em Upper} branch.
+The solutions at $V_R=5.9$ are probed to investigate this underprediction.
+Figure~\ref{fig:RV_5p9} plots the $C_y$ spectra and the spanwise coherence of
+$c_y$ for the different models. The $k$ corresponding to the natural frequency
+is $k_N = 1/V_R \sim 0.17$ for $V_R=5.9$. The $C_y$ spectra for the small-span
+models peak at $k \sim 0.2$ and ``lock-in'' with $k_N$ does not occur. The
+spectrum of the largest-span model peaks at around $k_N$; the peak is slightly
+shifted from $k_N$ due to the added-mass effect, which can be substantial for
+low-$m^*$ systems. High coherence in the small-span models forces the vortex
+shedding at $k\sim 0.2$ and does not allow ``lock-in'' at $k_N$.
+
 \begin{figure}[htb!]
-  \subcaptionbox{$1D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z1D_Cd.png}} \qquad
-  \subcaptionbox{$2D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z2D_Cd.png}} \qquad
-  \subcaptionbox{$5D$} {\incfig[height=.33\textwidth]{Figures/Coherence_Z5D_Cd.png}} \qquad
-  \subcaptionbox{$10D$}{\incfig[height=.33\textwidth]{Figures/Coherence_Z10D_Cd.png}}
-  \caption{Drag coherence for various aspect ratio at $V_{R,n}=5$}
-  \label{fig:Coherence_Cd}
+  \subcaptionbox{$C_y$ spectra}     {\incfig[height=0.3\textwidth]{Figures/Coherence_St/RV5.9/spectra_RV5p9.pdf}} \quad
+  \subcaptionbox{coherence of $c_y$}{\incfig[height=0.3\textwidth]{Figures/plot/RV5p9_Coherence.png}}
+  \caption{Results at $V_R$=5.9: (a) PSD of $C_y$, and (b)
+  $\gamma^2(\Delta z,k)$ of $c_y$ for models with $L/D$=1,2,5,\&10.}
+  \label{fig:RV_5p9}
 \end{figure}
 
-Figure~\ref{fig:force_VIV} shows ... different peak value, wider, lower psd
-smaller $L/D$. 
+In contrast to underprediction in the ``lock-in'' region, the smaller-span
+models overpredict $\bar{A}/D$ in the {\em Initial Excitation} branch. This is
+consistent with the $C_y$ spectra which shows a higher peak at $k \sim 0.2$ for
+the smaller-span models (see Fig.~\ref{fig:RV_3} (a)). Another peak is observed
+with the smaller-span models at $k$ near $k_N$ ($\sim 0.33$ for $V_R=3$).
+Figure~\ref{fig:RV_3} (b) shows increased coherence at $k_N$. The periodicity
+in smaller span models reinforces the excitation at this frequency leading to
+the additional peak in the $C_y$ spectra. In fact, the smallest-span model
+oscillates at this frequency (see Fig.~\ref{fig:span_amp_freq} (b)), suggesting
+a ``lock-in'' in the {\em Initial Excitation} branch. 
 
 \begin{figure}[htb!]
-  \subcaptionbox {Power spectral densities of $C_l$}
-    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/St_f.png}}
-  \hspace*{\fill}
-  \subcaptionbox{Zoom-in }
-    [.48\linewidth]{\incfig[width=.48\textwidth]{Figures/St_f_2.png}}
-    \caption{Comparison of predicted power spectral densities
-      (PSDs) of $C_l$ for various frequencies at $V_{R,n}=5$.}
-  \label{fig:force_VIV}
-\end{figure}
-
-\clearpage
-
-\begin{figure}[htb!]
-  \subcaptionbox{Spectra}
-    {\incfig[width=.44\textwidth]{Figures/RV3/St_1_RV.pdf}}
-  \qquad
-  \subcaptionbox{Coherence}
-    {\incfig[width=.44\textwidth]{Figures/RV3/Coherence_Cl_Z10.pdf}} \\
-  \subcaptionbox{Coherence, $L/D=5$}
-    {\incfig[width=.32\textwidth]{Figures/RV3/Coherence_Cl_Z5.pdf}}
-  \;
-  \subcaptionbox{Coherence, $L/D=2$}
-    {\incfig[width=.32\textwidth]{Figures/RV3/Coherence_Cl_Z2.pdf}}
-  \;
-  \subcaptionbox{Coherence, $L/D=1$}
-    {\incfig[width=.32\textwidth]{Figures/RV3/Coherence_Cl_Z1.pdf}}
-    \caption{$V_{R,n}=3$}
+  \subcaptionbox{$C_y$ spectra}     {\incfig[height=0.3\textwidth]{Figures/Coherence_St/RV3/spectra_RV3.pdf}} \quad
+  \subcaptionbox{coherence of $c_y$}{\incfig[height=0.3\textwidth]{Figures/plot/RV3_Coherence.png}}
+  \caption{Results at $V_R$=3: (a) PSD of $C_y$, and (b)
+  $\gamma^2(\Delta z,k)$ of $c_y$ for models with $L/D$=1,2,5,\&10.}
   \label{fig:RV_3}
 \end{figure}
 
-\begin{figure}[htb!]
-  \subcaptionbox{Spectra}
-    [.48\linewidth]{\incfig[width=.44\textwidth]{Figures/RV5_9/St_1_RV.pdf}}
-  \hspace*{\fill}
-  \subcaptionbox{Coherence, $L/D=10$}
-    [.48\linewidth]{\incfig[width=.44\textwidth]{Figures/RV5_9/Coherence_Cl_Z10.pdf}} \\
-  \subcaptionbox{Coherence, $L/D=5$}
-    [.32\linewidth]{\incfig[width=.32\textwidth]{Figures/RV5_9/Coherence_Cl_Z5.pdf}}
-  \hspace*{\fill}
-  \subcaptionbox{Coherence, $L/D=2$}
-    [.32\linewidth]{\incfig[width=.32\textwidth]{Figures/RV5_9/Coherence_Cl_Z2.pdf}}
-  \hspace*{\fill}
-  \subcaptionbox{Coherence, $L/D=1$}
-    [.32\linewidth]{\incfig[width=.32\textwidth]{Figures/RV5_9/Coherence_Cl_Z1.pdf}}
-    \caption{$V_{R,n}=5.9$}
-  \label{fig:RV_5p9}
-\end{figure}
+%\begin{figure}[htb!]
+%  %\subcaptionbox{mean amplitude}{\incfig[width=.48\textwidth]{Figures/A.png}} \;
+%  \subcaptionbox{frequency     }{\incfig[width=.48\textwidth]{Figures/Coherence_St/f_A}}
+%  \caption{Comparison of predicted (a) ${\bar A}/D$, and (b) frequency using}
+%\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
 \label{sec:conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+DES of four finite-span models with periodic span boundaries shows that a
+minimum span length of $10\, D$ is required to accurately simulate VIV.
+Simulations with smaller-span domains underpredict the peak amplitude of
+vibration and do not capture the ``lock-in'' phenomenon accurately. Spanwise
+coherence of sectional transverse force coefficient provides insights into the
+observed behavior.
 
-
-
-%% The Appendices part is started with the command \appendix;
-%% appendix sections are then done as normal sections
-%% \appendix
-
-%% \section{}
-%% \label{}
-
-%% If you have bibdatabase file and want bibtex to generate the
-%% bibitems, please use
-%%
-%\end{linenumbers}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Acknowledgments}
+\label{sec:acknowledgement}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Funding for this research is provided by the National Science Foundation (Grant
+\#NSF/ CMMI-1537917). Computational resources are provided by NSF XSEDE (Grant
+\#TG-CTS130004) and the Argonne Leadership Computing Facility, which is a DOE
+Office of Science User Facility supported under Contract DE-AC02-06CH11357.
 
 %\bibliographystyle{elsarticle-num} 
 \bibliography{references}
