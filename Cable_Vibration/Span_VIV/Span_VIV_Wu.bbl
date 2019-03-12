@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -10,6 +10,43 @@
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\undefined \def\xfnm[#1]{\unskip,\space#1}\fi
 \makeatletter\def\@biblabel#1{#1.}\makeatother
+%Type = Article
+\bibitem[{Govardhan and Williamson(2004)}]{govardhan2004critical}
+\bibinfo{author}{Govardhan\xfnm[ R.]}, \bibinfo{author}{Williamson\xfnm[ C.]}.
+\newblock \bibinfo{title}{Critical mass in vortex-induced vibration of a
+  cylinder}.
+\newblock \emph{\bibinfo{journal}{European Journal of Mechanics-B/Fluids}}
+  \bibinfo{year}{2004};\hspace{0pt}\textbf{\bibinfo{volume}{23}}(\bibinfo{number}{1}):\bibinfo{pages}{17--27}.
+%Type = Article
+\bibitem[{Morse et~al.(2008)Morse, Govardhan and Williamson}]{morse2008effect}
+\bibinfo{author}{Morse\xfnm[ T.]}, \bibinfo{author}{Govardhan\xfnm[ R.]},
+  \bibinfo{author}{Williamson\xfnm[ C.]}.
+\newblock \bibinfo{title}{The effect of end conditions on the vortex-induced
+  vibration of cylinders}.
+\newblock \emph{\bibinfo{journal}{Journal of Fluids and Structures}}
+  \bibinfo{year}{2008};\hspace{0pt}\textbf{\bibinfo{volume}{24}}(\bibinfo{number}{8}):\bibinfo{pages}{1227--1239}.
+%Type = Article
+\bibitem[{Labb{\'e} and Wilson(2007)}]{labbe2007numerical}
+\bibinfo{author}{Labb{\'e}\xfnm[ D.]}, \bibinfo{author}{Wilson\xfnm[ P.]}.
+\newblock \bibinfo{title}{A numerical investigation of the effects of the
+  spanwise length on the 3-d wake of a circular cylinder}.
+\newblock \emph{\bibinfo{journal}{Journal of Fluids and Structures}}
+  \bibinfo{year}{2007};\hspace{0pt}\textbf{\bibinfo{volume}{23}}(\bibinfo{number}{8}):\bibinfo{pages}{1168--1188}.
+%Type = Article
+\bibitem[{Szepessy and Bearman(1992)}]{szepessy1992aspect}
+\bibinfo{author}{Szepessy\xfnm[ S.]}, \bibinfo{author}{Bearman\xfnm[ P.]}.
+\newblock \bibinfo{title}{Aspect ratio and end plate effects on vortex shedding
+  from a circular cylinder}.
+\newblock \emph{\bibinfo{journal}{Journal of Fluid Mechanics}}
+  \bibinfo{year}{1992};\hspace{0pt}\textbf{\bibinfo{volume}{234}}:\bibinfo{pages}{191--217}.
+%Type = Article
+\bibitem[{Lucor et~al.(2005)Lucor, Foo and Karniadakis}]{lucor2005vortex}
+\bibinfo{author}{Lucor\xfnm[ D.]}, \bibinfo{author}{Foo\xfnm[ J.]},
+  \bibinfo{author}{Karniadakis\xfnm[ G.]}.
+\newblock \bibinfo{title}{Vortex mode selection of a rigid cylinder subject to
+  viv at low mass-damping}.
+\newblock \emph{\bibinfo{journal}{Journal of Fluids and Structures}}
+  \bibinfo{year}{2005};\hspace{0pt}\textbf{\bibinfo{volume}{20}}(\bibinfo{number}{4}):\bibinfo{pages}{483--503}.
 %Type = Article
 \bibitem[{Yin et~al.(2015)Yin, Reddy and Durbin}]{yin2015dynamic}
 \bibinfo{author}{Yin\xfnm[ Z.]}, \bibinfo{author}{Reddy\xfnm[ K.]},

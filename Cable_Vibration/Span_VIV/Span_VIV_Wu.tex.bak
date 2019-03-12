@@ -150,7 +150,7 @@ VIV has been investigated experimentally (e.g.,~\citet{szepessy1992aspect}),
 such an investigation is lacking for simulations. Although
 \citet{lucor2005vortex} analyzed spanwise correlation in their VIV simulations
 of one cylinder with $L/D=26$, they did not investigate the impact of varying
-$L/D$. We present detached eddy simulation results of VIV of four models with
+$L/D$. We present detached eddy simualtion results of VIV of four models with
 $L/D=1,~2,~5,$ and $10$. Displacement amplitude, oscillation frequency, lift
 spectra, and spanwise coherence are compared between the simulations.
 

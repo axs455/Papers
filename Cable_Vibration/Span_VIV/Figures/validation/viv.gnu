@@ -51,9 +51,9 @@ plot 'sim_VIV_span.dat' i 0 u 1:2 t '$L/D$=1'  w lp ls 4 pt 1 ps 2, \
       ''  i 0 u 1:3 t '$L/D$=2'  w lp ls 5 pt 2 ps 2, \
       ''  i 0 u 1:4 t '$L/D$=5'  w lp ls 3 pt 4 ps 2, \
       ''  i 0 u 1:5 t '$L/D$=10' w lp ls 2 pt 6 ps 2 lw 4, \
-      'ExpIII_VIV.dat' i 1 smooth bezier t 'Exp' ls 11 lw 2, \
-      '' i 2 smooth bezier t ''    ls 11 lw 2, \
-      '' i 3 smooth bezier t ''    ls 11 lw 2
+      'ExpIII_VIV.dat' i 1 smooth bezier t 'Exp' ls 1 lw 2, \
+      '' i 2 smooth bezier t ''    ls 1 lw 2, \
+      '' i 3 smooth bezier t ''    ls 1 lw 2
 
 set key left top
 set xrange [0:16]
